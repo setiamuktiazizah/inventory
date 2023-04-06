@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->int('barcode');
+            $table->string('name');
+            $table->string('brand');
+            $table->int('quantity');
+            $table->string('condition');
+            $table->foreignId('id_add_item')->constrained('add_items')->nullOnDelete();
+            $table->foreignId('id_category')->constrained('categories')->nullOnDelete();
             $table->timestamps();
         });
     }

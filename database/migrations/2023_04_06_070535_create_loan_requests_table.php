@@ -20,8 +20,11 @@ return new class extends Migration
             $table->string('path_file_cdn')->nullable();
             $table->string('status');
             $table->text('note')->nullable();
-            $table->dateTime('created_at')->nullable();
+            $table->foreignId('id_item')->constrained('items')->nullOnDelete();
+            $table->dateTime('created_at');
+            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

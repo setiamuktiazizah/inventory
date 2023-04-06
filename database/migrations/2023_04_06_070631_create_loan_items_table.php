@@ -17,10 +17,12 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->int('quantity');
             $table->date('max_return_date');
-            $table->dateTime('created_at')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreignId('id_loan_request')->constrained('loan_requests')->cascadeOnDelete();
+            $table->foreignId('id_item')->constrained('items')->nullOnDelete();
+            $table->dateTime('created_at');
+            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('super_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('is_loanable');
-            $table->dateTime('created_at')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->dateTime('created_at');
+            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 

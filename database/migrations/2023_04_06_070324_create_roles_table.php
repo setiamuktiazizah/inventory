@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('role');
             $table->string('credential_type');
+            $table->foreignId('id_user')->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
     }

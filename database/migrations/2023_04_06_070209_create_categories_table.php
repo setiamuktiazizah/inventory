@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->int('quantity');
-            $table->dateTime('created_at')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreignId('id_super_category')->constrained('super_categories')->nullOnDelete();
+            $table->foreignId('id_item_unit')->constrained('item_units')->nullOnDelete();
+            $table->dateTime('created_at');
+            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
         });
     }
 
