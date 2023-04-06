@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('super_categories', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigIncrements('id');
+            $table->boolean('is_loanable');
+            $table->dateTime('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

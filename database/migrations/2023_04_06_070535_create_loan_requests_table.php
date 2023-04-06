@@ -14,8 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('loan_requests', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigIncrements('id');
+            $table->date('loan_date');
+            $table->date('max_return_date');
+            $table->string('path_file_cdn')->nullable();
+            $table->string('status');
+            $table->text('note')->nullable();
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
         });
     }
 
