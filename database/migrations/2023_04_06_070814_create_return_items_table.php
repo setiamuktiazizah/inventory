@@ -17,11 +17,11 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->date('return_date');
             $table->text('note');
-            $table->foreignId('id_loan')->constrained('loan_items')->cascadeOnDelete();
+            $table->unsignedBigInteger('id_loan');
             $table->dateTime('created_at');
-            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

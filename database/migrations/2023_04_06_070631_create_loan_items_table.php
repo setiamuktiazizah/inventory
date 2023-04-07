@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('loan_items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->int('quantity');
+            $table->unsignedBigInteger('quantity');
             $table->date('max_return_date');
-            $table->foreignId('id_loan_request')->constrained('loan_requests')->cascadeOnDelete();
-            $table->foreignId('id_item')->constrained('items')->nullOnDelete();
+            $table->unsignedBigInteger('id_loan_request');
+            $table->unsignedBigInteger('id_item');
             $table->dateTime('created_at');
-            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
-            $table->timestamps();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

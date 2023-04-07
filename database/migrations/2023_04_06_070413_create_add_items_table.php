@@ -14,18 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('add_items', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->dateTime('date');
             $table->string('name');
             $table->string('brand');
-            $table->int('quantity');
-            $table->int('price');
+            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('price');
             $table->string('cause');
-            $table->foreignId('id_category')->constrained('categories')->nullOnDelete();
+            $table->unsignedBigInteger('id_category');
             $table->dateTime('created_at');
-            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

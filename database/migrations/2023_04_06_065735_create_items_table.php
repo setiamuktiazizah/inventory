@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->int('barcode');
+            $table->unsignedBigInteger('barcode');
             $table->string('name');
             $table->string('brand');
-            $table->int('quantity');
+            $table->unsignedBigInteger('quantity');
             $table->string('condition');
-            $table->foreignId('id_add_item')->constrained('add_items')->nullOnDelete();
-            $table->foreignId('id_category')->constrained('categories')->nullOnDelete();
-            $table->timestamps();
+            $table->unsignedBigInteger('id_add_item');
+            $table->unsignedBigInteger('id_category');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at')->nullable();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 

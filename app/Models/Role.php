@@ -14,9 +14,4 @@ class Role extends Model
         'role',
         'credential_type',
     ];
-
-    public function user(): HasMany
-    {
-        return $this->hasMany(User::class);
-    }
 }

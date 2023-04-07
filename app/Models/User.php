@@ -21,7 +21,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_role',
         'name',
         'email',
         'password',
@@ -48,11 +47,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Role::class);
-    }
 
     public function add_item(): HasMany
     {

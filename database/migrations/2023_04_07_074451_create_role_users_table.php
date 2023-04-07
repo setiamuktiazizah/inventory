@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_units', function (Blueprint $table) {
+        Schema::create('role_users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('default_quantity');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at')->nullable();
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->foreignId('id_user')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('id_role')->constrained('roles')->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_units');
+        Schema::dropIfExists('role_users');
     }
 };

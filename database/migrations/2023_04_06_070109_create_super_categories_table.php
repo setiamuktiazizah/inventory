@@ -17,9 +17,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->boolean('is_loanable');
             $table->dateTime('created_at');
-            $table->foreignId('created_by')->constrained('users')->nullOnDelete();
             $table->dateTime('updated_at')->nullable();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
         });
     }
 
