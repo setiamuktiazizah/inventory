@@ -36,4 +36,18 @@ class AddItem extends Model
     {
         return $this->hasOne(Item::class);
     }
+
+    public function customCreate($id_category, $date, $name, $brand, 
+        $quantity, $price, $cause)
+    {
+        return AddItem::create([
+            'id_category' => $id_category,
+            'date' => $date,
+            'name' => $name,
+            'brand' => $brand,
+            'quantity' => $quantity,
+            'price' => $price,
+            'cause' => $cause,
+        ]);
+    }
 }

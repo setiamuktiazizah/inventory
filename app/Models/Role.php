@@ -22,4 +22,6 @@ class Role extends Model
             'credential_type' => $credential_type
         ]);   
     }
+
+    
 }

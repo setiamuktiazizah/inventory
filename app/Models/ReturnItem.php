@@ -19,4 +19,13 @@ class ReturnItem extends Model
     {
         return $this->belongsTo(LoanItem::class);
     }
+
+    public function customCreate($return_date, $note, $id_loan)
+    {
+        return ReturnItem::create([
+            'return_date' => $return_date,
+            'id_loan' => $id_loan,
+            'note' => $note
+        ]);
+    }
 }
