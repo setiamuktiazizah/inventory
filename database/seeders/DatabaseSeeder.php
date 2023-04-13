@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->generateRoles();
+        $this->generateUsers();
     }
 }
