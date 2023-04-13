@@ -14,4 +14,12 @@ class Role extends Model
         'role',
         'credential_type',
     ];
+
+    public static function customCreate($role, $credential_type)
+    {
+        return Role::create([
+            'role' => $role,
+            'credential_type' => $credential_type
+        ]);   
+    }
 }

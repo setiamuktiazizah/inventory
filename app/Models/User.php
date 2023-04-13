@@ -57,4 +57,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(ReduceItem::class);
     }
+
+    public static function customCreate($idRole, $name, $password, $email,
+        $no_hp, $no_credential)
+    {
+        return User::create([
+            'idRole' => $idRole,
+            'name' => $name,
+            'password' => $password,
+            'email' => $email,
+            'no_hp' => $no_hp,
+            'no_credential' => $no_credential,
+        ]);   
+    }
 }
