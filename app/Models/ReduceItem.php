@@ -27,4 +27,14 @@ class ReduceItem extends Model
     {
         return $this->belongsTo(Item::class);
     }
+
+    public function customCreate($date, $quantity, $cause, $id_item)
+    {
+        return ReduceItem::create([
+            'date' => $date,
+            'quantity' => $quantity,
+            'cause' => $cause,
+            'id_item' => $id_item,
+        ]);
+    }
 }

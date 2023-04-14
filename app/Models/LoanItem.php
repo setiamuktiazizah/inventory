@@ -32,4 +32,15 @@ class LoanItem extends Model
     {
         return $this->hasOne(ReturnItem::class);
     }
+
+    public function customCreate($id_loan_request, $id_item, $quantity,
+        $max_return_date)
+    {
+        return LoanItem::create([
+            'id_loan_request' => $id_loan_request,
+            'id_item' => $id_item,
+            'quantity' => $quantity,
+            'max_return_date' => $max_return_date,
+        ]);
+    }
 }

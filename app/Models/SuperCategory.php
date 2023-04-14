@@ -18,4 +18,11 @@ class SuperCategory extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    public function customCreate($is_loanable)
+    {
+        return SuperCategory::create([
+            'is_loanable' => $is_loanable,
+        ]);
+    }
 }
