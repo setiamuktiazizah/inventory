@@ -21,6 +21,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_role',
         'name',
         'email',
         'password',
@@ -59,7 +60,11 @@ class User extends Authenticatable
     }
 
     public static function customCreate(
+<<<<<<< HEAD
         $idRole,
+=======
+        $id_role,
+>>>>>>> 44c5621647882ec473facbc0a79c0eb90100d34e
         $name,
         $password,
         $email,
@@ -67,7 +72,7 @@ class User extends Authenticatable
         $no_credential
     ) {
         return User::create([
-            'idRole' => $idRole,
+            'id_role' => $id_role,
             'name' => $name,
             'password' => $password,
             'email' => $email,

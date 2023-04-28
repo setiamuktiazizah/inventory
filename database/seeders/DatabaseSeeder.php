@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
     private function generateUsers()
     {
         User::customCreate(1, 'admin', 'admin12345', 'admin@gmail.com', '000', '000');
-        User::customCreate(2, 'operator', 'admin12345', 'admin@gmail.com', '000', '000');
-        User::customCreate(3, 'peminjam_dosen', 'admin12345', 'admin@gmail.com', '000', '000');
-        User::customCreate(4, 'peminjam_mahasiswa', 'admin12345', 'admin@gmail.com', '000', '000');
+        User::customCreate(2, 'operator', 'admin12345', 'operator@gmail.com', '000', '000');
+        User::customCreate(3, 'peminjam_dosen', 'admin12345', 'dosen@gmail.com', '000', '000');
+        User::customCreate(4, 'peminjam_mahasiswa', 'admin12345', 'mahasiswa@gmail.com', '000', '000');
     }
 
     public function run()
