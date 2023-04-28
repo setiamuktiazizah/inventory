@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
 use App\Models\Role;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
         User::customCreate(3, 'peminjam_dosen', 'admin12345', 'admin@gmail.com', '000', '000');
         User::customCreate(4, 'peminjam_mahasiswa', 'admin12345', 'admin@gmail.com', '000', '000');
     }
-    
+
     public function run()
     {
         $this->generateRoles();

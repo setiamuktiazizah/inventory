@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('no_hp');
             $table->string('no_credential');
+            $table->bigInteger('idRole');
             $table->rememberToken();
             $table->timestamps();
         });
