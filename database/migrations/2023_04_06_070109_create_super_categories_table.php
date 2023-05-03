@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('super_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->boolean('is_loanable');
             $table->dateTime('created_at');
             $table->dateTime('updated_at')->nullable();
