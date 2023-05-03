@@ -21,17 +21,17 @@ class Item extends Model
         'condition'
     ];
 
-    public function reduce_item(): HasMany
+    public function reduce_items(): HasMany
     {
         return $this->hasMany(ReduceItem::class);
     }
 
-    public function loan_request(): HasMany
+    public function loan_requests(): HasMany
     {
         return $this->hasMany(LoanRequest::class);
     }
 
-    public function loan_item(): HasMany
+    public function loan_items(): HasMany
     {
         return $this->hasMany(LoanItem::class);
     }

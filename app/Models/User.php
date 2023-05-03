@@ -48,12 +48,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function add_item(): HasMany
+    public function add_items(): HasMany
     {
         return $this->hasMany(AddItem::class);
     }
 
-    public function reduce_item(): HasMany
+    public function reduce_items(): HasMany
     {
         return $this->hasMany(ReduceItem::class);
     }

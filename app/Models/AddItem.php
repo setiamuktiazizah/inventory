@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+use App\Models\Category;
+use App\Models\Item;
+use App\Models\User;
+
 class AddItem extends Model
 {
     use HasFactory;
@@ -19,7 +23,7 @@ class AddItem extends Model
         'quantity',
         'price',
         'cause',
-        'id_user',
+        'created_by'
     ];
 
     public function user(): BelongsTo
