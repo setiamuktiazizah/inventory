@@ -14,7 +14,7 @@ class SuperCategory extends Model
         'default_quantity',
     ];
 
-    public function category(): HasMany
+    public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
     }
