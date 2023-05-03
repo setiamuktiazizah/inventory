@@ -41,15 +41,24 @@ class AddItemController extends Controller
      */
     public function store(Request $request)
     {
-        $_POST = AddItem::create([
-            'date' => $request->input('date'),
-            'name' => $request->input('name'),
-            'brand' => $request->input('brand'),
-            'quantity' => $request->input('quantity'),
-            'price' => $request->input('price'),
-            'cause' => $request->input('cause'),
-            'id_category' => $request->input('id_category'),
-            'created_by' => $request->input('created_by'),
+        $rules = [
+            'date' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'cause' => 'required',
+            'id_category' => 'required',
+            'created_by' => 'required'
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        // $validatedRequest['created_by'] = auth()::user()->id;
+
+        $addItem = AddItem::create($validatedRequest);
+
+        return response()->json([
+            'data' => $addItem
         ]);
     }
 
@@ -98,15 +107,26 @@ class AddItemController extends Controller
     public function update(Request $request, AddItem $addItem)
     {
         //TODO: tambah cek rules
-        $_POST = AddItem::whereId($request->input('id'))->update([
-            'date' => $request->input('date'),
-            'name' => $request->input('name'),
-            'brand' => $request->input('brand'),
-            'quantity' => $request->input('quantity'),
-            'price' => $request->input('price'),
-            'cause' => $request->input('cause'),
-            'id_category' => $request->input('id_category'),
-            'created_by' => $request->input('created_by'),
+        $rules = [
+            'date' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'cause' => 'required',
+            'id_category' => 'required',
+            'created_by' => 'required',
+            'edited_by' => 'required'
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        // $validatedRequest['edited_by'] = auth()::user()->id;
+
+        $add_item = AddItem::where('id', $addItem->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $add_item
         ]);
     }
 
