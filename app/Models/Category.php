@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use App\Models\ItemUnit;
+use App\Models\Item;
+use App\Models\SuperCategory;
+use App\Models\AddItem;
+
+
 class Category extends Model
 {
     use HasFactory;
@@ -27,12 +33,12 @@ class Category extends Model
         return $this->belongsTo(SuperCategory::class);
     }
 
-    public function item(): HasMany
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }
 
-    public function add_item(): HasMany
+    public function add_items(): HasMany
     {
         return $this->hasMany(AddItem::class);
     }
