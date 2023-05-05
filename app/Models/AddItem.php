@@ -41,7 +41,7 @@ class AddItem extends Model
         return $this->hasOne(Item::class);
     }
 
-    public function customCreate($id_category, $date, $name, $brand, 
+    public static function customCreate($id_category, $date, $name, $brand, 
         $quantity, $price, $cause)
     {
         return AddItem::create([
@@ -52,6 +52,9 @@ class AddItem extends Model
             'quantity' => $quantity,
             'price' => $price,
             'cause' => $cause,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

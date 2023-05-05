@@ -52,7 +52,7 @@ class Item extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function customCreate(
+    public static function customCreate(
         $id_add_item,
         $id_category,
         $barcode,

@@ -21,11 +21,15 @@ class ItemUnit extends Model
         return $this->hasMany(Category::class);
     }
 
-    public function customCreate($name, $default_quantity)
+    public static function customCreate($name, $default_quantity)
     {
         return ItemUnit::create([
             'name' => $name,
-            'default_quantity' => $default_quantity
+            'default_quantity' => $default_quantity,
+            
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
+            
         ]);
     }
 }

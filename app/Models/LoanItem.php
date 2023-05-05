@@ -37,7 +37,7 @@ class LoanItem extends Model
         return $this->hasOne(ReturnItem::class);
     }
 
-    public function customCreate(
+    public static function customCreate(
         $id_loan_request,
         $id_item,
         $quantity,
