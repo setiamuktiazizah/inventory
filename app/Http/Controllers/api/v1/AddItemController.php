@@ -116,11 +116,11 @@ class AddItemController extends Controller
             'cause' => 'required',
             'id_category' => 'required',
             'created_by' => 'required',
-            'edited_by' => 'required'
+            'updated_by' => 'required'
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['edited_by'] = auth()::user()->id;
+        // $validatedRequest['updated_by'] = auth()::user()->id;
 
         $add_item = AddItem::where('id', $addItem->id)
             ->update($validatedRequest);
