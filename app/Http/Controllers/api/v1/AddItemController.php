@@ -49,7 +49,7 @@ class AddItemController extends Controller
             'price' => 'required',
             'cause' => 'required',
             'id_category' => 'required',
-            'created_by' => 'required'
+            'created_by' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
@@ -116,7 +116,7 @@ class AddItemController extends Controller
             'cause' => 'required',
             'id_category' => 'required',
             'created_by' => 'required',
-            'edited_by' => 'required'
+            'updated_by' => 'required'
         ];
 
         $validatedRequest = $request->validate($rules);

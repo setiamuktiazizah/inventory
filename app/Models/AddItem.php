@@ -23,7 +23,7 @@ class AddItem extends Model
         'quantity',
         'price',
         'cause',
-        'created_by'
+        'created_by',
     ];
 
     public function user(): BelongsTo
@@ -41,9 +41,15 @@ class AddItem extends Model
         return $this->hasOne(Item::class);
     }
 
-    public function customCreate($id_category, $date, $name, $brand, 
-        $quantity, $price, $cause)
-    {
+    public function customCreate(
+        $id_category,
+        $date,
+        $name,
+        $brand,
+        $quantity,
+        $price,
+        $cause
+    ) {
         return AddItem::create([
             'id_category' => $id_category,
             'date' => $date,
