@@ -58,3 +58,31 @@ class AddItem extends Model
         ]);
     }
 }
+
+// ====== Create ======
+// {
+//     "id_category": 1,
+//     "date": "2023-05-05 02:57:03",
+//     "name": "name",
+//     "brand": "brand",
+//     "quantity": 1,
+//     "price": 1,
+//     "cause": "cause",
+
+//     "created_at": "2023-05-05 02:57:03",
+//     "created_by": 1
+// }
+
+// ====== Update ======
+// {
+//     "id_category": 1,
+//     "date": "2023-05-05 02:57:03",
+//     "name": "name edited",
+//     "brand": "brand edited",
+//     "quantity": 1,
+//     "price": 1,
+//     "cause": "cause edited",
+
+//     "created_at": "2023-05-05 02:57:03",
+//     "created_by": 1
+// }

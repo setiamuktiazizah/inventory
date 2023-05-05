@@ -116,7 +116,7 @@ class AddItemController extends Controller
             'cause' => 'required',
             'id_category' => 'required',
             'created_by' => 'required',
-            'edited_by' => 'required'
+            // 'edited_by' => 'required'  // belum ada fieldnya di db
         ];
 
         $validatedRequest = $request->validate($rules);
