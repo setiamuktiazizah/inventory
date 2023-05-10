@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Category;
 
+use App\Models\Category;
+
 class SuperCategory extends Model
 {
     use HasFactory;
@@ -18,5 +20,12 @@ class SuperCategory extends Model
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class);
+    }
+
+    public function customCreate($is_loanable)
+    {
+        return SuperCategory::create([
+            'is_loanable' => $is_loanable,
+        ]);
     }
 }

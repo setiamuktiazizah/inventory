@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\LoanItem;
 
 
+use App\Models\LoanItem;
+
 class ReturnItem extends Model
 {
     use HasFactory;
@@ -20,5 +22,14 @@ class ReturnItem extends Model
     public function loan_item(): BelongsTo
     {
         return $this->belongsTo(LoanItem::class);
+    }
+
+    public function customCreate($return_date, $note, $id_loan)
+    {
+        return ReturnItem::create([
+            'return_date' => $return_date,
+            'id_loan' => $id_loan,
+            'note' => $note
+        ]);
     }
 }

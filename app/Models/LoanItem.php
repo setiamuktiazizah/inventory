@@ -10,6 +10,10 @@ use App\Models\Item;
 use App\Models\ReturnItem;
 use App\Models\LoanRequest;
 
+use App\Models\Item;
+use App\Models\LoanRequest;
+use App\Models\ReturnItem;
+
 class LoanItem extends Model
 {
     use HasFactory;
@@ -34,5 +38,19 @@ class LoanItem extends Model
     public function return_item(): HasOne
     {
         return $this->hasOne(ReturnItem::class);
+    }
+
+    public function customCreate(
+        $id_loan_request,
+        $id_item,
+        $quantity,
+        $max_return_date
+    ) {
+        return LoanItem::create([
+            'id_loan_request' => $id_loan_request,
+            'id_item' => $id_item,
+            'quantity' => $quantity,
+            'max_return_date' => $max_return_date,
+        ]);
     }
 }
