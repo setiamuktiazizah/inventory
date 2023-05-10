@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use App\Models\ReduceItem;
+use App\Models\LoanRequest;
+use App\Models\LoanItem;
+use App\Models\AddItem;
+use App\Models\Category;
+
 class Item extends Model
 {
     use HasFactory;

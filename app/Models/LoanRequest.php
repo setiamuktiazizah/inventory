@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+use App\Models\Item;
+use App\Models\LoanItem;
+
 class LoanRequest extends Model
 {
     use HasFactory;
