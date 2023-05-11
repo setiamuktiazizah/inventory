@@ -120,7 +120,7 @@ class AddItemController extends Controller
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['edited_by'] = auth()::user()->id;
+        // $validatedRequest['updated_by'] = auth()::user()->id;
 
         $add_item = AddItem::where('id', $addItem->id)
             ->update($validatedRequest);
