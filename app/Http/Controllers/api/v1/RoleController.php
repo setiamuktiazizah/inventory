@@ -15,7 +15,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record Role',
+            'data' => $roles
+        ], 200);
     }
 
     // /**
@@ -47,7 +52,19 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        if ($role) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Role!',
+                'data'    => $role
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     // /**

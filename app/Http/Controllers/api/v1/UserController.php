@@ -15,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record User',
+            'data' => $users
+        ], 200);
     }
 
     /**
@@ -36,7 +41,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'no_hp' => 'required',
+            'no_credential' => 'required',
+            'id_role' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $user = User::create($validatedRequest);
+
+        return response()->json([
+            'data' => $user
+        ]);
     }
 
     /**
@@ -47,7 +66,19 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        if ($user) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail User!',
+                'data'    => $user
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +101,23 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'no_hp' => 'required',
+            'no_credential' => 'required',
+            'id_role' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedUser = User::where('id', $user->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedUser
+        ]);
     }
 
     /**
@@ -81,6 +128,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
     }
 }

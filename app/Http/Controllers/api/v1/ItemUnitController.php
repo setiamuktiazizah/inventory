@@ -15,7 +15,12 @@ class ItemUnitController extends Controller
      */
     public function index()
     {
-        //
+        $itemUnits = ItemUnit::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record ItemUnit',
+            'data' => $itemUnits
+        ], 200);
     }
 
     /**
@@ -36,7 +41,17 @@ class ItemUnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'default_quantity' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $itemUnit = ItemUnit::create($validatedRequest);
+
+        return response()->json([
+            'data' => $itemUnit
+        ]);
     }
 
     /**
@@ -47,7 +62,19 @@ class ItemUnitController extends Controller
      */
     public function show(ItemUnit $itemUnit)
     {
-        //
+        if ($itemUnit) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail ItemUnit!',
+                'data'    => $itemUnit
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +97,19 @@ class ItemUnitController extends Controller
      */
     public function update(Request $request, ItemUnit $itemUnit)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'default_quantity' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedItemUnit = ItemUnit::where('id', $itemUnit->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedItemUnit
+        ]);
     }
 
     /**
@@ -81,6 +120,6 @@ class ItemUnitController extends Controller
      */
     public function destroy(ItemUnit $itemUnit)
     {
-        //
+        $itemUnit->delete();
     }
 }

@@ -15,7 +15,12 @@ class LoanRequestController extends Controller
      */
     public function index()
     {
-        //
+        $loanRequests = LoanRequest::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record LoanRequest',
+            'data' => $loanRequests
+        ], 200);
     }
 
     /**
@@ -36,7 +41,21 @@ class LoanRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'loan_date' => 'required',
+            'max_return_date' => 'required',
+            // 'path_file_cdn' => 'required',
+            'status' => 'required',
+            // 'note' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $loanRequest = LoanRequest::create($validatedRequest);
+
+        return response()->json([
+            'data' => $loanRequest
+        ]);
     }
 
     /**
@@ -47,7 +66,19 @@ class LoanRequestController extends Controller
      */
     public function show(LoanRequest $loanRequest)
     {
-        //
+        if ($loanRequest) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail LoanRequest!',
+                'data'    => $loanRequest
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +101,23 @@ class LoanRequestController extends Controller
      */
     public function update(Request $request, LoanRequest $loanRequest)
     {
-        //
+        $rules = [
+            'loan_date' => 'required',
+            'max_return_date' => 'required',
+            // 'path_file_cdn' => 'required',
+            'status' => 'required',
+            // 'note' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedLoanRequest = LoanRequest::where('id', $loanRequest->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedLoanRequest
+        ]);
     }
 
     /**
@@ -81,6 +128,6 @@ class LoanRequestController extends Controller
      */
     public function destroy(LoanRequest $loanRequest)
     {
-        //
+        $loanRequest->delete();
     }
 }

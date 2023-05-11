@@ -15,11 +15,11 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        $posts = AddItem::latest()->get();
+        $addItems = AddItem::latest()->get();
         return response([
             'success' => true,
-            'message' => 'List Penambahan data',
-            'data' => $posts
+            'message' => 'List Record AddItem',
+            'data' => $addItems
         ], 200);
     }
 
@@ -49,7 +49,7 @@ class AddItemController extends Controller
             'price' => 'required',
             'cause' => 'required',
             'id_category' => 'required',
-            'created_by' => 'required'
+            // 'created_by' => 'required'
         ];
 
         $validatedRequest = $request->validate($rules);
@@ -74,7 +74,7 @@ class AddItemController extends Controller
         if ($addItem) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail Add_item!',
+                'message' => 'Detail AddItem!',
                 'data'    => $addItem
             ], 200);
         } else {
@@ -122,11 +122,11 @@ class AddItemController extends Controller
         $validatedRequest = $request->validate($rules);
         // $validatedRequest['updated_by'] = auth()::user()->id;
 
-        $add_item = AddItem::where('id', $addItem->id)
+        $updatedAddItem = AddItem::where('id', $addItem->id)
             ->update($validatedRequest);
 
         return response()->json([
-            'data' =>  $add_item
+            'data' =>  $updatedAddItem
         ]);
     }
 

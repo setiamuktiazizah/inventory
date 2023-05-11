@@ -15,7 +15,12 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record Item',
+            'data' => $items
+        ], 200);
     }
 
     /**
@@ -36,7 +41,22 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'barcode' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'quantity' => 'required',
+            'condition' => 'required',
+            'id_add_item' => 'required',
+            'id_category' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $item = Item::create($validatedRequest);
+
+        return response()->json([
+            'data' => $item
+        ]);
     }
 
     /**
@@ -47,7 +67,19 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        if ($item) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Item!',
+                'data'    => $item
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +102,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $rules = [
+            'barcode' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'quantity' => 'required',
+            'condition' => 'required',
+            'id_add_item' => 'required',
+            'id_category' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedItem = Item::where('id', $item->id)
+        ->update($validatedRequest);
+
+    return response()->json([
+        'data' =>  $updatedItem
+    ]);
     }
 
     /**
@@ -81,6 +130,6 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
     }
 }

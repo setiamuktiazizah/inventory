@@ -15,7 +15,12 @@ class ReduceItemController extends Controller
      */
     public function index()
     {
-        //
+        $reduceItems = ReduceItem::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record ReduceItem',
+            'data' => $reduceItems
+        ], 200);
     }
 
     /**
@@ -36,7 +41,19 @@ class ReduceItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'date' => 'required',
+            'quantity' => 'required',
+            'cause' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $reduceItem = ReduceItem::create($validatedRequest);
+
+        return response()->json([
+            'data' => $reduceItem
+        ]);
     }
 
     /**
@@ -47,7 +64,19 @@ class ReduceItemController extends Controller
      */
     public function show(ReduceItem $reduceItem)
     {
-        //
+        if ($reduceItem) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail ReduceItem!',
+                'data'    => $reduceItem
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +99,21 @@ class ReduceItemController extends Controller
      */
     public function update(Request $request, ReduceItem $reduceItem)
     {
-        //
+        $rules = [
+            'date' => 'required',
+            'quantity' => 'required',
+            'cause' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedReduceItem = ReduceItem::where('id', $reduceItem->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedReduceItem
+        ]);
     }
 
     /**
@@ -81,6 +124,6 @@ class ReduceItemController extends Controller
      */
     public function destroy(ReduceItem $reduceItem)
     {
-        //
+        $reduceItem->delete();
     }
 }

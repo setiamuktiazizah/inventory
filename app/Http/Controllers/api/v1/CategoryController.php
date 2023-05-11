@@ -15,7 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record Category',
+            'data' => $categories
+        ], 200);
     }
 
     /**
@@ -36,7 +41,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'quantity' => 'required',
+            'id_super_category' => 'required',
+            'id_item_unit' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $category = Category::create($validatedRequest);
+
+        return response()->json([
+            'data' => $category
+        ]);
     }
 
     /**
@@ -47,7 +64,19 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        if ($category) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail Category!',
+                'data'    => $category
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +99,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'quantity' => 'required',
+            'id_super_category' => 'required',
+            'id_item_unit' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedCategory = Category::where('id', $category->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedCategory
+        ]);
+
     }
 
     /**
@@ -81,6 +125,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }

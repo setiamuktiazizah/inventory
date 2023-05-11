@@ -15,7 +15,12 @@ class SuperCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $superCategories = SuperCategory::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record SuperCategory',
+            'data' => $superCategories
+        ], 200);
     }
 
     /**
@@ -36,7 +41,17 @@ class SuperCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'is_loanable' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $superCategory = SuperCategory::create($validatedRequest);
+
+        return response()->json([
+            'data' => $superCategory
+        ]);
     }
 
     /**
@@ -47,7 +62,19 @@ class SuperCategoryController extends Controller
      */
     public function show(SuperCategory $superCategory)
     {
-        //
+        if ($superCategory) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail SuperCategory!',
+                'data'    => $superCategory
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +97,19 @@ class SuperCategoryController extends Controller
      */
     public function update(Request $request, SuperCategory $superCategory)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'is_loanable' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedSuperCategory = SuperCategory::where('id', $superCategory->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedSuperCategory
+        ]);
     }
 
     /**
@@ -81,6 +120,6 @@ class SuperCategoryController extends Controller
      */
     public function destroy(SuperCategory $superCategory)
     {
-        //
+        $superCategory->delete();
     }
 }

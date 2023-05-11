@@ -15,7 +15,12 @@ class ReturnItemController extends Controller
      */
     public function index()
     {
-        //
+        $returnItems = ReturnItem::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record ReturnItem',
+            'data' => $returnItems
+        ], 200);
     }
 
     /**
@@ -36,7 +41,18 @@ class ReturnItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'return_date' => 'required',
+            'note' => 'required',
+            'id_loan' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+        $returnItem = ReturnItem::create($validatedRequest);
+
+        return response()->json([
+            'data' => $returnItem
+        ]);
     }
 
     /**
@@ -47,7 +63,19 @@ class ReturnItemController extends Controller
      */
     public function show(ReturnItem $returnItem)
     {
-        //
+        if ($returnItem) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail ReturnItem!',
+                'data'    => $returnItem
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data Tidak Ditemukan!',
+                'data'    => ''
+            ], 401);
+        }
     }
 
     /**
@@ -70,7 +98,20 @@ class ReturnItemController extends Controller
      */
     public function update(Request $request, ReturnItem $returnItem)
     {
-        //
+        $rules = [
+            'return_date' => 'required',
+            'note' => 'required',
+            'id_loan' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedReturnItem = ReturnItem::where('id', $returnItem->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedReturnItem
+        ]);
     }
 
     /**
@@ -81,6 +122,6 @@ class ReturnItemController extends Controller
      */
     public function destroy(ReturnItem $returnItem)
     {
-        //
+        $returnItem->delete();
     }
 }
