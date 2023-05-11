@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Item;
 use App\Models\User;
 
-use App\Models\User;
-use App\Models\Item;
+// use App\Models\User;
+// use App\Models\Item;
 
 class ReduceItem extends Model
 {
