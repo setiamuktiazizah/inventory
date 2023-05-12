@@ -23,7 +23,7 @@ class AddItem extends Model
         'quantity',
         'price',
         'cause',
-        'created_by'
+        'created_by',
     ];
 
     public function user(): BelongsTo

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AddItem;
 use Illuminate\Http\Request;
 
-class AddItemController extends Controller
+class AddItemController extends Controller  
 {
     /**
      * Display a listing of the resource.
