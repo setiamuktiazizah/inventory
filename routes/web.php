@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< Updated upstream
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,3 +22,25 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('/', [InventoryController::class,'index']);
+
+Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
+
+Route::get('/data-barang', [InventoryController::class, 'dataBarangPage']);
+
+Route::get('/pengadaan-barang', [InventoryController::class, 'pengadaanBarangPage']);
+
+Route::get('/pengurangan-barang', [InventoryController::class, 'penguranganBarangPage']);
+
+Route::get('/login', [InventoryController::class, 'loginPage']);
+
+Route::get('/register', [InventoryController::class, 'registerPage']);
+
+Route::get('/profil', [InventoryController::class, 'profilPage']);
+
+Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
+
+Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
+
+>>>>>>> Stashed changes
