@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InventoryController::class,'index']);
+
+Route::get('/loginPage', [InventoryController::class, 'loginPage']);
+
+Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
+
+Route::get('/dashboard-operator', [InventoryController::class, 'dashboardOperatorPage']);
+
+Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanPengembalianPage']);
+
