@@ -111,6 +111,7 @@ Route::group(['middleware' => ['auth:api']], function () {
  * @method "GET"
  */
 
+Route::post('/logout', App\Http\Controllers\Api\LogoutController::class)->name('logout');
 
 // Route::post('/v1/add-item/simpan', [AddItemController::class, 'store']);
 // Route::get('/v1/add-item', [AddItemController::class, 'index']);
