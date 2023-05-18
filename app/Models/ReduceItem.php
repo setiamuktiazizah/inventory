@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+use App\Models\Item;
+use App\Models\User;
+
+
 class ReduceItem extends Model
 {
     use HasFactory;
@@ -28,7 +32,7 @@ class ReduceItem extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function customCreate($date, $quantity, $cause, $id_item)
+    public static function customCreate($date, $quantity, $cause, $id_item)
     {
         return ReduceItem::create([
             'date' => $date,

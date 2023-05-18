@@ -4,6 +4,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
     <!-- Custom fonts for this template-->
     <link href="{{asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
@@ -11,4 +15,8 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+<<<<<<< HEAD
     <link href="{{asset('template/css/sb-admin-2.css')}}" rel="stylesheet">
+=======
+    <link href="{{asset('template/css/sb-admin-2.css')}}" rel="stylesheet">
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747

@@ -10,8 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use App\Models\ReduceItem;
+use App\Models\AddItem;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -25,7 +28,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'email_verified_at',
         'no_hp',
         'no_credential',
     ];
@@ -49,31 +51,40 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function add_item(): HasMany
+    public function add_items(): HasMany
     {
         return $this->hasMany(AddItem::class);
     }
 
-    public function reduce_item(): HasMany
+    public function reduce_items(): HasMany
     {
         return $this->hasMany(ReduceItem::class);
     }
 
-    public static function customCreate(
-        $id_role,
-        $name,
-        $password,
-        $email,
-        $no_hp,
-        $no_credential
-    ) {
+    public static function customCreate($id_role, $name, $password, $email, $no_hp, $no_credential)
+    {
         return User::create([
             'id_role' => $id_role,
             'name' => $name,
             'password' => $password,
             'email' => $email,
             'no_hp' => $no_hp,
-            'no_credential' => $no_credential,
+            'no_credential' => $no_credential
         ]);
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

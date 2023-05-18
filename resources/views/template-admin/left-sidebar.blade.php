@@ -43,7 +43,11 @@
 
 <!-- Nav Item - Pengurangan Barang -->
 <li class="nav-item">
+<<<<<<< HEAD
     <a class="nav-link" href="index.html">
+=======
+    <a class="nav-link" href="/pengurangan-barang">
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Pengurangan Barang</span></a>
 </li>
@@ -73,7 +77,11 @@
 
 <!-- Nav Item - Manajemen User -->
 <li class="nav-item">
+<<<<<<< HEAD
     <a class="nav-link" href="index.html">
+=======
+    <a class="nav-link" href="/manajemen-user">
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Manajemen User</span></a>
 </li>
@@ -103,7 +111,11 @@
 
 <!-- Nav Item - Akun -->
 <li class="nav-item">
+<<<<<<< HEAD
     <a class="nav-link" href="index.html">
+=======
+    <a class="nav-link" href="/profil">
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Akun</span></a>
 </li>

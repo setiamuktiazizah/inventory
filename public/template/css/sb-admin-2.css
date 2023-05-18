@@ -5771,7 +5771,13 @@ a.close.disabled {
   position: relative;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   width: 100%;
+=======
+  /* width: 100%; */
+  width: 120%;
+  padding: 1.3rem;
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
@@ -5816,6 +5822,11 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+<<<<<<< HEAD
+=======
+  color: #1565C0;
+  font-weight: 800;
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
 }
 
 .modal-body {

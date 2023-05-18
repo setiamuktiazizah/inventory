@@ -10,14 +10,18 @@ class InventoryController extends Controller
         return view('index');
     }
 
+<<<<<<< HEAD
     public function loginPage(){
         return view('loginPage');
     }
     
+=======
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747
     public function dashboardAdminPage(){
         return view('dashboard-admin');
     }
 
+<<<<<<< HEAD
     public function dashboardOperatorPage(){
         return view('dashboard-operator');
     }
@@ -27,3 +31,38 @@ class InventoryController extends Controller
     }
 
 }
+=======
+    public function dataBarangPage(){
+        return view('data-barang');
+    }
+
+    public function pengadaanBarangPage(){
+        return view('pengadaan-barang');
+    }
+
+    public function penguranganBarangPage(){
+        return view('pengurangan-barang');
+    }
+
+    public function loginPage(){
+        return view('login');
+    }
+
+    public function registerPage(){
+        return view('register');
+    }
+
+    public function profilPage(){
+        return view('profil');
+    }
+
+    public function manajemenUserPage(){
+        return view('manajemen-user');
+    }
+
+    public function resetPasswordPage(){
+        return view('reset-password');
+    }
+
+}
+>>>>>>> 094d009818aa62b779a29177a71530df5dae3747

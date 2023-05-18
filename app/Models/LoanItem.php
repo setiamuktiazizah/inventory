@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+use App\Models\Item;
+use App\Models\ReturnItem;
+use App\Models\LoanRequest;
+
+
 class LoanItem extends Model
 {
     use HasFactory;
@@ -33,9 +38,12 @@ class LoanItem extends Model
         return $this->hasOne(ReturnItem::class);
     }
 
-    public function customCreate($id_loan_request, $id_item, $quantity,
-        $max_return_date)
-    {
+    public static function customCreate(
+        $id_loan_request,
+        $id_item,
+        $quantity,
+        $max_return_date
+    ) {
         return LoanItem::create([
             'id_loan_request' => $id_loan_request,
             'id_item' => $id_item,
