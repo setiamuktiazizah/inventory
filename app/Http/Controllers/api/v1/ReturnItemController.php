@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\AddItem;
+use App\Models\ReturnItem;
 use Illuminate\Http\Request;
 
-class AddItemController extends Controller  
+class ReturnItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        $addItems = AddItem::latest()->get();
+        $returnItems = ReturnItem::latest()->get();
         return response([
             'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
+            'message' => 'List Record ReturnItem',
+            'data' => $returnItems
         ], 200);
     }
 
@@ -30,7 +30,7 @@ class AddItemController extends Controller
      */
     public function create()
     {
-        //TODO: nunggu view create addItems
+        //
     }
 
     /**
@@ -42,40 +42,32 @@ class AddItemController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'date' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required'
+            'return_date' => 'required',
+            'note' => 'required',
+            'id_loan' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['created_by'] = auth()::user()->id;
-
-        $addItem = AddItem::create($validatedRequest);
+        $returnItem = ReturnItem::create($validatedRequest);
 
         return response()->json([
-            'data' => $addItem
+            'data' => $returnItem
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReturnItem  $returnItem
      * @return \Illuminate\Http\Response
      */
-    public function show(AddItem $addItem)
+    public function show(ReturnItem $returnItem)
     {
-        // error_log(getrout);
-        if ($addItem) {
+        if ($returnItem) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail AddItem!',
-                'data'    => $addItem
+                'message' => 'Detail ReturnItem!',
+                'data'    => $returnItem
             ], 200);
         } else {
             return response()->json([
@@ -89,55 +81,47 @@ class AddItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReturnItem  $returnItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(AddItem $addItem)
+    public function edit(ReturnItem $returnItem)
     {
-        //TODO: nunggu view edit addItem
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReturnItem  $returnItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AddItem $addItem)
+    public function update(Request $request, ReturnItem $returnItem)
     {
-        //TODO: tambah cek rules
         $rules = [
-            'date' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required',
-            //'edited_by' => 'required' //belom ada fieldnya
+            'return_date' => 'required',
+            'note' => 'required',
+            'id_loan' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['updated_by'] = auth()::user()->id;
 
-        $updatedAddItem = AddItem::where('id', $addItem->id)
+        $updatedReturnItem = ReturnItem::where('id', $returnItem->id)
             ->update($validatedRequest);
 
         return response()->json([
-            'data' =>  $updatedAddItem
+            'data' =>  $updatedReturnItem
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReturnItem  $returnItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AddItem $addItem)
+    public function destroy(ReturnItem $returnItem)
     {
-        $addItem->delete();
+        $returnItem->delete();
     }
 }

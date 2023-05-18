@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\AddItem;
+use App\Models\SuperCategory;
 use Illuminate\Http\Request;
 
-class AddItemController extends Controller  
+class SuperCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        $addItems = AddItem::latest()->get();
+        $superCategories = SuperCategory::latest()->get();
         return response([
             'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
+            'message' => 'List Record SuperCategory',
+            'data' => $superCategories
         ], 200);
     }
 
@@ -30,7 +30,7 @@ class AddItemController extends Controller
      */
     public function create()
     {
-        //TODO: nunggu view create addItems
+        //
     }
 
     /**
@@ -42,40 +42,31 @@ class AddItemController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'date' => 'required',
             'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required'
+            'is_loanable' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['created_by'] = auth()::user()->id;
-
-        $addItem = AddItem::create($validatedRequest);
+        $superCategory = SuperCategory::create($validatedRequest);
 
         return response()->json([
-            'data' => $addItem
+            'data' => $superCategory
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\SuperCategory  $superCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(AddItem $addItem)
+    public function show(SuperCategory $superCategory)
     {
-        // error_log(getrout);
-        if ($addItem) {
+        if ($superCategory) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail AddItem!',
-                'data'    => $addItem
+                'message' => 'Detail SuperCategory!',
+                'data'    => $superCategory
             ], 200);
         } else {
             return response()->json([
@@ -89,55 +80,46 @@ class AddItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\SuperCategory  $superCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(AddItem $addItem)
+    public function edit(SuperCategory $superCategory)
     {
-        //TODO: nunggu view edit addItem
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\SuperCategory  $superCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AddItem $addItem)
+    public function update(Request $request, SuperCategory $superCategory)
     {
-        //TODO: tambah cek rules
         $rules = [
-            'date' => 'required',
             'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required',
-            //'edited_by' => 'required' //belom ada fieldnya
+            'is_loanable' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['updated_by'] = auth()::user()->id;
 
-        $updatedAddItem = AddItem::where('id', $addItem->id)
+        $updatedSuperCategory = SuperCategory::where('id', $superCategory->id)
             ->update($validatedRequest);
 
         return response()->json([
-            'data' =>  $updatedAddItem
+            'data' =>  $updatedSuperCategory
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\SuperCategory  $superCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AddItem $addItem)
+    public function destroy(SuperCategory $superCategory)
     {
-        $addItem->delete();
+        $superCategory->delete();
     }
 }

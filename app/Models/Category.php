@@ -43,14 +43,17 @@ class Category extends Model
         return $this->hasMany(AddItem::class);
     }
 
-    public function customCreate($id_super_category, $id_item_unit, 
+    public static function customCreate($id_super_category, $id_item_unit, 
         $name, $quantity)
     {
         return Category::create([
             'id_super_category' => $id_super_category,
             'id_item_unit' => $id_item_unit,
             'name' => $name,
-            'quantity' => $quantity
+            'quantity' => $quantity,
+            
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

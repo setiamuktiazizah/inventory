@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Item;
 use App\Models\User;
 
-use App\Models\User;
-use App\Models\Item;
+// use App\Models\User;
+// use App\Models\Item;
 
 class ReduceItem extends Model
 {
@@ -33,7 +33,7 @@ class ReduceItem extends Model
         return $this->belongsTo(Item::class);
     }
 
-    public function customCreate($date, $quantity, $cause, $id_item)
+    public static function customCreate($date, $quantity, $cause, $id_item)
     {
         return ReduceItem::create([
             'date' => $date,

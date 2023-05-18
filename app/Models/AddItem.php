@@ -41,15 +41,9 @@ class AddItem extends Model
         return $this->hasOne(Item::class);
     }
 
-    public function customCreate(
-        $id_category,
-        $date,
-        $name,
-        $brand,
-        $quantity,
-        $price,
-        $cause
-    ) {
+    public static function customCreate($id_category, $date, $name, $brand, 
+        $quantity, $price, $cause)
+    {
         return AddItem::create([
             'id_category' => $id_category,
             'date' => $date,
@@ -58,6 +52,37 @@ class AddItem extends Model
             'quantity' => $quantity,
             'price' => $price,
             'cause' => $cause,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }
+
+// ====== Create ======
+// {
+//     "id_category": 1,
+//     "date": "2023-05-05 02:57:03",
+//     "name": "name",
+//     "brand": "brand",
+//     "quantity": 1,
+//     "price": 1,
+//     "cause": "cause",
+
+//     "created_at": "2023-05-05 02:57:03",
+//     "created_by": 1
+// }
+
+// ====== Update ======
+// {
+//     "id_category": 1,
+//     "date": "2023-05-05 02:57:03",
+//     "name": "name edited",
+//     "brand": "brand edited",
+//     "quantity": 1,
+//     "price": 1,
+//     "cause": "cause edited",
+
+//     "created_at": "2023-05-05 02:57:03",
+//     "created_by": 1
+// }
