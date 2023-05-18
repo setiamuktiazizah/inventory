@@ -31,7 +31,7 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Pengadaan Barang</h1>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
+                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
                 </div>                
 
@@ -65,7 +65,7 @@
                                         <td>5.600.000</td>
                                         <td>Baru</td>
                                         <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
                                     <tr>
@@ -78,7 +78,7 @@
                                         <td>5.600.000</td>
                                         <td>Baru</td>
                                         <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                     <tr>
@@ -91,7 +91,7 @@
                                         <td>5.600.000</td>
                                         <td>Baru</td>
                                         <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                     <tr>
@@ -104,7 +104,7 @@
                                         <td>5.600.000</td>
                                         <td>Baru</td>
                                         <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                     <tr>
@@ -117,7 +117,7 @@
                                         <td>5.600.000</td>
                                         <td>Baru</td>
                                         <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>
@@ -167,6 +167,201 @@
         </div>
     </div>
 
+    <!-- Tambah Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengadaan Barang</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user">
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="Kategori"> -->
+                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                    <datalist id="categories">
+                                        <option value="Aset">
+                                        <option value="Bolpen">
+                                    </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
+                                <input class="form-control form-control-sm" list="items" name="item" id="item">
+                                <datalist id="items">
+                                    <option value="Laptop">
+                                    <option value="Bolpen">
+                                    <option value="LCD">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
+                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
+                                <datalist id="brands">
+                                    <option value="ASUS">
+                                    <option value="Snowman">
+                                    <option value="Olaf">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
+                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
+                                <datalist id="units">
+                                    <option value="rim">
+                                    <option value="pak">
+                                    <option value="unit">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
+                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
+                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-sm" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
+                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
+                                <datalist id="adds">
+                                    <option value="Barang Baru">
+                                    <option value="Transfer">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
+                            <input class="form-control form-control-sm" list="users" name="user" id="user">
+                            <datalist id="users">
+                                <option value="Alwi">
+                                <option value="Bayu">
+                            </datalist>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary">Simpan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengadaan Barang</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user">
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="Kategori"> -->
+                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                    <datalist id="categories">
+                                        <option value="Aset">
+                                        <option value="Bolpen">
+                                    </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
+                                <input class="form-control form-control-sm" list="items" name="item" id="item">
+                                <datalist id="items">
+                                    <option value="Laptop">
+                                    <option value="Bolpen">
+                                    <option value="LCD">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
+                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
+                                <datalist id="brands">
+                                    <option value="ASUS">
+                                    <option value="Snowman">
+                                    <option value="Olaf">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
+                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
+                                <datalist id="units">
+                                    <option value="rim">
+                                    <option value="pak">
+                                    <option value="unit">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
+                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
+                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-sm" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
+                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
+                                <datalist id="adds">
+                                    <option value="Barang Baru">
+                                    <option value="Transfer">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
+                            <input class="form-control form-control-sm" list="users" name="user" id="user">
+                            <datalist id="users">
+                                <option value="Alwi">
+                                <option value="Bayu">
+                            </datalist>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary">Simpan</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @include ('template-admin.script')
 </body>
 
