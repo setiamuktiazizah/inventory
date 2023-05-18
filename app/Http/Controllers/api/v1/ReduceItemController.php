@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\ReduceItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ReduceItemController extends Controller
 {
@@ -15,6 +16,11 @@ class ReduceItemController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+
         $reduceItems = ReduceItem::latest()->get();
         return response([
             'success' => true,
@@ -31,6 +37,11 @@ class ReduceItemController extends Controller
     public function create()
     {
         //
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
+        return "ReduceItem_create";
     }
 
     /**
@@ -64,6 +75,10 @@ class ReduceItemController extends Controller
      */
     public function show(ReduceItem $reduceItem)
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         if ($reduceItem) {
             return response()->json([
                 'success' => true,
@@ -88,6 +103,11 @@ class ReduceItemController extends Controller
     public function edit(ReduceItem $reduceItem)
     {
         //
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
+        return "ReduceItem_edit";
     }
 
     /**
@@ -124,6 +144,11 @@ class ReduceItemController extends Controller
      */
     public function destroy(ReduceItem $reduceItem)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $reduceItem->delete();
+        return "ReduceItem_destroy";
     }
 }

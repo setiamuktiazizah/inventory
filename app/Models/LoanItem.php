@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+
 use App\Models\Item;
 use App\Models\ReturnItem;
 use App\Models\LoanRequest;
 
-// use App\Models\Item;
-// use App\Models\LoanRequest;
-// use App\Models\ReturnItem;
 
 class LoanItem extends Model
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
@@ -15,6 +16,10 @@ class RoleController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $roles = Role::latest()->get();
         return response([
             'success' => true,
@@ -52,6 +57,10 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         if ($role) {
             return response()->json([
                 'success' => true,

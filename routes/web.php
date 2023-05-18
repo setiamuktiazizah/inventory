@@ -14,15 +14,6 @@ use App\Http\Controllers\InventoryController;
 |
 */
 
-<<<<<<< Updated upstream
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
 Route::get('/', [InventoryController::class,'index']);
 
 Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
@@ -33,7 +24,7 @@ Route::get('/pengadaan-barang', [InventoryController::class, 'pengadaanBarangPag
 
 Route::get('/pengurangan-barang', [InventoryController::class, 'penguranganBarangPage']);
 
-Route::get('/login', [InventoryController::class, 'loginPage']);
+// Route::get('/login', [InventoryController::class, 'loginPage']);
 
 Route::get('/register', [InventoryController::class, 'registerPage']);
 
@@ -43,4 +34,3 @@ Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage'])
 
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 
->>>>>>> Stashed changes

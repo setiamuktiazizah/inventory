@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\ReturnItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ReturnItemController extends Controller
 {
@@ -15,6 +16,10 @@ class ReturnItemController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         $returnItems = ReturnItem::latest()->get();
         return response([
             'success' => true,
@@ -31,6 +36,11 @@ class ReturnItemController extends Controller
     public function create()
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "ReturnItem_create";
     }
 
     /**
@@ -63,6 +73,10 @@ class ReturnItemController extends Controller
      */
     public function show(ReturnItem $returnItem)
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         if ($returnItem) {
             return response()->json([
                 'success' => true,
@@ -87,6 +101,11 @@ class ReturnItemController extends Controller
     public function edit(ReturnItem $returnItem)
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "ReturnItem_edit";
     }
 
     /**
@@ -122,6 +141,11 @@ class ReturnItemController extends Controller
      */
     public function destroy(ReturnItem $returnItem)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $returnItem->delete();
+        return "ReturnItem_destroy";
     }
 }

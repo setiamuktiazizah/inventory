@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -15,6 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         $categories = Category::latest()->get();
         return response([
             'success' => true,
@@ -31,6 +36,11 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "Category_create";
     }
 
     /**
@@ -64,6 +74,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         if ($category) {
             return response()->json([
                 'success' => true,
@@ -88,6 +102,11 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "Category_edit";
     }
 
     /**
@@ -125,6 +144,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $category->delete();
+        return "Category_destroy";
     }
 }
