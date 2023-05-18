@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\LoanItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LoanItemController extends Controller
 {
@@ -15,6 +16,11 @@ class LoanItemController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+
         $loanItems = LoanItem::latest()->get();
         return response([
             'success' => true,
@@ -31,6 +37,11 @@ class LoanItemController extends Controller
     public function create()
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "LoanItem_create";
     }
 
     /**
@@ -64,6 +75,11 @@ class LoanItemController extends Controller
      */
     public function show(LoanItem $loanItem)
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+
         if ($loanItem) {
             return response()->json([
                 'success' => true,
@@ -88,6 +104,11 @@ class LoanItemController extends Controller
     public function edit(LoanItem $loanItem)
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "LoanItem_edit";
     }
 
     /**
@@ -124,6 +145,11 @@ class LoanItemController extends Controller
      */
     public function destroy(LoanItem $loanItem)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $loanItem->delete();
+        return "LoanItem_destroy";
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\ItemUnit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ItemUnitController extends Controller
 {
@@ -15,6 +16,10 @@ class ItemUnitController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         $itemUnits = ItemUnit::latest()->get();
         return response([
             'success' => true,
@@ -31,6 +36,11 @@ class ItemUnitController extends Controller
     public function create()
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "ItemUnit_create";
     }
 
     /**
@@ -62,6 +72,10 @@ class ItemUnitController extends Controller
      */
     public function show(ItemUnit $itemUnit)
     {
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
         if ($itemUnit) {
             return response()->json([
                 'success' => true,
@@ -86,6 +100,11 @@ class ItemUnitController extends Controller
     public function edit(ItemUnit $itemUnit)
     {
         //
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        return "ItemUnit_edit";
     }
 
     /**
@@ -120,6 +139,11 @@ class ItemUnitController extends Controller
      */
     public function destroy(ItemUnit $itemUnit)
     {
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
         $itemUnit->delete();
+        return "ItemUnit_destroy";
     }
 }
