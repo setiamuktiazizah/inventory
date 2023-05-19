@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\AddItem;
-use App\Models\Category;
+use App\Models\ReduceItem;
+use App\Models\Item;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class AddItemController extends Controller
+class ReduceItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +18,17 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        $addItem = AddItem::latest()->get();
+        $reduceItem = ReduceItem::latest()->get();
+        $item = Item::all();
         $user = User::all();
         $category = Category::all();
 
         $data =  response([
             'success' => true,
             'message' => 'List Penambahan data',
-            'data' => $addItem,
+            'data' => $reduceItem,
         ], 200);
-        return view('pengadaan-barang', ['data_add' => $addItem, 'data_user' => $user, 'data_category' => $category]);
+        return view('pengurangan-barang', ['data_reduce' => $reduceItem, 'data_user' => $user, 'data_item' => $item, 'data_category' => $category]);
     }
 
     /**
@@ -36,7 +38,7 @@ class AddItemController extends Controller
      */
     public function create()
     {
-        //TODO: nunggu view create addItems
+        //TODO: nunggu view create ReduceItems
     }
 
     /**
@@ -61,27 +63,27 @@ class AddItemController extends Controller
         $validatedRequest = $request->validate($rules);
         // $validatedRequest['created_by'] = auth()::user()->id;
 
-        $addItem = AddItem::create($validatedRequest);
+        $reduceItem = ReduceItem::create($validatedRequest);
 
         return response()->json([
-            'data' => $addItem
+            'data' => $reduceItem
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReduceItem  $ReduceItem
      * @return \Illuminate\Http\Response
      */
-    public function show(AddItem $addItem)
+    public function show(ReduceItem $reduceItem)
     {
         // error_log(getrout);
-        if ($addItem) {
+        if ($reduceItem) {
             return response()->json([
                 'success' => true,
                 'message' => 'Detail Add_item!',
-                'data'    => $addItem
+                'data'    => $reduceItem
             ], 200);
         } else {
             return response()->json([
@@ -95,22 +97,22 @@ class AddItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReduceItem  $ReduceItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(AddItem $addItem)
+    public function edit(ReduceItem $ReduceItem)
     {
-        //TODO: nunggu view edit addItem
+        //TODO: nunggu view edit ReduceItem
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReduceItem  $ReduceItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AddItem $addItem)
+    public function update(Request $request, ReduceItem $reduceItem)
     {
         //TODO: tambah cek rules
         $rules = [
@@ -128,22 +130,22 @@ class AddItemController extends Controller
         $validatedRequest = $request->validate($rules);
         // $validatedRequest['updated_by'] = auth()::user()->id;
 
-        $add_item = AddItem::where('id', $addItem->id)
+        $reduce_item = ReduceItem::where('id', $reduceItem->id)
             ->update($validatedRequest);
 
         return response()->json([
-            'data' =>  $add_item
+            'data' =>  $reduce_item
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AddItem  $addItem
+     * @param  \App\Models\ReduceItem  $ReduceItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AddItem $addItem)
+    public function destroy(ReduceItem $reduceItem)
     {
-        $addItem->delete();
+        $reduceItem->delete();
     }
 }
