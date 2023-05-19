@@ -64,5 +64,13 @@ class InventoryController extends Controller
         return view('reset-password');
     }
 
+    public function laporanPengadaanPage(){
+        return view('laporan-pengadaan-barang');
+    }
+
+    public function laporanPenguranganPage(){
+        return view('laporan-pengurangan-barang');
+    }
+
 }
 >>>>>>> 094d009818aa62b779a29177a71530df5dae3747

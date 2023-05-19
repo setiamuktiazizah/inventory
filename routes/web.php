@@ -16,9 +16,12 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< Updated upstream
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
 Route::get('/', [InventoryController::class,'index']);
 
 <<<<<<< HEAD
@@ -50,7 +53,13 @@ Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage'])
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 >>>>>>> 094d009818aa62b779a29177a71530df5dae3747
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 Route::get('/', [InventoryController::class, 'index']);
 =======
 >>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
+=======
+Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
+
+Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
+>>>>>>> Stashed changes
