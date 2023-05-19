@@ -33,7 +33,7 @@ class LoanRequest extends Model
         return $this->hasOne(LoanItem::class);
     }
 
-    public function customCreate(
+    public static function customCreate(
         $id_item,
         $loan_date,
         $max_return_date,
