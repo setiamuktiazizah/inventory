@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 use App\Models\Item;
 use App\Models\User;
 
@@ -30,7 +31,7 @@ class ReduceItem extends Model
         return $this->belongsTo(Item::class, 'id_item');
     }
 
-    public function customCreate($date, $quantity, $cause, $id_item)
+    public static function customCreate($date, $quantity, $cause, $id_item)
     {
         return ReduceItem::create([
             'date' => $date,

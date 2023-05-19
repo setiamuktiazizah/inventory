@@ -4,10 +4,15 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\ReduceItem;
+<<<<<<< HEAD
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+=======
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
 
 class ReduceItemController extends Controller
 {
@@ -18,6 +23,7 @@ class ReduceItemController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $reduceItem = ReduceItem::latest()->get();
         $item = Item::all();
         $user = User::all();
@@ -29,6 +35,19 @@ class ReduceItemController extends Controller
             'data' => $reduceItem,
         ], 200);
         return view('pengurangan-barang', ['data_reduce' => $reduceItem, 'data_user' => $user, 'data_item' => $item, 'data_category' => $category]);
+=======
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+
+        $reduceItems = ReduceItem::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record ReduceItem',
+            'data' => $reduceItems
+        ], 200);
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
     }
 
     /**
@@ -38,7 +57,16 @@ class ReduceItemController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         //TODO: nunggu view create ReduceItems
+=======
+        //
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
+        return "ReduceItem_create";
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
     }
 
     /**
@@ -51,6 +79,7 @@ class ReduceItemController extends Controller
     {
         $rules = [
             'date' => 'required',
+<<<<<<< HEAD
             'name' => 'required',
             'brand' => 'required',
             'quantity' => 'required',
@@ -63,6 +92,14 @@ class ReduceItemController extends Controller
         $validatedRequest = $request->validate($rules);
         // $validatedRequest['created_by'] = auth()::user()->id;
 
+=======
+            'quantity' => 'required',
+            'cause' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
         $reduceItem = ReduceItem::create($validatedRequest);
 
         return response()->json([
@@ -73,16 +110,31 @@ class ReduceItemController extends Controller
     /**
      * Display the specified resource.
      *
+<<<<<<< HEAD
      * @param  \App\Models\ReduceItem  $ReduceItem
+=======
+     * @param  \App\Models\ReduceItem  $reduceItem
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
      * @return \Illuminate\Http\Response
      */
     public function show(ReduceItem $reduceItem)
     {
+<<<<<<< HEAD
         // error_log(getrout);
         if ($reduceItem) {
             return response()->json([
                 'success' => true,
                 'message' => 'Detail Add_item!',
+=======
+        if(!Gate::allows(['admin', 'operator'])){
+            abort(403);
+        }
+
+        if ($reduceItem) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Detail ReduceItem!',
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
                 'data'    => $reduceItem
             ], 200);
         } else {
@@ -97,23 +149,42 @@ class ReduceItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+<<<<<<< HEAD
      * @param  \App\Models\ReduceItem  $ReduceItem
      * @return \Illuminate\Http\Response
      */
     public function edit(ReduceItem $ReduceItem)
     {
         //TODO: nunggu view edit ReduceItem
+=======
+     * @param  \App\Models\ReduceItem  $reduceItem
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(ReduceItem $reduceItem)
+    {
+        //
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
+        return "ReduceItem_edit";
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+<<<<<<< HEAD
      * @param  \App\Models\ReduceItem  $ReduceItem
+=======
+     * @param  \App\Models\ReduceItem  $reduceItem
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ReduceItem $reduceItem)
     {
+<<<<<<< HEAD
         //TODO: tambah cek rules
         $rules = [
             'date' => 'required',
@@ -135,17 +206,46 @@ class ReduceItemController extends Controller
 
         return response()->json([
             'data' =>  $reduce_item
+=======
+        $rules = [
+            'date' => 'required',
+            'quantity' => 'required',
+            'cause' => 'required',
+            'id_item' => 'required',
+        ];
+
+        $validatedRequest = $request->validate($rules);
+
+        $updatedReduceItem = ReduceItem::where('id', $reduceItem->id)
+            ->update($validatedRequest);
+
+        return response()->json([
+            'data' =>  $updatedReduceItem
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
+<<<<<<< HEAD
      * @param  \App\Models\ReduceItem  $ReduceItem
+=======
+     * @param  \App\Models\ReduceItem  $reduceItem
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
      * @return \Illuminate\Http\Response
      */
     public function destroy(ReduceItem $reduceItem)
     {
+<<<<<<< HEAD
         $reduceItem->delete();
+=======
+        if(!Gate::allows(['admin'])){
+            abort(403);
+        }
+
+        $reduceItem->delete();
+        return "ReduceItem_destroy";
+>>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
     }
 }
