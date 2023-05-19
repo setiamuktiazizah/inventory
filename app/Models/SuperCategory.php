@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Models\Category;
 
-
 class SuperCategory extends Model
 {
     use HasFactory;
