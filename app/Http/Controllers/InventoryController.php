@@ -10,28 +10,10 @@ class InventoryController extends Controller
         return view('index');
     }
 
-<<<<<<< HEAD
-    public function loginPage(){
-        return view('loginPage');
-    }
-    
-=======
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
     public function dashboardAdminPage(){
         return view('dashboard-admin');
     }
 
-<<<<<<< HEAD
-    public function dashboardOperatorPage(){
-        return view('dashboard-operator');
-    }
-
-    public function peminjamanPengembalianPage(){
-        return view('peminjaman-pengembalian');
-    }
-
-}
-=======
     public function dataBarangPage(){
         return view('data-barang');
     }
@@ -73,4 +55,3 @@ class InventoryController extends Controller
     }
 
 }
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747

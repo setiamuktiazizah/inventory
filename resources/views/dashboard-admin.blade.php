@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,11 +54,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-<<<<<<< HEAD
-                                            Pengadaan Barang</div>
-=======
                                             <a href="/pengadaan-barang">Pengadaan Barang</a></div>
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -80,11 +72,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-<<<<<<< HEAD
-                                                Pengurangan Barang</div>
-=======
                                                 <a href="/pengurangan-barang">Pengurangan Barang</a></div>
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -124,34 +112,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-<<<<<<< HEAD
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-=======
                     <h5 class="modal-title font-weight-bold text-primary" id="exampleModalLabel" >Keluar?</h5>
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-<<<<<<< HEAD
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/">Logout</a>
-=======
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
                     <a class="btn btn-primary" href="/">Keluar</a>
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
 @include ('template-admin.script')
 </body>
 
