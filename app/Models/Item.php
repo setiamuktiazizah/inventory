@@ -29,7 +29,7 @@ class Item extends Model
 
     public function reduce_items(): HasMany
     {
-        return $this->hasMany(ReduceItem::class);
+        return $this->hasMany(ReduceItem::class, 'id_item');
     }
 
     public function loan_requests(): HasMany
@@ -52,7 +52,7 @@ class Item extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function customCreate(
+    public static function customCreate(
         $id_add_item,
         $id_category,
         $barcode,

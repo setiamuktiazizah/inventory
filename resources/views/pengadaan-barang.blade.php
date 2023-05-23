@@ -33,7 +33,7 @@
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Pengadaan Barang</h1>
                         <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
-                </div>                
+                </div>            
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -55,7 +55,9 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach ($data_add as $add)
                                     <tr>
+
                                         <td>1</td>
                                         <td>02-05-2023</td>
                                         <td>Aset</td>
@@ -126,6 +128,102 @@
                     </div>
                 </div>
 
+
+            <!-- The Modal Input -->
+            <div class="modal fade" id="tambahModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Input Data Pengadaan Barang</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" required></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form method="post" enctype="multipart/form-data" action="">
+                  @csrf
+                  <div class="form-group">
+                      <label>Tanggal</label>
+                      <input type="date" name="date" class="form-control @error('date')
+                          is-invalid
+                      @enderror">
+                  </div>
+                  @error('date')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="name" class="form-control @error('name')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('name')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text" name="brand" class="form-control @error('brand')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('brand')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="text" name="quantity" class="form-control @error('quantity')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('quantity')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Harga</label>
+                    <input type="text" name="price" class="form-control @error('price')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('price')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jenis Pengadaan</label>
+                    <select class="form-select" id="cause" name="cause" value="">
+                        <option value="baru">Barang Baru</option>
+                        <option value="donasi">Donasi</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="categorys" class="form-label">Jenis Kategori</label>
+                    <select class="form-select" id="category" name="category_id">
+                        @foreach ($data_category as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <section>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </section>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+            
                 </div>
                 <!-- /.container-fluid -->
 
@@ -147,6 +245,87 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+   
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <section>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              </section>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    
+              <!-- The Modal Edit -->
+        <div class="modal fade" id="updateModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Data Pengadaan Barang</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form method="POST" action="" id="form_edit" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <input type="text" name="date" class="form-control" value="{{$add->date}} " id="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" name="name" class="form-control" value="{{$add->name}} " id="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" name="brand" class="form-control" value="{{$add->brand}} " id="brand">
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="text" name="quantity" class="form-control" value="{{$add->quantity}} " id="quantity">
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" name="price" class="form-control" value="{{$add->price}} " id="price">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Pengadaan</label>
+                        <select class="form-select" id="cause" name="cause" value="{{$add->cause}} ">
+                            <option value="baru">Barang Baru</option>
+                            <option value="donasi">Donasi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select class="form-select" name="id_category" value="{{$add->category->id}} " >
+                            @foreach ($data_category as $category)
+                                <option value="{{ $category->id }}"> {{$category->name}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+
+    
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

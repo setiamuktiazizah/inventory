@@ -53,12 +53,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function add_items(): HasMany
     {
-        return $this->hasMany(AddItem::class);
+        return $this->hasMany(AddItem::class, 'created_by');
     }
 
     public function reduce_items(): HasMany
     {
-        return $this->hasMany(ReduceItem::class);
+        return $this->hasMany(ReduceItem::class, 'created_by');
     }
 
     public static function customCreate($id_role, $name, $password, $email, $no_hp, $no_credential)
