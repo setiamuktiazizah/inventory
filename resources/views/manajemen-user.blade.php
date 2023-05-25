@@ -220,7 +220,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="/">Simpan</a>
+                    <a class="btn btn-primary" href="/manajemen-user">Simpan</a>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="/">Simpan</a>
+                    <a class="btn btn-primary" href="/manajemen-user">Simpan</a>
                 </div>
             </div>
         </div>
@@ -296,7 +296,7 @@
                 <div class="modal-body">Anda yakin ingin menghapus data?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-danger" href="/">Hapus</a>
+                    <a class="btn btn-danger" href="/manajemen-user">Hapus</a>
                 </div>
             </div>
         </div>

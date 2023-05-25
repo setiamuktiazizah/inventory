@@ -51,7 +51,7 @@
                                     </tr>
                                     <tr>
                                         <td>No. HP</td>
-                                        <td>085161695648 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        <td>085161695648 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>
@@ -96,6 +96,48 @@
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
                     <a class="btn btn-primary" href="/">Keluar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Akun Modal-->
+    <div class="modal fade" id="editAkunModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data User</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user">
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">Nomor Induk</h6>
+                            <input type="number" class="form-control form-control-user"
+                                id="inputNoInduk" readonly>
+                        </div>
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">Nama</h6>
+                            <input type="text" class="form-control form-control-user"
+                                id="inputName" readonly>
+                        </div>
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">Email</h6>
+                            <input type="email" class="form-control form-control-user"
+                                id="inputEmail" aria-describedby="emailHelp" readonly>
+                        </div>
+                        <div class="form-group">
+                            <h6 class="h6 text-blue-100 mb-1">No HP</h6>
+                            <input type="tel" class="form-control form-control-user" id="inputPhone"
+                                            placeholder="08xxxxxxxxxx" pattern="[0][8][0-9]{10}">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary">Simpan</a>
                 </div>
             </div>
         </div>

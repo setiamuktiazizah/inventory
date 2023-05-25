@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Models\Category;
 
-
 class ItemUnit extends Model
 {
     use HasFactory;

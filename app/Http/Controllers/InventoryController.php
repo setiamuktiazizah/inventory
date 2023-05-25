@@ -10,6 +10,7 @@ class InventoryController extends Controller
         return view('index');
     }
 
+
     public function loginPage(){
         return view('loginPage');
     }
@@ -56,6 +57,14 @@ class InventoryController extends Controller
 
     public function resetPasswordPage(){
         return view('reset-password');
+    }
+
+    public function laporanPengadaanPage(){
+        return view('laporan-pengadaan-barang');
+    }
+
+    public function laporanPenguranganPage(){
+        return view('laporan-pengurangan-barang');
     }
 
 }
