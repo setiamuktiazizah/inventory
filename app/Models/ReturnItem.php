@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use App\Models\LoanItem;
 
-
-
 class ReturnItem extends Model
 {
     use HasFactory;
