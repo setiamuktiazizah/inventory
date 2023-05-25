@@ -6,54 +6,82 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('index');
     }
 
-    public function dashboardAdminPage(){
-        return view('dashboard-admin');
+
+    public function dashboardAdminPage()
+    {
+        $name = auth()->guard('api')->user()->name;
+        return view('dashboard-admin')->with('name', $name);
     }
 
-    public function dataBarangPage(){
+    public function loginPage()
+    {
+        return view('loginPage');
+    }
+
+    public function dashboardOperatorPage()
+    {
+        return view('dashboard-operator');
+    }
+
+    public function dashboardPeminjamPage()
+    {
+        return view('dashboard-peminjam');
+    }
+
+    public function peminjamanPengembalianPage()
+    {
+        return view('peminjaman-pengembalian');
+    }
+
+    public function dataBarangPage()
+    {
         return view('data-barang');
     }
 
-    public function pengadaanBarangPage(){
+    public function pengadaanBarangPage()
+    {
         return view('pengadaan-barang');
     }
 
-    public function penguranganBarangPage(){
+    public function penguranganBarangPage()
+    {
         return view('pengurangan-barang');
     }
 
-    public function loginPage(){
-        return view('login');
-    }
-
-    public function registerPage(){
+    public function registerPage()
+    {
         return view('register');
     }
 
-    public function profilPage(){
+    public function profilPage()
+    {
         return view('profil');
     }
 
-    public function manajemenUserPage(){
+    public function manajemenUserPage()
+    {
         return view('manajemen-user');
     }
 
-    public function resetPasswordPage(){
+    public function resetPasswordPage()
+    {
         return view('reset-password');
     }
 
-    public function laporanPengadaanPage(){
+    public function laporanPengadaanPage()
+    {
         return view('laporan-pengadaan-barang');
     }
 
-    public function laporanPenguranganPage(){
+    public function laporanPenguranganPage()
+    {
         return view('laporan-pengurangan-barang');
     }
-
     public function laporanPeminjamanPengembalianOperatorPage(){
         return view('laporan-peminjaman-pengembalian-operator');
     }
