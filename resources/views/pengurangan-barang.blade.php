@@ -670,7 +670,9 @@
             </div>
         </div>
     </div>
-@include ('template-admin.script')
+
+@include('template-admin.script')
+
 </body>
 
 </html>

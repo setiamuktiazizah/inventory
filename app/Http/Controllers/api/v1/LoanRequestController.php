@@ -91,9 +91,9 @@ class LoanRequestController extends Controller
     public function edit(LoanRequest $loanRequest)
     {
         //
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         return "LoanRequest_edit";
     }
@@ -134,9 +134,9 @@ class LoanRequestController extends Controller
      */
     public function destroy(LoanRequest $loanRequest)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $loanRequest->delete();
         return "LoanRequest_destroy";

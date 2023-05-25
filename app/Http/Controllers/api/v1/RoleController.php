@@ -16,9 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $roles = Role::latest()->get();
         return response([
@@ -57,9 +57,9 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         if ($role) {
             return response()->json([
