@@ -6,8 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+<<<<<<< Updated upstream
         "biscolab/laravel-recaptcha": "^6.0",
+=======
         "anhskohbo/no-captcha": "^3.5",
+>>>>>>> Stashed changes
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
