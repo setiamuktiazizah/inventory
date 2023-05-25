@@ -26,7 +26,7 @@ class AddItemController extends Controller
 
                 ->make();
         }
-        return view('pengadaan-barang');
+        return view('home');
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
