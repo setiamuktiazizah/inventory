@@ -13,6 +13,7 @@ class InventoryController extends Controller
         return view('index');
     }
 
+
     public function dashboardAdminPage()
     {
         $name = auth()->guard('api')->user()->name;
@@ -21,6 +22,29 @@ class InventoryController extends Controller
 
     public function dataBarangPage()
     {
+
+
+    public function loginPage(){
+        return view('loginPage');
+    }
+    
+    public function dashboardAdminPage(){
+        return view('dashboard-admin');
+    }
+
+    public function dashboardOperatorPage(){
+        return view('dashboard-operator');
+    }
+
+    public function dashboardPeminjamPage(){
+        return view('dashboard-peminjam');
+    }
+
+    public function peminjamanPengembalianPage(){
+        return view('peminjaman-pengembalian');
+    }
+
+    public function dataBarangPage(){
         return view('data-barang');
     }
 
@@ -41,6 +65,7 @@ class InventoryController extends Controller
 
     public function registerPage()
     {
+    public function registerPage(){
         return view('register');
     }
 
@@ -58,4 +83,13 @@ class InventoryController extends Controller
     {
         return view('reset-password');
     }
+
+    public function laporanPengadaanPage(){
+        return view('laporan-pengadaan-barang');
+    }
+
+    public function laporanPenguranganPage(){
+        return view('laporan-pengurangan-barang');
+    }
+
 }

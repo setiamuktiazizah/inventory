@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-admin.head')
+    @include ('template-peminjam.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-admin.left-sidebar')
+        @include ('template-peminjam.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-admin.navbar')
+                @include ('template-peminjam.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -47,36 +47,18 @@
                             </div>
                         </div>
 
-                        <!-- Card Pengadaan Barang -->
+                        <!-- Card Pengajuan Peminjaman Barang -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="/pengadaan-barang">Pengadaan Barang</a></div>
+                                            Pengajuan Peminjaman Barang</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card Pengurangan Barang -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                <a href="/pengurangan-barang">Pengurangan Barang</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-minus-square fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +74,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-admin.footer')
+            @include ('template-peminjam.footer')
             <!-- End of Footer -->
 
         </div>
@@ -125,7 +107,7 @@
             </div>
         </div>
     </div>
-@include ('template-admin.script')
+@include ('template-peminjam.script')
 </body>
 
 </html>

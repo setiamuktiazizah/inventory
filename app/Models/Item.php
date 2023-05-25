@@ -29,7 +29,7 @@ class Item extends Model
 
     public function reduce_items(): HasMany
     {
-        return $this->hasMany(ReduceItem::class);
+        return $this->hasMany(ReduceItem::class, 'id_item');
     }
 
     public function loan_requests(): HasMany
@@ -68,7 +68,10 @@ class Item extends Model
             'name' => $name,
             'brand' => $brand,
             'quantity' => $quantity,
-            'condition' => $condition
+            'condition' => $condition,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddItem;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -19,13 +21,16 @@ class AddItemController extends Controller
         if(!Gate::allows(['admin', 'operator'])){
             abort(403);
         }
-
+        
+        $user = User::all();
+        $category = Category::all();
         $addItems = AddItem::latest()->get();
         return response([
             'success' => true,
             'message' => 'List Record AddItem',
             'data' => $addItems
         ], 200);
+        return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
     }
 
     /**

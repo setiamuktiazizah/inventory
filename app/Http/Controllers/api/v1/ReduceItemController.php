@@ -4,6 +4,9 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\ReduceItem;
+use App\Models\Item;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,6 +19,17 @@ class ReduceItemController extends Controller
      */
     public function index()
     {
+        $reduceItem = ReduceItem::latest()->get();
+        $item = Item::all();
+        $user = User::all();
+        $category = Category::all();
+
+        $data =  response([
+            'success' => true,
+            'message' => 'List Penambahan data',
+            'data' => $reduceItem,
+        ], 200);
+        return view('pengurangan-barang', ['data_reduce' => $reduceItem, 'data_user' => $user, 'data_item' => $item, 'data_category' => $category]);
         if(!Gate::allows(['admin', 'operator'])){
             abort(403);
         }
@@ -36,6 +50,7 @@ class ReduceItemController extends Controller
      */
     public function create()
     {
+        //TODO: nunggu view create ReduceItems
         //
         if(!Gate::allows(['admin'])){
             abort(403);
@@ -54,12 +69,18 @@ class ReduceItemController extends Controller
     {
         $rules = [
             'date' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
             'quantity' => 'required',
+            'price' => 'required',
             'cause' => 'required',
-            'id_item' => 'required',
+            'id_category' => 'required',
+            'created_by' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
+        // $validatedRequest['created_by'] = auth()::user()->id;
+
         $reduceItem = ReduceItem::create($validatedRequest);
 
         return response()->json([

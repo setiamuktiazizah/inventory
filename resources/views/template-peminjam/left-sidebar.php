@@ -35,24 +35,14 @@
 <li class="nav-item">
     <a class="nav-link" href="/pengadaan-barang">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Pengadaan Barang</span></a>
+        <span>Peminjaman</span></a>
 </li>
 
-<!-- Divider -->
+<!-- Divider
 <hr class="sidebar-divider">
 
-<!-- Nav Item - Pengurangan Barang -->
-<li class="nav-item">
-    <a class="nav-link" href="/pengurangan-barang">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Pengurangan Barang</span></a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Nav Item - Laporan  -->
-<li class="nav-item ">
+<-- Nav Item - Laporan  -->
+<!-- <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
@@ -62,21 +52,11 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Riwayat:</h6>
-            <a class="collapse-item" href="/laporan-pengadaan-barang">Pengadaan Barang</a>
-            <a class="collapse-item" href="/laporan-pengurangan-barang">Pengurangan Barang</a>
+            <a class="collapse-item" href="login.html">Pengadaan Barang</a>
+            <a class="collapse-item" href="register.html">Pengurangan Barang</a>
         </div>
     </div>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Nav Item - Manajemen User -->
-<li class="nav-item">
-    <a class="nav-link" href="/manajemen-user">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Manajemen User</span></a>
-</li>
+</li>  -->
 
 <!-- Divider -->
 <hr class="sidebar-divider">
@@ -103,7 +83,7 @@
 
 <!-- Nav Item - Akun -->
 <li class="nav-item">
-    <a class="nav-link" href="/profil">
+    <a class="nav-link" href="index.html">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Akun</span></a>
 </li>

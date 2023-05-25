@@ -11,7 +11,6 @@ use App\Models\Item;
 use App\Models\ReturnItem;
 use App\Models\LoanRequest;
 
-
 class LoanItem extends Model
 {
     use HasFactory;
