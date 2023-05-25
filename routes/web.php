@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +17,7 @@ use App\Http\Controllers\InventoryController;
 |
 */
 
-Route::get('/', [InventoryController::class,'index']);
+Route::get('/', [InventoryController::class, 'index']);
 
 Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
 
@@ -24,13 +27,14 @@ Route::get('/pengadaan-barang', [InventoryController::class, 'pengadaanBarangPag
 
 Route::get('/pengurangan-barang', [InventoryController::class, 'penguranganBarangPage']);
 
-// Route::get('/login', [InventoryController::class, 'loginPage']);
+Route::get('/login', [LoginController::class, 'loginPage']);
+Route::post('/login', [LoginController::class, '__invoke']);
 
 Route::get('/register', [InventoryController::class, 'registerPage']);
+Route::post('/register', [RegisterController::class, '__invoke']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 
 Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
 
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
-

@@ -49,17 +49,7 @@ class LoginController extends Controller
         ]);
     }
 
-    private function shouldDisplayCaptcha()
-    {
-        return session()->get('login_attempts', 0) > 2;
-    }
 
-    public function showLoginForm()
-    {
-        return view('auth.login', [
-            'displayCaptcha' => $this->shouldDisplayCaptcha(),
-        ]);
-    }
 
     protected function validateLogin(Request $request)
     {
