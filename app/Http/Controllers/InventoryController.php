@@ -10,8 +10,25 @@ class InventoryController extends Controller
         return view('index');
     }
 
+
+    public function loginPage(){
+        return view('loginPage');
+    }
+    
     public function dashboardAdminPage(){
         return view('dashboard-admin');
+    }
+
+    public function dashboardOperatorPage(){
+        return view('dashboard-operator');
+    }
+
+    public function dashboardPeminjamPage(){
+        return view('dashboard-peminjam');
+    }
+
+    public function peminjamanPengembalianPage(){
+        return view('peminjaman-pengembalian');
     }
 
     public function dataBarangPage(){
@@ -24,10 +41,6 @@ class InventoryController extends Controller
 
     public function penguranganBarangPage(){
         return view('pengurangan-barang');
-    }
-
-    public function loginPage(){
-        return view('login');
     }
 
     public function registerPage(){

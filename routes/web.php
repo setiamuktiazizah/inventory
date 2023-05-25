@@ -21,6 +21,12 @@ Route::get('/', [InventoryController::class,'index']);
 
 Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
 
+Route::get('/dashboard-operator', [InventoryController::class, 'dashboardOperatorPage']);
+
+Route::get('/dashboard-peminjam', [InventoryController::class, 'dashboardPeminjamPage']);
+
+Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanPengembalianPage']);
+
 Route::get('/data-barang', [InventoryController::class, 'dataBarangPage']);
 
 Route::get('/pengadaan-barang', [AddItemController::class, 'index']);
