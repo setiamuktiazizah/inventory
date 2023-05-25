@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class AddItemController extends Controller  
+class AddItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,28 +18,25 @@ class AddItemController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $addItem = AddItem::latest()->get();
-        $user = User::all();
-        $category = Category::all();
+        // $addItem = AddItem::latest()->get();
+        // $user = User::all();
+        // $category = Category::all();
 
-        $data =  response([
-            'success' => true,
-            'message' => 'List Penambahan data',
-            'data' => $addItem,
-=======
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // $data =  response([
+        //     'success' => true,
+        //     'message' => 'List Penambahan data',
+        //     'data' => $addItem,
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
-        $addItems = AddItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
->>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
-        ], 200);
-        return view('pengadaan-barang', ['data_add' => $addItem, 'data_user' => $user, 'data_category' => $category]);
+        // $addItems = AddItem::latest()->get();
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record AddItem',
+        //     'data' => $addItems
+        // ], 200);
+        // return view('pengadaan-barang', ['data_add' => $addItem, 'data_user' => $user, 'data_category' => $category]);
     }
 
     /**
@@ -50,7 +47,7 @@ class AddItemController extends Controller
     public function create()
     {
         //TODO: nunggu view create addItems
-        if(!Gate::allows(['admin'])){
+        if (!Gate::allows(['admin'])) {
             abort(403);
         }
 
@@ -94,7 +91,7 @@ class AddItemController extends Controller
      */
     public function show(AddItem $addItem)
     {
-        if(!Gate::allows(['admin', 'operator'])){
+        if (!Gate::allows(['admin', 'operator'])) {
             abort(403);
         }
 
@@ -123,7 +120,7 @@ class AddItemController extends Controller
     public function edit(AddItem $addItem)
     {
         //TODO: nunggu view edit addItem
-        if(!Gate::allows(['admin'])){
+        if (!Gate::allows(['admin'])) {
             abort(403);
         }
 
@@ -171,7 +168,7 @@ class AddItemController extends Controller
      */
     public function destroy(AddItem $addItem)
     {
-        if(!Gate::allows(['admin'])){
+        if (!Gate::allows(['admin'])) {
             abort(403);
         }
 

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-    <script src="{{asset('template/vendor/jquery/jquery.min.js')}}"></script>
-=======
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('template/vendor/jquery/jquery.min.js')}}"></script>
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
     <script src="{{asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
