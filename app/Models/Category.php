@@ -43,6 +43,8 @@ class Category extends Model
         return $this->hasMany(AddItem::class, 'id_category');
     }
 
+    public static function customCreate($id_super_category, $id_item_unit, $name, $quantity)
+    {
         return Category::create([
             'id_super_category' => $id_super_category,
             'id_item_unit' => $id_item_unit,
