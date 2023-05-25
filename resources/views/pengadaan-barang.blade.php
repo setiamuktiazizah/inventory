@@ -44,17 +44,32 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        {{-- <th>Kategori</th> --}}
+                                        <th>Kategori</th>
                                         <th>Barang</th>
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Harga</th>
                                         <th>Jenis Pengadaan</th>
-                                        {{-- <th>Admin</th>
-                                        <th>Aksi</th> --}}
+                                        <th>Admin</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($data_add as $add)
+                                    <tr>
+                                        <td>{{$loop->iteration}} </td>
+                                        <td>{{$add->date}} </td>
+                                        <td>{{$add->category->name}} </td>
+                                        <td>{{$add->name}} </td>
+                                        <td>{{$add->brand}} </td>
+                                        <td>{{$add->quantity}} </td>
+                                        <td>{{$add->price}} </td>
+                                        <td>{{$add->cause}} </td>
+                                        <td>{{$add->user->name}} </td>
+                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                    </tr>
+                                    @endforeach
                                     {{-- @foreach ($data_add as $add)
                                     <tr>
 
@@ -546,7 +561,7 @@
 </body>
 
 </html>
-@push('scripts')
+{{-- @push('scripts')
 <script type="text/javascript">
 $(document).ready(function () {
    $('#tbl_list').DataTable({
@@ -568,4 +583,4 @@ $(document).ready(function () {
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-@endpush
+@endpush --}}

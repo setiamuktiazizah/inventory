@@ -28,7 +28,7 @@ class AddItem extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_role');
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     public function category(): BelongsTo
@@ -48,7 +48,9 @@ class AddItem extends Model
         $brand,
         $quantity,
         $price,
-        $cause
+        $cause,
+        $created_by,
+        $created_at
     ) {
         return AddItem::create([
             'id_category' => $id_category,
@@ -62,7 +64,6 @@ class AddItem extends Model
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
         ]);
-
     }
 }
 
