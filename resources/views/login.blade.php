@@ -51,8 +51,6 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Minimum 8 karakter" required>
                                         </div>
-                                        {!! NoCaptcha::renderJs() !!}
-                                        {!! NoCaptcha::display() !!}
                                         <div class="form-group row">
                                             <div class="col">
                                                 <div class="custom-control custom-checkbox small">

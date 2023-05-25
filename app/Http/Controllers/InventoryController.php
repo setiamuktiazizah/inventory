@@ -57,4 +57,8 @@ class InventoryController extends Controller
     public function laporanPeminjamanPengembalianOperatorPage(){
         return view('laporan-peminjaman-pengembalian-operator');
     }
+
+    public function peminjamanUserPage(){
+        return view('user-peminjaman');
+    }
 }
