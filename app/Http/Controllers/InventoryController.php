@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -20,31 +18,28 @@ class InventoryController extends Controller
         return view('dashboard-admin')->with('name', $name);
     }
 
-    public function dataBarangPage()
+    public function loginPage()
     {
-
-
-    public function loginPage(){
         return view('loginPage');
     }
-    
-    public function dashboardAdminPage(){
-        return view('dashboard-admin');
-    }
 
-    public function dashboardOperatorPage(){
+    public function dashboardOperatorPage()
+    {
         return view('dashboard-operator');
     }
 
-    public function dashboardPeminjamPage(){
+    public function dashboardPeminjamPage()
+    {
         return view('dashboard-peminjam');
     }
 
-    public function peminjamanPengembalianPage(){
+    public function peminjamanPengembalianPage()
+    {
         return view('peminjaman-pengembalian');
     }
 
-    public function dataBarangPage(){
+    public function dataBarangPage()
+    {
         return view('data-barang');
     }
 
@@ -58,14 +53,8 @@ class InventoryController extends Controller
         return view('pengurangan-barang');
     }
 
-    public function loginPage()
-    {
-        return view('login');
-    }
-
     public function registerPage()
     {
-    public function registerPage(){
         return view('register');
     }
 
@@ -84,12 +73,13 @@ class InventoryController extends Controller
         return view('reset-password');
     }
 
-    public function laporanPengadaanPage(){
+    public function laporanPengadaanPage()
+    {
         return view('laporan-pengadaan-barang');
     }
 
-    public function laporanPenguranganPage(){
+    public function laporanPenguranganPage()
+    {
         return view('laporan-pengurangan-barang');
     }
-
 }

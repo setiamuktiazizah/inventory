@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Console\View\Components\Alert;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -23,16 +21,15 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'name'      => 'required',
             'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:8',
+            'password'  => 'required|min:8|confirmed',
             'no_hp'      => 'required',
             'no_credential'      => 'required',
+            'id_role'      => 'required',
         ]);
 
         //if validation fails
         if ($validator->fails()) {
-            //return response()->json($validator->errors(), 422);
-            // return view('/register');
-            return Redirect::back()->withErrors($validator);
+            return response()->json($validator->errors(), 422);
         }
 
         //create user
@@ -42,11 +39,20 @@ class RegisterController extends Controller
             'password'  => bcrypt($request->password),
             'no_hp'     => $request->no_hp,
             'no_credential'  => $request->no_credential,
-            'id_role'     => 4
+            'id_role'     => $request->id_role
         ]);
 
+        //return response JSON user is created
         if ($user) {
-            return view('/login');
+            return response()->json([
+                'success' => true,
+                'user'    => $user,
+            ], 201);
         }
+
+        //return JSON process insert failed 
+        return response()->json([
+            'success' => false,
+        ], 409);
     }
 }

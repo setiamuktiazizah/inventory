@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,9 @@
     <title>Register</title>
     <!-- Custom fonts for this template-->
     <link href="template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/template/css/sb-admin-2.css" rel="stylesheet">
@@ -34,56 +35,35 @@
                             <div class="text-left">
                                 <h1 class="h6 text-gray-700 mb-4">Daftarkan segera akun Anda agar bisa terverifikasi sebagai akun personal dan mulai untuk menyiapkan profil dan kebutuhan Anda!</h1>
                             </div>
-                            <form class="user" action='/register' method='POST'>
-                                @csrf
+                            <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <h6 class="h6 text-blue-100 mb-1">Nama Lengkap</h6>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name='name' placeholder="Masukkan nama Anda" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                        @error('name')
-                                        <div class="error">
-                                            <p style="font-size: 13px;color: red;"> {{$message}} </p>
-                                        </div>
-                                        @enderror
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Masukkan nama Anda">
                                     </div>
                                     <div class="col-sm-6">
                                         <h6 class="h6 text-blue-100 mb-1">Nomor Induk</h6>
-                                        <input type="text" class="form-control form-control-user @error('no_credential') is-invalid @enderror" id="no_credential" name="no_credential" placeholder="Masukkan nomor induk Anda" required autocomplete="no_credential">
-                                        @error('no_credential')
-                                        <div class="error">
-                                            <p style="font-size: 13px;color: red;"> {{$message}} </p>
-                                        </div>
-                                        @enderror
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="Masukkan nomor induk Anda">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <h6 class="h6 text-blue-100 mb-1">Email</h6>
-                                        <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" name="email" placeholder="Masukkan email Anda" required autocomplete="email">
-                                        @error('email')
-                                        <div class="error">
-                                            <p style="font-size: 13px; color: red;"> {{$message}} </p>
-                                        </div>
-                                        @enderror
+                                        <input type="email" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="Masukkan email Anda">
                                     </div>
                                     <div class="col-sm-6">
                                         <h6 class="h6 text-blue-100 mb-1">Nomor HP</h6>
-                                        <input type="tel" class="form-control form-control-user @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" placeholder="08xxxxxxxxxx" pattern="[0][8][0-9]{10}" required autocomplete="no_hp">
-                                        @error('no_hp')
-                                        <div class="error">
-                                            <p style="font-size: 13px;color: red;"> {{$message}} </p>
-                                        </div>
-                                        @enderror
+                                        <input type="tel" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="08xxxxxxxxxx" pattern="[0][8][0-9]{10}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h6 class="h6 text-blue-100 mb-1">Kata Sandi</h6>
-                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukkan kata sandi" required autocomplete="password">
-                                    @error('password')
-                                    <div class="error">
-                                        <p style="font-size: 13px;color: red;"> {{$message}} </p>
-                                    </div>
-                                    @enderror
+                                    <input type="password" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Masukkan kata sandi">
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">
@@ -93,9 +73,9 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button class="btn btn-login btn-user btn-regist" type='submit'>
+                                <a href="/login" class="btn btn-login btn-user btn-regist">
                                     Daftar
-                                </button>
+                                </a>
                             </form>
                             <div class="text-left">
                                 <a class="small text-blue-100" href="/login">Sudah punya akun? Masuk</a>

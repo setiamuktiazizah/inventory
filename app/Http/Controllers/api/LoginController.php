@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Redirect;
-
 
 class LoginController extends Controller
 {
@@ -20,31 +16,15 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-
-        $request->session()->increment('login_attempts');
-
-        $jumlah = session()->get('login_attempts', 0);
-
         //set validation
-
-
-        if ($jumlah < 3) {
-            $validator = Validator::make($request->all(), [
-                'email'     => 'required',
-                'password'  => 'required',
-            ]);
-        } else {
-            $validator = Validator::make($request->all(), [
-                'email'     => 'required',
-                'password'  => 'required',
-                'g-recaptcha-response' => 'recaptcha'
-            ]);
-        }
-
+        $validator = Validator::make($request->all(), [
+            'email'     => 'required',
+            'password'  => 'required'
+        ]);
 
         //if validation fails
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
+            return response()->json($validator->errors(), 422);
         }
 
         //get credentials from request
@@ -52,34 +32,17 @@ class LoginController extends Controller
 
         //if auth failed
         if (!$token = auth()->guard('api')->attempt($credentials)) {
-            return view('login', [
-                'displayCaptcha' => $jumlah > 3,
-            ]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Email atau Password Anda salah'
+            ], 401);
         }
 
         //if auth success
-        // $role = Role::create([
-        //     'role' => $request->email,
-        //     'credential_type' => $token,
-        //     'created_by' => 1
-        // ]);
-
-        return app('App\Http\Controllers\InventoryController')->dashboardAdminPage();
-
-        //return view('/dashboard-admin');
-
-    }
-
-
-    public function loginPage()
-    {
-        $jumlah = session()->get('login_attempts', 0);
-
-        return view('login', [
-            'displayCaptcha' => $jumlah,
-        ]);
-
-
-        // return view('/login');
+        return response()->json([
+            'success' => true,
+            'user'    => auth()->guard('api')->user(),
+            'token'   => $token
+        ], 200);
     }
 }
