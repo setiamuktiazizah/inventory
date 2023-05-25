@@ -106,6 +106,87 @@
                     </div>
                 </div>
 
+                            <!-- Modal body -->
+            <div class="modal-body">
+              <form method="post" enctype="multipart/form-data" action="">
+                  @csrf
+                  <div class="form-group">
+                      <label>Tanggal</label>
+                      <input type="date" name="date" class="form-control @error('date')
+                          is-invalid
+                      @enderror">
+                  </div>
+                  @error('date')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+                  <div class="form-group">
+                    <label for="categorys" class="form-label">Jenis Kategori</label>
+                    <select class="form-select" id="category" name="category_id">
+                        @foreach ($data_category as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                  <div class="form-group">
+                    <label>Barang</label>
+                    <input type="text" name="name" class="form-control @error('name')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('name')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Merk</label>
+                    <input type="text" name="brand" class="form-control @error('brand')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('brand')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="text" name="quantity" class="form-control @error('quantity')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('quantity')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Harga</label>
+                    <input type="text" name="price" class="form-control @error('price')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('price')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jenis Pengurangan</label>
+                    <select class="form-select" id="cause" name="cause" value="">
+                        <option value="hilang">Hilang</option>
+                        <option value="tidak layak">Tidak Layak</option>
+                    </select>
+                  </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <section>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </section>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -146,63 +227,96 @@
             </div>
         </div>
     </div>
-
-    <!-- Edit Modal-->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+    
+    <!-- Edit Data Pengurangan Barang Modal-->
+    <div class="modal fade" id="editPenguranganModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengurangan Barang</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form class="user">
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Nama</h6>
-                            <input type="email" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="Kategori"> -->
+                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                    <datalist id="categories">
+                                        <option value="Aset">
+                                        <option value="Bolpen">
+                                    </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
+                                <input class="form-control form-control-sm" list="items" name="item" id="item">
+                                <datalist id="items">
+                                    <option value="Laptop">
+                                    <option value="Bolpen">
+                                    <option value="LCD">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
+                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
+                                <datalist id="brands">
+                                    <option value="ASUS">
+                                    <option value="Snowman">
+                                    <option value="Olaf">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-between mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
+                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
+                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-between mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-sm" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengurangan</h6>
+                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
+                                <datalist id="adds">
+                                    <option value="Perbaikan">
+                                    <option value="Pindah Tangan">
+                                </datalist>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Email</h6>
-                            <input type="email" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
-                        </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Password*</h6>
-                            <input type="password" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
-                        </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Role</h6>
-                            <input type="text" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
-                        </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">No HP</h6>
-                            <input type="text" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
-                        </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">No Induk</h6>
-                            <input type="text" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
+                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
+                            <input class="form-control form-control-sm" list="users" name="user" id="user">
+                            <datalist id="users">
+                                <option value="Alwi">
+                                <option value="Bayu">
+                            </datalist>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="/">Simpan</a>
+                    <a class="btn btn-primary">Simpan</a>
                 </div>
             </div>
         </div>
     </div>
-    
+
 @include ('template-operator.script')
 </body>
 
