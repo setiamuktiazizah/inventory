@@ -19,20 +19,9 @@ class ReduceItemController extends Controller
      */
     public function index()
     {
-        $reduceItem = ReduceItem::latest()->get();
-        $item = Item::all();
-        $user = User::all();
-        $category = Category::all();
-
-        $data =  response([
-            'success' => true,
-            'message' => 'List Penambahan data',
-            'data' => $reduceItem,
-        ], 200);
-        return view('pengurangan-barang', ['data_reduce' => $reduceItem, 'data_user' => $user, 'data_item' => $item, 'data_category' => $category]);
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
 
         $reduceItems = ReduceItem::latest()->get();
@@ -52,9 +41,9 @@ class ReduceItemController extends Controller
     {
         //TODO: nunggu view create ReduceItems
         //
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "ReduceItem_create";
     }
@@ -96,9 +85,9 @@ class ReduceItemController extends Controller
      */
     public function show(ReduceItem $reduceItem)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         if ($reduceItem) {
             return response()->json([
@@ -124,9 +113,9 @@ class ReduceItemController extends Controller
     public function edit(ReduceItem $reduceItem)
     {
         //
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "ReduceItem_edit";
     }
@@ -165,9 +154,9 @@ class ReduceItemController extends Controller
      */
     public function destroy(ReduceItem $reduceItem)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $reduceItem->delete();
         return "ReduceItem_destroy";
