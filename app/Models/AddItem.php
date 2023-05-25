@@ -28,7 +28,7 @@ class AddItem extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'id_role');
     }
 
     public function category(): BelongsTo
@@ -41,9 +41,15 @@ class AddItem extends Model
         return $this->hasOne(Item::class);
     }
 
-    public static function customCreate($id_category, $date, $name, $brand, 
-        $quantity, $price, $cause)
-    {
+    public static function customCreate(
+        $id_category,
+        $date,
+        $name,
+        $brand,
+        $quantity,
+        $price,
+        $cause
+    ) {
         return AddItem::create([
             'id_category' => $id_category,
             'date' => $date,

@@ -39,23 +39,23 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-striped table-hover" id="tbl_list" width="100%" cellspacing="0">
                                 <thead class="text-center">
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        <th>Kategori</th>
+                                        {{-- <th>Kategori</th> --}}
                                         <th>Barang</th>
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Harga</th>
                                         <th>Jenis Pengadaan</th>
-                                        <th>Admin</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Admin</th>
+                                        <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach ($data_add as $add)
+                                    {{-- @foreach ($data_add as $add)
                                     <tr>
 
                                         <td>1</td>
@@ -122,6 +122,7 @@
                                         <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -129,7 +130,7 @@
                 </div>
 
 
-            <!-- The Modal Input -->
+            {{-- <!-- The Modal Input -->
             <div class="modal fade" id="tambahModal">
                 <div class="modal-dialog">
                 <div class="modal-content">
@@ -344,7 +345,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Tambah Data Pengadaan Barang Modal-->
     <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -364,16 +365,16 @@
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
                                 <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                     placeholder="Kategori"> -->
-                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
-                                    <datalist id="categories">
+                                    <input class="form-control form-control-sm" list="category" name="category" id="category">
+                                    <datalist id="category">
                                         <option value="Aset">
                                         <option value="Bolpen">
                                     </datalist>
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
-                                <input class="form-control form-control-sm" list="items" name="item" id="item">
-                                <datalist id="items">
+                                <input class="form-control form-control-sm" list="item" name="item" id="item">
+                                <datalist id="item">
                                     <option value="Laptop">
                                     <option value="Bolpen">
                                     <option value="LCD">
@@ -381,8 +382,8 @@
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Merk</h6>
-                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
-                                <datalist id="brands">
+                                <input class="form-control form-control-sm" list="brand" name="brand" id="brand">
+                                <datalist id="brand">
                                     <option value="ASUS">
                                     <option value="Snowman">
                                     <option value="Olaf">
@@ -443,7 +444,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Edit Data Pengadaan Barang Modal-->
     <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -545,3 +546,26 @@
 </body>
 
 </html>
+@push('scripts')
+<script type="text/javascript">
+$(document).ready(function () {
+   $('#tbl_list').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ url()->current() }}',
+        columns: [
+            { data: 'id', name: 'id' },
+            { data: 'date', name: 'date' },
+            { data: 'name', name: 'name' },
+            { data: 'brand', name: 'brand' },
+            { data: 'quantity', name: 'quantity' },
+            { data: 'price', name: 'price' },
+            { data: 'cause', name: 'cause' },
+        ]
+    });
+ });
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+@endpush

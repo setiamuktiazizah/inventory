@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\api\v1\UserController;
 
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanP
 
 Route::get('/data-barang', [InventoryController::class, 'dataBarangPage']);
 
-Route::get('/pengadaan-barang', [AddItemController::class, 'index']);
+Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 
 Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
@@ -46,7 +47,7 @@ Route::get('/register', [InventoryController::class, 'registerPage']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 
-Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
+Route::get('/manajemen-user', [UserController::class, 'index'])->name('manajemen-user');
 
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 
