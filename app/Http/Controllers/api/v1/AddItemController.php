@@ -18,9 +18,9 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
         
         $user = User::all();
         $category = Category::all();
@@ -41,9 +41,9 @@ class AddItemController extends Controller
     public function create()
     {
         //TODO: nunggu view create addItems
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "AddItem_create";
     }
@@ -85,9 +85,9 @@ class AddItemController extends Controller
      */
     public function show(AddItem $addItem)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         // error_log(getrout);
         if ($addItem) {
@@ -114,9 +114,9 @@ class AddItemController extends Controller
     public function edit(AddItem $addItem)
     {
         //TODO: nunggu view edit addItem
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "AddItem_edit";
     }
@@ -162,9 +162,9 @@ class AddItemController extends Controller
      */
     public function destroy(AddItem $addItem)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $addItem->delete();
         return "AddItem_destroy";

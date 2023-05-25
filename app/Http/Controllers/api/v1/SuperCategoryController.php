@@ -16,9 +16,9 @@ class SuperCategoryController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         $superCategories = SuperCategory::latest()->get();
         return response([
@@ -36,9 +36,9 @@ class SuperCategoryController extends Controller
     public function create()
     {
         //
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "SuperCategory_create";
     }
@@ -72,9 +72,9 @@ class SuperCategoryController extends Controller
      */
     public function show(SuperCategory $superCategory)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         if ($superCategory) {
             return response()->json([
@@ -100,9 +100,9 @@ class SuperCategoryController extends Controller
     public function edit(SuperCategory $superCategory)
     {
         //
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "SuperCategory_edit";
     }
@@ -139,9 +139,9 @@ class SuperCategoryController extends Controller
      */
     public function destroy(SuperCategory $superCategory)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $superCategory->delete();
         return "SuperCategory_destroy";

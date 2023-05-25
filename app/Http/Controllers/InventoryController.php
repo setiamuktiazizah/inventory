@@ -14,13 +14,14 @@ class InventoryController extends Controller
 
     public function dashboardAdminPage()
     {
-        $name = auth()->guard('api')->user()->name;
+        // $name = auth()->guard('api')->user()->name;
+        $name = "John Doe";
         return view('dashboard-admin')->with('name', $name);
     }
 
     public function loginPage()
     {
-        return view('loginPage');
+        return view('login');
     }
 
     public function dashboardOperatorPage()
