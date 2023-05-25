@@ -82,4 +82,7 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
+    public function laporanPeminjamanPengembalianOperatorPage(){
+        return view('laporan-peminjaman-pengembalian-operator');
+    }
 }
