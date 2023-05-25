@@ -20,13 +20,14 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        if (request()->ajax()) {
-            $addItem = AddItem::query();
-            return DataTables::of($addItem)
+        // if (request()->ajax()) {
+        //     $addItem = AddItem::query();
+        //     return DataTables::of($addItem)
 
-                ->make();
-        }
-        return view('home');
+        //         ->make();
+        // }
+        // return view('home');
+
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
@@ -43,15 +44,15 @@ class AddItemController extends Controller
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
-        
+
         $user = User::all();
         $category = Category::all();
         $addItems = AddItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
-        ], 200);
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record AddItem',
+        //     'data' => $addItems
+        // ], 200);
         return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
     }
 
