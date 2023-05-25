@@ -42,3 +42,5 @@ Route::get('/', [InventoryController::class, 'index']);
 Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
 
 Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
+
+Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);
