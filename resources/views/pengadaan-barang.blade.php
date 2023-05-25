@@ -121,7 +121,8 @@
                                         <td>Nina Aidha</td>
                                         <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr> --}}
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -443,7 +444,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Edit Data Pengadaan Barang Modal-->
     <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

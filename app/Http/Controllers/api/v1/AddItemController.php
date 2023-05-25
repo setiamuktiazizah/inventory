@@ -40,6 +40,19 @@ class AddItemController extends Controller
         //     'data' => $addItems
         // ], 200);
         // return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
+        
+        $user = User::all();
+        $category = Category::all();
+        $addItems = AddItem::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record AddItem',
+            'data' => $addItems
+        ], 200);
+        return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
     }
 
     /**
