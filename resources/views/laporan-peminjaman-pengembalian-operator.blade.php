@@ -29,12 +29,24 @@
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 font-weight-bold text-primary">Data Barang</h1>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Laporan Peminjaman Pengembalian Operator</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-dark shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                            <i class="fas fa-download fa-md text-white-50"></i> Unduh PDF</a>
+                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-dark shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                            <i class="fas fa-download fa-md text-white-50"></i> Unduh Excel</a>
+                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#periodeModal">
+                            <i class="fas fa-download fa-md text-white-50"></i> Periode</a>
+                    </div>
+                </div>                
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
+                        <!-- <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md align-items-center justify-content-left mb-4" data-toggle="modal" data-target="#periodeModal">
+                            <i class="fas fa-calendar fa-md text-white-50"></i> Periode</a> -->
                             <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center">
                                     <tr>
@@ -57,9 +69,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><mark class="bg-success">Done</span></mark></td>
                                         <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -74,9 +86,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><mark class="bg-success">Done</span></mark></td>
                                         <td>                                            
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -91,9 +103,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><mark class="bg-success">Done</span></mark></td>
                                         <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -105,8 +117,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -128,6 +139,48 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- Modal Periode -->
+    <div class="modal fade" id="periodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pilih Periode</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="user">
+                            <div class="form-group row justify-content-between mb-lg-4">
+                                <div class="col-sm-4">
+                                    <h6 class="h6 text-blue-100 mb-1">Tanggal Awal</h6>
+                                    <div class="input-group date" id="datetimepicker1">
+                                        <input type="date" class="form-control form-control-sm" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h6 class="h6 text-blue-100 mb-1">Tanggal Akhir</h6>
+                                    <div class="input-group date" id="datetimepicker1">
+                                        <input type="date" class="form-control form-control-sm" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary">Simpan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -147,10 +200,10 @@
             </div>
         </div>
     </div>
-    
-    <!-- Edit Data Peminjaman-pengembalian Barang Modal-->
-    <div class="modal fade" id="editPeminjamanPengembalianModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+
+    <!-- Edit Modal-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -161,7 +214,17 @@
                 </div>
                 <div class="modal-body">
                     <form class="user">
-                        <div class="form-group row mb-lg-4">
+                    <div class="form-group row mb-lg-4">
+                        <div class="col-sm-4">
+                            <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                            <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                placeholder="Kategori"> -->
+                                <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                <datalist id="categories">
+                                    <option value="Aset">
+                                    <option value="Bolpen">
+                                </datalist>
+                            </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
                                 <input class="form-control form-control-sm" list="items" name="item" id="item">
@@ -180,67 +243,15 @@
                                     <option value="Olaf">
                                 </datalist>
                             </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input class="form-control form-control-sm" list="quantity" name="quantity" id="quantity">
-                                <datalist id="quantity">
-                                    <option value="1">
-                                    <option value="2">
-                                    <option value="3">
-                                </datalist>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Status</h6>
-                                <input class="form-control form-control-sm" list="stat" name="stat" id="stat">
-                                <datalist id="stat">
-                                    <option value="Empty">
-                                    <option value="Done">
-                                </datalist>
-                            </div>
-                        </div>
-                        <!-- <div class="form-group row justify-content-between mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
-                            </div>
-                        </div> -->
-                        <div class="form-group row justify-content-between mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Peminjaman</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Pengembalian</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Notes</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary">Simpan</a>
+                    <a class="btn btn-primary" href="/">Simpan</a>
                 </div>
             </div>
         </div>
     </div>
-
 @include ('template-operator.script')
 </body>
 

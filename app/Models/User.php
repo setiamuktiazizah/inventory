@@ -13,6 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use App\Models\ReduceItem;
 use App\Models\AddItem;
+use App\Models\Role;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -59,6 +60,11 @@ class User extends Authenticatable implements JWTSubject
     public function reduce_items(): HasMany
     {
         return $this->hasMany(ReduceItem::class, 'created_by');
+    }
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'id_role');
     }
 
     public static function customCreate($id_role, $name, $password, $email, $no_hp, $no_credential)

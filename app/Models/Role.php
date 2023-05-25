@@ -15,13 +15,16 @@ class Role extends Model
         'credential_type',
     ];
 
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class, 'id_role');
+    }
+
     public static function customCreate($role, $credential_type)
     {
         return Role::create([
             'role' => $role,
             'credential_type' => $credential_type
-        ]);   
+        ]);
     }
-
-    
 }

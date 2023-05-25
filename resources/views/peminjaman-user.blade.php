@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-operator.head')
+    @include ('template-admin.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-operator.left-sidebar')
+        @include ('template-admin.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,14 +22,18 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-operator.navbar')
+                @include ('template-admin.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 font-weight-bold text-primary">Data Barang</h1>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman Barang</h1>
+                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPeminjaman">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                </div>            
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -39,74 +43,84 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Barang</th>
+                                        <th>Nama Barang</th>
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Tgl Pinjam</th>
+                                        <th>Maks Tgl Kembali</th>
                                         <th>Tgl Kembali</th>
+                                        <th>Note</th>
                                         <th>Surat</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     <tr>
+
                                         <td>1</td>
                                         <td>Laptop</td>
-                                        <td>ASUS</td>
+                                        <td>Asus</td>
                                         <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
-                                        <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
-                                        <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a>
+                                        <td>25-05-2023</td>
+                                        <td>28-05-2023</td>
+                                        <td>27-05-2023</td>
+                                        <td>Kondisi baik</td>
+                                        <td>Path</td>
+                                        <td><mark class="bg-success">Selesai</span></mark></td>  
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>Laptop</td>
-                                        <td>ASUS</td>
+                                        <td>Asus</td>
                                         <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
-                                        <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
-                                        <td>                                            
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a>
+                                        <td>25-05-2023</td>
+                                        <td>28-05-2023</td>
+                                        <td>27-05-2023</td>
+                                        <td>Kondisi baik</td>
+                                        <td>Path</td>
+                                        <td><mark class="bg-success">Selesai</span></mark></td> 
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td>Laptop</td>
-                                        <td>ASUS</td>
+                                        <td>Asus</td>
                                         <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
-                                        <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
-                                        <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a>
+                                        <td>25-05-2023</td>
+                                        <td>28-05-2023</td>
+                                        <td>27-05-2023</td>
+                                        <td>Kondisi baik</td>
+                                        <td>Path</td>
+                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Laptop</td>
+                                        <td>Asus</td>
+                                        <td>1</td>
+                                        <td>25-05-2023</td>
+                                        <td>28-05-2023</td>
+                                        <td>27-05-2023</td>
+                                        <td>Kondisi baik</td>
+                                        <td>Path</td>
+                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Laptop</td>
+                                        <td>Asus</td>
+                                        <td>1</td>
+                                        <td>25-05-2023</td>
+                                        <td>28-05-2023</td>
+                                        <td>27-05-2023</td>
+                                        <td>Kondisi baik</td>
+                                        <td>Path</td>
+                                        <td><mark class="bg-success">Selesai</span></mark></td> 
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -114,7 +128,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-operator.footer')
+            @include ('template-admin.footer')
             <!-- End of Footer -->
 
         </div>
@@ -127,7 +141,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
+    
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -142,19 +156,19 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" href="/login">Keluar</a>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Edit Data Peminjaman-pengembalian Barang Modal-->
-    <div class="modal fade" id="editPeminjamanPengembalianModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+    <!-- Tambah Data Peminjaman Modal-->
+    <div class="modal fade" id="tambahPeminjaman" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Peminjaman dan Pengembalian</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form Peminjaman Barang</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -162,6 +176,16 @@
                 <div class="modal-body">
                     <form class="user">
                         <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    placeholder="Kategori"> -->
+                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                    <datalist id="categories">
+                                        <option value="Aset">
+                                        <option value="Bolpen">
+                                    </datalist>
+                            </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
                                 <input class="form-control form-control-sm" list="items" name="item" id="item">
@@ -180,25 +204,17 @@
                                     <option value="Olaf">
                                 </datalist>
                             </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input class="form-control form-control-sm" list="quantity" name="quantity" id="quantity">
-                                <datalist id="quantity">
-                                    <option value="1">
-                                    <option value="2">
-                                    <option value="3">
-                                </datalist>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Status</h6>
-                                <input class="form-control form-control-sm" list="stat" name="stat" id="stat">
-                                <datalist id="stat">
-                                    <option value="Empty">
-                                    <option value="Done">
-                                </datalist>
-                            </div>
                         </div>
-                        <!-- <div class="form-group row justify-content-between mb-lg-4">
+                        <div class="form-group row mb-lg-4">
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
+                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
+                                <datalist id="units">
+                                    <option value="rim">
+                                    <option value="pak">
+                                    <option value="unit">
+                                </datalist>
+                            </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
                                 <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
@@ -207,10 +223,10 @@
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
                                 <input min="1" type="number" id="price" class="form-control form-control-sm" />
                             </div>
-                        </div> -->
-                        <div class="form-group row justify-content-between mb-lg-4">
+                        </div>
+                        <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Peminjaman</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
                                 <div class="input-group date" id="datetimepicker1">
                                     <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
@@ -219,18 +235,21 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Pengembalian</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
+                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
+                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
+                                <datalist id="adds">
+                                    <option value="Barang Baru">
+                                    <option value="Transfer">
+                                </datalist>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Notes</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
+                            <input class="form-control form-control-sm" list="users" name="user" id="user">
+                            <datalist id="users">
+                                <option value="Alwi">
+                                <option value="Bayu">
+                            </datalist>
                         </div>
                     </form>
                 </div>
@@ -241,7 +260,8 @@
         </div>
     </div>
 
-@include ('template-operator.script')
+    
+@include ('template-admin.script')
 </body>
 
 </html>
