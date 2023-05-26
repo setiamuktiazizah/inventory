@@ -46,7 +46,6 @@
                                         <th>No.</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
@@ -54,7 +53,31 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($users as $user)
                                     <tr>
+                                        <td>{{$loop->iteration}} </td>
+                                        <td>{{$user->name}} </td>
+                                        <td>{{$user->email}} </td>
+                                        <td>{{$user->role->name}} </td>
+                                        <td>{{$user->no_hp}} </td>
+                                        <td>{{$user->no_credential}} </td>
+                                        <td>
+                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Edit</span>
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                                                <span class="text">Hapus</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td>1</td>
                                         <td>Andi</td>
                                         <td>andi@gmail.com</td>
@@ -122,7 +145,7 @@
                                                 <span class="text">Hapus</span>
                                             </a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>

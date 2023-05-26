@@ -17,11 +17,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record Item',
-            'data' => $items
-        ], 200);
+        return view('data-barang')->with('data', $items);
     }
 
     /**
@@ -125,11 +121,11 @@ class ItemController extends Controller
         $validatedRequest = $request->validate($rules);
 
         $updatedItem = Item::where('id', $item->id)
-        ->update($validatedRequest);
+            ->update($validatedRequest);
 
-    return response()->json([
-        'data' =>  $updatedItem
-    ]);
+        return response()->json([
+            'data' =>  $updatedItem
+        ]);
     }
 
     /**
