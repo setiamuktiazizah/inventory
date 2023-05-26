@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Yajra\DataTables\Facades\DataTables;
+
 use App\Http\Controllers\Controller;
 use App\Models\AddItem;
 use App\Models\Category;
@@ -9,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class AddItemController extends Controller  
+class AddItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,28 +20,40 @@ class AddItemController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $addItem = AddItem::latest()->get();
+        // if (request()->ajax()) {
+        //     $addItem = AddItem::query();
+        //     return DataTables::of($addItem)
+
+        //         ->make();
+        // }
+        // return view('home');
+
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
+
+        // $user = User::all();
+        // $category = Category::all();
+        // $addItems = AddItem::latest()->get();
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record AddItem',
+        //     'data' => $addItems
+        // ], 200);
+        // return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
+
         $user = User::all();
         $category = Category::all();
-
-        $data =  response([
-            'success' => true,
-            'message' => 'List Penambahan data',
-            'data' => $addItem,
-=======
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
-
         $addItems = AddItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
->>>>>>> d8209e76a2eaced5662b969ede07012d601a8cd6
-        ], 200);
-        return view('pengadaan-barang', ['data_add' => $addItem, 'data_user' => $user, 'data_category' => $category]);
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record AddItem',
+        //     'data' => $addItems
+        // ], 200);
+        return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
     }
 
     /**
@@ -50,9 +64,9 @@ class AddItemController extends Controller
     public function create()
     {
         //TODO: nunggu view create addItems
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "AddItem_create";
     }
@@ -94,9 +108,9 @@ class AddItemController extends Controller
      */
     public function show(AddItem $addItem)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         // error_log(getrout);
         if ($addItem) {
@@ -123,9 +137,9 @@ class AddItemController extends Controller
     public function edit(AddItem $addItem)
     {
         //TODO: nunggu view edit addItem
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "AddItem_edit";
     }
@@ -171,9 +185,9 @@ class AddItemController extends Controller
      */
     public function destroy(AddItem $addItem)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $addItem->delete();
         return "AddItem_destroy";

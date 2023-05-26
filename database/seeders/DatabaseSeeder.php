@@ -5,13 +5,23 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Role;
-use App\Models\User;
-use App\Models\Category;
-use App\Models\SuperCategory;
-use App\Models\ItemUnit;
 use App\Models\AddItem;
+use App\Models\Category;
 
+use App\Models\Item;
+
+use App\Models\ItemUnit;
+
+use App\Models\LoanItem;
+use App\Models\LoanRequest;
+use App\Models\ReduceItem;
+use App\Models\ReturnItem;
+
+use App\Models\Role;
+use App\Models\SuperCategory;
+use App\Models\User;
+
+// use App\Models;
 
 
 class DatabaseSeeder extends Seeder
@@ -25,18 +35,20 @@ class DatabaseSeeder extends Seeder
      * 
      */
 
-     public function run()
-     {
-         $this->generateRoles();
-         $this->generateUsers();
- 
-         $this->generateSuperCategories();
-         $this->generateItemUnits();
-         $this->generateCategories();
-         $this->generateAddItems();
- 
- 
-     }
+    public function run()
+    {
+        $this->generateRoles();
+        $this->generateUsers();
+        
+        $this->generateItemUnits();
+        $this->generateSuperCategories();
+        $this->generateCategories();
+    
+
+        $this->generateAddItems_and_Items();
+
+
+    }
 
 
 
@@ -64,6 +76,7 @@ class DatabaseSeeder extends Seeder
 
     private function generateItemUnits()
     {
+        ItemUnit::customCreate('Unit', 1);
         ItemUnit::customCreate('Lusin', 12);
         ItemUnit::customCreate('Rim', 500);
         ItemUnit::customCreate('Kodi', 20);
@@ -72,13 +85,28 @@ class DatabaseSeeder extends Seeder
 
     private function generateCategories()
     {
-        Category::customCreate(2, 4, 'Pulpen', 1);
+        Category::customCreate(2, 5, 'Pulpen', 1);
+        Category::customCreate(2, 5, 'Pensil', 1);
+        Category::customCreate(1, 1, 'Laptop', 1);
+        Category::customCreate(1, 1, 'Projector', 1);
+
     }
 
-    private function generateAddItems()
+    private function generateAddItems_and_Items()
     {
-        AddItem::customCreate(1, '2023-05-05 02:57:03', 'Pulpen Snowman', 'Snowman', 1, 1, 'Tambah');
+        AddItem::customCreate(1, '2023-05-05 02:57:03', 'Pulpen Snowman', 'Snowman', 10, 10000, 'Tambah');
+        Item::customCreate(1, 1, 999, 'Pulpen Snowman', 'Snowman', 10, 'Tambah');
+
+        AddItem::customCreate(2, '2023-05-05 02:57:03', 'Pensil FaberCastell', 'FaberCastell', 10, 10000, 'Tambah');
+        Item::customCreate(2, 2, 999, 'Pensil FaberCastell', 'FaberCastell', 10, 'Tambah');
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus', 'Asus', 1, 4000000, 'Tambah');
+        Item::customCreate(3, 3, 999, 'Laptop Asus', 'Asus', 1, 'Tambah');
+        
+        AddItem::customCreate(4, '2023-05-05 02:57:03', 'Projector Sony', 'Sony', 1, 3500000, 'Tambah');
+        Item::customCreate(4, 4, 999, 'Projector Sony', 'Sony', 1, 'Tambah');
     }
+
 
 
 }

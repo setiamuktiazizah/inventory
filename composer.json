@@ -5,16 +5,9 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-<<<<<<< HEAD
-        "anhskohbo/no-captcha": "^3.5",
-=======
-<<<<<<< Updated upstream
+        "php": "^8.0.2 || ^8.1.0",
         "biscolab/laravel-recaptcha": "^6.0",
-=======
         "anhskohbo/no-captcha": "^3.5",
->>>>>>> Stashed changes
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
