@@ -14,8 +14,7 @@ class InventoryController extends Controller
 
     public function dashboardAdminPage()
     {
-        $name = auth()->guard('api')->user()->name;
-        return view('dashboard-admin')->with('name', $name);
+        return view('dashboard-admin');
     }
 
     public function loginPage()
