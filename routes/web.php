@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\api\v1\UserController;
 
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanP
 
 Route::get('/data-barang', [ItemController::class, 'index']);
 
-Route::get('/pengadaan-barang', [AddItemController::class, 'index']);
+Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 
 Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
@@ -50,7 +51,7 @@ Route::post('/register', [RegisterController::class, '__invoke']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 
-Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
+Route::get('/manajemen-user', [UserController::class, 'index'])->name('manajemen-user');
 
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 
@@ -60,3 +61,11 @@ Route::get('/', [InventoryController::class, 'index']);
 Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
 
 Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
+
+Route::get('/', [InventoryController::class, 'index']);
+
+Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
+
+Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
+
+Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);

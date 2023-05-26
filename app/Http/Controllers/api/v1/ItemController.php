@@ -27,9 +27,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        if (!Gate::allows(['admin'])) {
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "Item_create";
     }
@@ -92,9 +92,9 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         //
-        if (!Gate::allows(['admin'])) {
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         return "Item_edit";
     }
@@ -136,9 +136,9 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        if (!Gate::allows(['admin'])) {
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $item->delete();
         return "Item_destroy";

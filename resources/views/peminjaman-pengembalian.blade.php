@@ -57,9 +57,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
                                         <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -74,9 +74,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
                                         <td>                                            
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -91,9 +91,9 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
                                         <td>
-                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -105,87 +105,7 @@
                         </div>
                     </div>
                 </div>
-
-                            <!-- Modal body -->
-            <div class="modal-body">
-              <form method="post" enctype="multipart/form-data" action="">
-                  @csrf
-                  <div class="form-group">
-                      <label>Tanggal</label>
-                      <input type="date" name="date" class="form-control @error('date')
-                          is-invalid
-                      @enderror">
-                  </div>
-                  @error('date')
-                      <p class="invalid-feedback d-block">{{ $message }}</p>
-                  @enderror
-                  <div class="form-group">
-                    <label for="categorys" class="form-label">Jenis Kategori</label>
-                    <select class="form-select" id="category" name="category_id">
-                        @foreach ($data_category as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                  <div class="form-group">
-                    <label>Barang</label>
-                    <input type="text" name="name" class="form-control @error('name')
-                        is-invalid
-                    @enderror">
-                  </div>
-                  @error('name')
-                      <p class="invalid-feedback d-block">{{ $message }}</p>
-                  @enderror
-
-                  <div class="form-group">
-                    <label>Merk</label>
-                    <input type="text" name="brand" class="form-control @error('brand')
-                        is-invalid
-                    @enderror">
-                  </div>
-                  @error('brand')
-                      <p class="invalid-feedback d-block">{{ $message }}</p>
-                  @enderror
-
-                  <div class="form-group">
-                    <label>Jumlah</label>
-                    <input type="text" name="quantity" class="form-control @error('quantity')
-                        is-invalid
-                    @enderror">
-                  </div>
-                  @error('quantity')
-                      <p class="invalid-feedback d-block">{{ $message }}</p>
-                  @enderror
-
-                  <div class="form-group">
-                    <label>Harga</label>
-                    <input type="text" name="price" class="form-control @error('price')
-                        is-invalid
-                    @enderror">
-                  </div>
-                  @error('price')
-                      <p class="invalid-feedback d-block">{{ $message }}</p>
-                  @enderror
-
-                  <div class="form-group">
-                    <label>Jenis Pengurangan</label>
-                    <select class="form-select" id="cause" name="cause" value="">
-                        <option value="hilang">Hilang</option>
-                        <option value="tidak layak">Tidak Layak</option>
-                    </select>
-                  </div>
             </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <section>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </section>
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-
-            </form>
-            </div>
-          </div>
         </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -228,13 +148,13 @@
         </div>
     </div>
     
-    <!-- Edit Data Pengurangan Barang Modal-->
-    <div class="modal fade" id="editPenguranganModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Edit Data Peminjaman-pengembalian Barang Modal-->
+    <div class="modal fade" id="editPeminjamanPengembalianModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengurangan Barang</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Peminjaman dan Pengembalian</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -242,16 +162,6 @@
                 <div class="modal-body">
                     <form class="user">
                         <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
-                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                    placeholder="Kategori"> -->
-                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
-                                    <datalist id="categories">
-                                        <option value="Aset">
-                                        <option value="Bolpen">
-                                    </datalist>
-                            </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
                                 <input class="form-control form-control-sm" list="items" name="item" id="item">
@@ -270,8 +180,25 @@
                                     <option value="Olaf">
                                 </datalist>
                             </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
+                                <input class="form-control form-control-sm" list="quantity" name="quantity" id="quantity">
+                                <datalist id="quantity">
+                                    <option value="1">
+                                    <option value="2">
+                                    <option value="3">
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <h6 class="h6 text-blue-100 mb-1">Status</h6>
+                                <input class="form-control form-control-sm" list="stat" name="stat" id="stat">
+                                <datalist id="stat">
+                                    <option value="Empty">
+                                    <option value="Done">
+                                </datalist>
+                            </div>
                         </div>
-                        <div class="form-group row justify-content-between mb-lg-4">
+                        <!-- <div class="form-group row justify-content-between mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
                                 <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
@@ -280,10 +207,10 @@
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
                                 <input min="1" type="number" id="price" class="form-control form-control-sm" />
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row justify-content-between mb-lg-4">
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal Peminjaman</h6>
                                 <div class="input-group date" id="datetimepicker1">
                                     <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
@@ -292,21 +219,18 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengurangan</h6>
-                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
-                                <datalist id="adds">
-                                    <option value="Perbaikan">
-                                    <option value="Pindah Tangan">
-                                </datalist>
+                                <h6 class="h6 text-blue-100 mb-1">Tanggal Pengembalian</h6>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-sm" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
-                            <input class="form-control form-control-sm" list="users" name="user" id="user">
-                            <datalist id="users">
-                                <option value="Alwi">
-                                <option value="Bayu">
-                            </datalist>
+                            <label for="exampleFormControlTextarea1">Notes</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
