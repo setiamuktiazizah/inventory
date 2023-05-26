@@ -29,7 +29,7 @@
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 font-weight-bold text-primary">Data Barang</h1>
+                <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman dan Pengembalian Barang</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -57,7 +57,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                         <td>
                                         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
@@ -74,7 +74,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                         <td>                                            
                                             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
@@ -91,7 +91,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-gradient-success">Done</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                         <td>
                                         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
