@@ -49,8 +49,8 @@ class AddItem extends Model
         $quantity,
         $price,
         $cause,
-        $created_by,
-        $created_at
+        // $created_by,
+        // $created_at
     ) {
         return AddItem::create([
             'id_category' => $id_category,
