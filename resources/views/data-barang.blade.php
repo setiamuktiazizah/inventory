@@ -52,7 +52,7 @@
                                         <td>Laptop</td>
                                         <td>Asus</td>
                                         <td>1</td>
-                                        <td><mark class="bg-success">Baik</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -60,7 +60,7 @@
                                         <td>LCD</td>
                                         <td>Toshiba</td>
                                         <td>1</td>
-                                        <td><mark class="bg-success">Baik</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -68,7 +68,7 @@
                                         <td>Speaker</td>
                                         <td>Sony</td>
                                         <td>1</td>
-                                        <td><mark class="bg-success">Baik</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
@@ -76,7 +76,7 @@
                                         <td>Mouse</td>
                                         <td>Logitech</td>
                                         <td>1</td>
-                                        <td><mark class="bg-success">Baik</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
@@ -84,7 +84,7 @@
                                         <td>Proyektor</td>
                                         <td>Hitachi</td>
                                         <td>1</td>
-                                        <td><mark class="bg-success">Baik</span></mark></td>
+                                        <td><span class="badge badge-success">Done</span></td>
                                     </tr>
                                 </tbody>
                             </table>
