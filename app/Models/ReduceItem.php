@@ -38,6 +38,9 @@ class ReduceItem extends Model
             'quantity' => $quantity,
             'cause' => $cause,
             'id_item' => $id_item,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

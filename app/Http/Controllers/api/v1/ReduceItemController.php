@@ -25,11 +25,16 @@ class ReduceItemController extends Controller
 
 
         $reduceItems = ReduceItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record ReduceItem',
-            'data' => $reduceItems
-        ], 200);
+
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record ReduceItem',
+        //     'data' => $reduceItems
+        // ], 200);
+
+        return view('pengurangan-barang', ['reduceItems' => $reduceItems]);
+
+
     }
 
     /**
