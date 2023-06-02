@@ -5771,13 +5771,9 @@ a.close.disabled {
   position: relative;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-  width: 100%;
-=======
   /* width: 100%; */
   width: 120%;
   padding: 1.3rem;
->>>>>>> 094d009818aa62b779a29177a71530df5dae3747
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
