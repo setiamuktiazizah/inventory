@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="/dashboard-admin">
+    <a class="nav-link" href="/dashboard-peminjam">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -33,7 +33,7 @@
 
 <!-- Nav Item - Pengadaan Barang -->
 <li class="nav-item">
-    <a class="nav-link" href="/pengadaan-barang">
+    <a class="nav-link" href="/peminjaman-user">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Peminjaman</span></a>
 </li>
@@ -83,7 +83,7 @@
 
 <!-- Nav Item - Akun -->
 <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/profil">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Akun</span></a>
 </li>

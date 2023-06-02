@@ -68,7 +68,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -78,7 +78,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -88,7 +88,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><mark class="bg-success">Done</span></mark></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                     </tr>
                                 </tbody>
                             </table>

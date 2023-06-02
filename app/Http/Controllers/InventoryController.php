@@ -88,6 +88,6 @@ class InventoryController extends Controller
     }
 
     public function peminjamanUserPage(){
-        return view('user-peminjaman');
+        return view('peminjaman-user');
     }
 }

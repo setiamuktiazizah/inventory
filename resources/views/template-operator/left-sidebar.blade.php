@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="/dashboard-admin">
+    <a class="nav-link" href="/dashboard-operator">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -33,7 +33,7 @@
 
 <!-- Nav Item - Pengadaan Barang -->
 <li class="nav-item">
-    <a class="nav-link" href="/pengadaan-barang">
+    <a class="nav-link" href="/peminjaman-pengembalian">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Peminjaman & Pengembalian Barang</span></a>
 </li>
@@ -42,7 +42,12 @@
 <hr class="sidebar-divider">
 
 <!-- Nav Item - Laporan  -->
-<li class="nav-item ">
+<li class="nav-item">
+    <a class="nav-link" href="/laporan-peminjaman-pengembalian-operator">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Laporan Peminjaman & Pengembalian Barang</span></a>
+</li>
+<!-- <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
@@ -52,11 +57,10 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Riwayat:</h6>
-            <a class="collapse-item" href="login.html">Pengadaan Barang</a>
-            <a class="collapse-item" href="register.html">Pengurangan Barang</a>
+            <a class="collapse-item" href="laporan-peminjaman-pengembalian-barang.html">Peminjaman & Pengembalian Barang</a>
         </div>
     </div>
-</li>
+</li> -->
 
 <!-- Divider -->
 <hr class="sidebar-divider">
