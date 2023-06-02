@@ -68,8 +68,6 @@
                                             </div>
                                             @enderror
                                         </div>
-
-
                                         @if ($displayCaptcha)
 
 
