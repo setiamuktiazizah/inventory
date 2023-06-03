@@ -75,7 +75,10 @@ class User extends Authenticatable implements JWTSubject
             'password' => $password,
             'email' => $email,
             'no_hp' => $no_hp,
-            'no_credential' => $no_credential
+            'no_credential' => $no_credential,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 
