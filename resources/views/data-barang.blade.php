@@ -29,7 +29,7 @@
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 font-weight-bold text-primary">Data Barang</h1>
+                <h1 class="h3 mb-2 font-weight-bold text-primary">Data Stok Barang</h1>
                 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -40,20 +40,22 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Barcode</th>
-                                        <th>Nama Barang</th>
+                                        <th>Nama</th>
                                         <th>Merk</th>
-                                        <th>Jumlah Barang</th>
+                                        <th>Stok</th>
                                         <th>Kondisi</th>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data as $d)
+                                    @foreach($data_items as $item)
                                     <tr>
-                                        <td>{{$d->id}}</td>
-                                        <td>{{$d->barcode}}</td>
-                                        <td>{{$d->name}}</td>
-                                        <td>{{$d->brand}}</td>
-                                        <td>{{$d->quantity}}</td>
-                                        <td><mark class="bg-success">{{$d->condition}}</span></mark></td>
+                                        <td>{{$loop->index}}</td>
+                                        <td>{{$item->add_item->barcode}}</td>
+                                        <td>{{$item->add_item->name}}</td>
+                                        <td>{{$item->add_item->brand}}</td>
+                                        <td>{{$item->quantity}}</td>
+                                        <td>
+                                            <mark class="bg-success">{{$item->condition}}</mark>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

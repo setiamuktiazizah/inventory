@@ -44,7 +44,7 @@ class Item extends Model
 
     public function add_item(): BelongsTo
     {
-        return $this->belongsTo(AddItem::class);
+        return $this->belongsTo(AddItem::class, 'id_add_item');
     }
 
     public function category(): BelongsTo
