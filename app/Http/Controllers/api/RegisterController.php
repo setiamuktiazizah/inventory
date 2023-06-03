@@ -52,7 +52,10 @@ class RegisterController extends Controller
 
 
         if ($user) {
-            return view('/login');
+            $jumlah = session()->get('login_attempts', 0);
+            return view('login', [
+                'displayCaptcha' => $jumlah,
+            ]);
         }
     }
 }
