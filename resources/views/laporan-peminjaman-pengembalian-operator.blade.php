@@ -45,8 +45,6 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
-                        <!-- <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md align-items-center justify-content-left mb-4" data-toggle="modal" data-target="#periodeModal">
-                            <i class="fas fa-calendar fa-md text-white-50"></i> Periode</a> -->
                             <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center">
                                     <tr>
