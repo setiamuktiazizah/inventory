@@ -24,7 +24,10 @@ class Role extends Model
     {
         return Role::create([
             'role' => $role,
-            'credential_type' => $credential_type
+            'credential_type' => $credential_type,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

@@ -39,15 +39,14 @@ class LoanItem extends Model
 
     public static function customCreate(
         $id_loan_request,
-        $id_item,
-        $quantity,
-        $max_return_date
+        $status
     ) {
         return LoanItem::create([
             'id_loan_request' => $id_loan_request,
-            'id_item' => $id_item,
-            'quantity' => $quantity,
-            'max_return_date' => $max_return_date,
+            'status' => $status,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }
