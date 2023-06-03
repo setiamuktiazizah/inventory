@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Redirect;
@@ -81,8 +82,9 @@ class LoginController extends Controller
 
         //return app('App\Http\Controllers\InventoryController')->dashboardAdminPage();
 
-        $name = auth()->guard('api')->user()->name;
-        return view('/dashboard-admin')->with('name', $name);
+        $token_jwt = cookie('token', $token, 60);
+        $name = cookie('name', auth()->guard('api')->user()->name, 60);
+        return response(view('/dashboard-admin'))->cookie($token_jwt)->cookie($name);
     }
 
 
