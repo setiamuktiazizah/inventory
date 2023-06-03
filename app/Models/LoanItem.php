@@ -48,6 +48,9 @@ class LoanItem extends Model
             'id_item' => $id_item,
             'quantity' => $quantity,
             'max_return_date' => $max_return_date,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

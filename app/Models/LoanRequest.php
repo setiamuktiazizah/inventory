@@ -48,6 +48,9 @@ class LoanRequest extends Model
             'path_file_cdn' => $path_file_cdn,
             'status' => $status,
             'note' => $note,
+            
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }

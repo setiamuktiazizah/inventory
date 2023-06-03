@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         $this->generateAddItems_and_Items();
         $this->generateAddItems_Items_and_ReduceItems();
-
+        $this->generateAddItems_Items_LoanRequest_LoanItem_ReturnItem();
 
     }
 
@@ -119,6 +119,43 @@ class DatabaseSeeder extends Seeder
         ReduceItem::customCreate('2023-05-07 02:57:03', 1, 'Rusak', 6);
     }
 
+    private function generateAddItems_Items_LoanRequest_LoanItem_ReturnItem()
+    {
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus1', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(7, 3, 999, 'Laptop Asus1', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(7, '2024-01-01 02:57:03', '2024-01-30 02:57:03', 'pathfile', 'pending', '');
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus2', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(8, 3, 999, 'Laptop Asus2', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(8, '2024-01-01 02:57:03', '2024-01-30 02:57:03', 'pathfile', 'rejected', '');
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus3', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(9, 3, 999, 'Laptop Asus3', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(9, '2023-01-01 02:57:03', '2023-01-30 02:57:03', 'pathfile', 'accepted', 'dummy returned on time');
+        LoanItem::customCreate(3, 9, 1, '2023-01-30 02:57:03');
+        ReturnItem::customCreate('2023-01-20 02:57:03', '', 1); // ga telat
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus4', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(10, 3, 999, 'Laptop Asus4', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(10, '2023-01-01 02:57:03', '2023-01-30 02:57:03', 'pathfile', 'accepted', 'dummy late returned ');
+        LoanItem::customCreate(4, 10, 1, '2023-01-30 02:57:03');
+        ReturnItem::customCreate('2023-02-20 02:57:03', '', 2); // telat
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus5', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(11, 3, 999, 'Laptop Asus5', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(11, '2023-01-01 02:57:03', '2023-01-30 02:57:03', 'pathfile', 'accepted', 'dummy late unreturned');
+        LoanItem::customCreate(5, 11, 1, '2023-01-30 02:57:03'); // telat n belom dibalikin
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus6', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(12, 3, 999, 'Laptop Asus6', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(12, '2023-01-01 02:57:03', '2023-10-30 02:57:03', 'pathfile', 'accepted', 'dummy1 on loan duration');
+        LoanItem::customCreate(6, 12, 1, '2023-10-30 02:57:03'); 
+
+        AddItem::customCreate(3, '2023-05-05 02:57:03', 'Laptop Asus7', 'Asus', 1, 4000000, 'Baik');
+        Item::customCreate(13, 3, 999, 'Laptop Asus7', 'Asus', 1, 'Tambah');
+        LoanRequest::customCreate(13, '2023-01-01 02:57:03', '2023-10-30 02:57:03', 'pathfile', 'accepted', 'dummy2 on loan duration');
+        LoanItem::customCreate(7, 13, 1, '2023-10-30 02:57:03');
+    }
 
 
 }

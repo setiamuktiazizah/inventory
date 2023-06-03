@@ -26,8 +26,11 @@ class ReturnItem extends Model
     {
         return ReturnItem::create([
             'return_date' => $return_date,
+            'note' => $note,
             'id_loan' => $id_loan,
-            'note' => $note
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 }
