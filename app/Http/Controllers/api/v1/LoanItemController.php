@@ -16,9 +16,9 @@ class LoanItemController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
 
         $loanItems = LoanItem::latest()->get();
@@ -37,9 +37,9 @@ class LoanItemController extends Controller
     public function create()
     {
         //
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         return "LoanItem_create";
     }
@@ -75,9 +75,9 @@ class LoanItemController extends Controller
      */
     public function show(LoanItem $loanItem)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
 
         if ($loanItem) {
@@ -104,9 +104,9 @@ class LoanItemController extends Controller
     public function edit(LoanItem $loanItem)
     {
         //
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         return "LoanItem_edit";
     }
@@ -145,9 +145,9 @@ class LoanItemController extends Controller
      */
     public function destroy(LoanItem $loanItem)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $loanItem->delete();
         return "LoanItem_destroy";

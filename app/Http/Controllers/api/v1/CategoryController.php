@@ -16,9 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         $categories = Category::latest()->get();
         return response([
@@ -35,10 +35,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // //
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         return "Category_create";
     }
@@ -74,9 +74,9 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         if ($category) {
             return response()->json([
@@ -102,9 +102,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
-        if(!Gate::allows(['admin', 'operator'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin', 'operator'])){
+        //     abort(403);
+        // }
 
         return "Category_edit";
     }
@@ -144,9 +144,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if(!Gate::allows(['admin'])){
-            abort(403);
-        }
+        // if(!Gate::allows(['admin'])){
+        //     abort(403);
+        // }
 
         $category->delete();
         return "Category_destroy";

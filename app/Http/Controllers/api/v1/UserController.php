@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -17,11 +18,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record User',
-            'data' => $users
-        ], 200);
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record User',
+        //     'data' => $users
+        // ], 200);
+        return view('manajemen-user', ['users' => $users]);
     }
 
     /**

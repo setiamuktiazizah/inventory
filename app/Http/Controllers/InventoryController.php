@@ -19,12 +19,14 @@ class InventoryController extends Controller
 
     public function dashboardAdminPage()
     {
-        return view('dashboard-admin');
+        // $name = auth()->guard('api')->user()->name;
+        $name = "John Doe";
+        return view('dashboard-admin')->with('name', $name);
     }
 
     public function loginPage()
     {
-        return view('loginPage');
+        return view('login');
     }
 
     public function dashboardOperatorPage()
@@ -102,5 +104,12 @@ class InventoryController extends Controller
     public function laporanPenguranganPage()
     {
         return view('laporan-pengurangan-barang');
+    }
+    public function laporanPeminjamanPengembalianOperatorPage(){
+        return view('laporan-peminjaman-pengembalian-operator');
+    }
+
+    public function peminjamanUserPage(){
+        return view('peminjaman-user');
     }
 }

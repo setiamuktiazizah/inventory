@@ -65,6 +65,7 @@
                                         <td>{{$d->quantity}}</td>
                                         <td><mark class="bg-success">{{$d->condition}}</span></mark></td>
                                     </tr>
+<<<<<<< HEAD
                                     @endforeach --}}
                                     {{-- <tr>
                                         <td>2</td>
@@ -98,6 +99,9 @@
                                         <td>1</td>
                                         <td><mark class="bg-success">Baik</span></mark></td>
                                     </tr> --}}
+=======
+                                    @endforeach
+>>>>>>> cd1ed2850e4e968f1ced2639d4f37deda7dffdb8
                                 </tbody>
                             </table>
                         </div>
