@@ -53,12 +53,8 @@ Route::post('/register', [RegisterController::class, '__invoke']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 
-<<<<<<< HEAD
 
 Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
-=======
-Route::get('/manajemen-user', [UserController::class, 'index'])->name('manajemen-user');
->>>>>>> cd1ed2850e4e968f1ced2639d4f37deda7dffdb8
 
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 
