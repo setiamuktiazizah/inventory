@@ -75,7 +75,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><span class="badge badge-success">Done</span></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>                                            
                                             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
@@ -92,7 +92,7 @@
                                         <td>23/03/2023</td>
                                         <td>22/03/2023</td>
                                         <td>pathfile</td>
-                                        <td><span class="badge badge-success">Done</span></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>
                                         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
