@@ -43,7 +43,9 @@
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Tgl Pinjam</th>
+                                        <th>Maks Tgl Kembali</th>
                                         <th>Tgl Kembali</th>
+                                        <th>Note</th>
                                         <th>Surat</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -55,7 +57,9 @@
                                         <td>ASUS</td>
                                         <td>1</td>
                                         <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
+                                        <td>26/03/2023</td>
+                                        <td>25/03/2023</td>
+                                        <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
                                         <td><div class="badge-pill badge-success">Done</span></div></td>
@@ -73,11 +77,14 @@
                                         <td>ASUS</td>
                                         <td>1</td>
                                         <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
+                                        <td>26/03/2023</td>
+                                        <td>25/03/2023</td>
+                                        <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
-                                        <td><span class="badge badge-success">Done</span></td>
-                                        <td>                                            
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td>
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -90,9 +97,12 @@
                                         <td>ASUS</td>
                                         <td>1</td>
                                         <td>23/03/2023</td>
-                                        <td>22/03/2023</td>
+                                        <td>26/03/2023</td>
+                                        <td>25/03/2023</td>
+                                        <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
-                                        <td><span class="badge badge-success">Done</span></td>
+                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>
                                         <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
                                                 <span class="icon text-white-50">
@@ -190,7 +200,7 @@
                                     <option value="3">
                                 </datalist>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4 mt-4">
                                 <h6 class="h6 text-blue-100 mb-1">Status</h6>
                                 <input class="form-control form-control-sm" list="stat" name="stat" id="stat">
                                 <datalist id="stat">
