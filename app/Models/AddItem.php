@@ -49,6 +49,7 @@ class AddItem extends Model
         $quantity,
         $price,
         $cause,
+        $barcode
         // $created_by,
         // $created_at
     ) {
@@ -60,6 +61,7 @@ class AddItem extends Model
             'quantity' => $quantity,
             'price' => $price,
             'cause' => $cause,
+            'barcode' => $barcode,
 
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,

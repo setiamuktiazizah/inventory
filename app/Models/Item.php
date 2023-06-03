@@ -54,21 +54,15 @@ class Item extends Model
 
     public static function customCreate(
         $id_add_item,
-        $id_category,
-        $barcode,
-        $name,
-        $brand,
         $quantity,
-        $condition
+        $condition,
+        $is_empty
     ) {
         return Item::create([
             'id_add_item' => $id_add_item,
-            'id_category' => $id_category,
-            'barcode' => $barcode,
-            'name' => $name,
-            'brand' => $brand,
             'quantity' => $quantity,
             'condition' => $condition,
+            'is_empty' => $is_empty,
 
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
