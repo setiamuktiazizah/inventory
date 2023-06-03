@@ -18,13 +18,7 @@ class ReduceItem extends Model
         'date',
         'quantity',
         'cause',
-        'id_user',
     ];
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
 
     public function item(): BelongsTo
     {
@@ -42,5 +36,16 @@ class ReduceItem extends Model
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
         ]);
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

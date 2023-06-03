@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
-use App\Models\ReduceItem;
-use App\Models\AddItem;
+
 use App\Models\Role;
 
 class User extends Authenticatable implements JWTSubject
@@ -52,15 +51,16 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function add_items(): HasMany
-    {
-        return $this->hasMany(AddItem::class, 'created_by');
-    }
+    // ==> unnecesary
+    // public function add_items(): HasMany
+    // {
+    //     return $this->hasMany(AddItem::class, 'created_by');
+    // }
 
-    public function reduce_items(): HasMany
-    {
-        return $this->hasMany(ReduceItem::class, 'created_by');
-    }
+    // public function reduce_items(): HasMany
+    // {
+    //     return $this->hasMany(ReduceItem::class, 'created_by');
+    // }
 
     public function role(): BelongsTo
     {
@@ -95,5 +95,16 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

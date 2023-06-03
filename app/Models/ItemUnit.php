@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Models\Category;
+use App\Models\User;
 
 class ItemUnit extends Model
 {
@@ -18,7 +19,7 @@ class ItemUnit extends Model
 
     public function categories(): HasMany
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'id_item_unit');
     }
 
     public static function customCreate($name, $default_quantity)
@@ -31,5 +32,16 @@ class ItemUnit extends Model
             'created_by' => 1,
             
         ]);
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
