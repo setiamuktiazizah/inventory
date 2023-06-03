@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Cookie;
 
 class InventoryController extends Controller
 {
@@ -37,9 +42,17 @@ class InventoryController extends Controller
         return view('peminjaman-pengembalian');
     }
 
-    public function dataBarangPage()
+    public function dataBarangPage(Request $request)
     {
-        return view('data-barang');
+        $token = Cookie::get('token');
+        $request->header('Accept', 'application/json');
+        $request->header('Content-Type', 'application/json');
+        $request->header('Authorization', $token);
+        $request = Request::create('api/v1/item', 'GET');
+        $response = Route::dispatch($request);
+        $data = Response::Json(['data' => $response]);
+        $data1 = json_decode($data->content(), TRUE);
+        return view('data-barang')->with('data', $data1);
     }
 
     public function pengadaanBarangPage()
@@ -57,9 +70,18 @@ class InventoryController extends Controller
         return view('register');
     }
 
-    public function profilPage()
+    public function profilPage(Request $request)
     {
-        return view('profil');
+
+        $token = Cookie::get('token');
+        $request->header('Accept', 'application/json');
+        $request->header('Content-Type', 'application/json');
+        $request->header('Authorization', $token);
+        $request = Request::create('api/user', 'GET');
+        $response = Route::dispatch($request);
+        $data = Response::Json(['data' => $response]);
+        $data1 = json_decode($data->content(), TRUE);
+        return view('profil')->with('data', $data1);
     }
 
     public function manajemenUserPage()

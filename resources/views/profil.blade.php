@@ -39,19 +39,19 @@
                                 <tbody class="text-left">
                                     <tr>
                                         <td>No. Induk</td>
-                                        <td>M0520063</td>
+                                        <td>{{$data['data']['original']['no_credential']}}</td>
                                     </tr>
                                     <tr>
                                         <td>Nama</td>
-                                        <td>Puditya Risky Amelia</td>
+                                        <td>{{$data['data']['original']['name']}}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td>pudityaskyml@gmail.com</td>
+                                        <td>{{$data['data']['original']['email']}}</td>
                                     </tr>
                                     <tr>
                                         <td>No. HP</td>
-                                        <td>085161695648 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
+                                        <td>{{$data['data']['original']['no_hp']}} <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>

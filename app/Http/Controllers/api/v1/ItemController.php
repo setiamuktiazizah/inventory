@@ -16,8 +16,14 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::latest()->get();
-        return view('data-barang')->with('data', $items);
+        // $items = Item::latest()->get();
+        // return view('data-barang')->with('data', $items);
+        $itemUnits = Item::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record Item',
+            'data' => $itemUnits
+        ], 200);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\v1\AddItemController;
+use App\Http\Controllers\api\v1\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +47,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/v1/item', [ItemController::class, 'store']);
     Route::get('/v1/item/{item}', [ItemController::class, 'show']);
     Route::put('/v1/item/{item}', [ItemController::class, 'update']);
-    Route::delete('/v1/item/{item}', [ItemController::class, 'destroy']);    
+    Route::delete('/v1/item/{item}', [ItemController::class, 'destroy']);
 
     // ItemUnit apis
     Route::get('/v1/item_unit', [ItemUnitController::class, 'index']);

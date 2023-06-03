@@ -31,7 +31,9 @@ Route::get('/dashboard-peminjam', [InventoryController::class, 'dashboardPeminja
 
 Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanPengembalianPage']);
 
-Route::get('/data-barang', [ItemController::class, 'index']);
+// Route::get('/data-barang', [ItemController::class, 'index']);
+Route::get('/data-barang', [InventoryController::class, 'dataBarangPage']);
+
 
 Route::get('/pengadaan-barang', [AddItemController::class, 'index']);
 
@@ -49,6 +51,7 @@ Route::post('/register', [RegisterController::class, '__invoke']);
 // Route::get('/profil', [InventoryController::class, 'profilPage']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
+
 
 Route::get('/manajemen-user', [InventoryController::class, 'manajemenUserPage']);
 
