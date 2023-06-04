@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use Yajra\DataTables\Facades\DataTables;
+// use Yajra\DataTables\Facades\DataTables;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddItem;
@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use DataTables;
 
 class AddItemController extends Controller
 {
@@ -32,30 +33,42 @@ class AddItemController extends Controller
         //     abort(403);
         // }
 
-        // $user = User::all();
-        // $category = Category::all();
-        // $addItems = AddItem::latest()->get();
-        // return response([
-        //     'success' => true,
-        //     'message' => 'List Record AddItem',
-        //     'data' => $addItems
-        // ], 200);
-        // return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
+        $user = User::all();
+        $category = Category::all();
+        $addItems = AddItem::latest()->get();
+        return response([
+            'success' => true,
+            'message' => 'List Record AddItem',
+            'data' => $addItems
+        ], 200);
+        return view('pengadaan-barang', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category]);
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
 
-        $user = User::all();
-        $category = Category::all();
-        $addItems = AddItem::latest()->get();
-        // return response([
-        //     'success' => true,
-        //     'message' => 'List Record AddItem',
-        //     'data' => $addItems
-        // ], 200);
-        return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
+
+        return view('welcome');
+
+        // $user = User::all();
+        // $category = Category::all();
+        // $addItems = AddItem::latest()->get();
+        // return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
     }
 
+    public function getAddItem(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = AddItem::latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -95,9 +108,9 @@ class AddItemController extends Controller
 
         $addItem = AddItem::create($validatedRequest);
 
-        return response()->json([
-            'data' => $addItem
-        ]);
+        // return response()->json([
+        //     'data' => $addItem
+        // ]);
     }
 
     /**

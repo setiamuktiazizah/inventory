@@ -55,17 +55,17 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data_add as $add)
+                                    @foreach($data_addItems as $addItem)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
-                                        <td>{{$add->date}} </td>
-                                        <td>{{$add->category->name}} </td>
-                                        <td>{{$add->name}} </td>
-                                        <td>{{$add->brand}} </td>
-                                        <td>{{$add->quantity}} </td>
-                                        <td>{{$add->price}} </td>
-                                        <td>{{$add->cause}} </td>
-                                        <td>{{$add->user->name}} </td>
+                                        <td>{{$addItem->date}} </td>
+                                        <td>{{$addItem->category->name}} </td>
+                                        <td>{{$addItem->name}} </td>
+                                        <td>{{$addItem->brand}} </td>
+                                        <td>{{$addItem->quantity}} </td>
+                                        <td>{{$addItem->price}} </td>
+                                        <td>{{$addItem->cause}} </td>
+                                        <td>{{$addItem->user->name}} </td>
                                         <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>

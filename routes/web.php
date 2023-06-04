@@ -22,6 +22,10 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('additem', [AddItemController::class, 'index']);
+Route::get('additem/list', [AddItemController::class, 'getAddItem'])->name('additem
+.list');
+
 Route::get('/', [InventoryController::class, 'index']);
 
 Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
