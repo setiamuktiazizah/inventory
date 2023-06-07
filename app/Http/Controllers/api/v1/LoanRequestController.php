@@ -16,12 +16,12 @@ class LoanRequestController extends Controller
      */
     public function index()
     {
+        //TODO: buat peminjam cuman nunjukin request yg dia buat
+
         $loanRequests = LoanRequest::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record LoanRequest',
-            'data' => $loanRequests
-        ], 200);
+        return view('permohonan-peminjaman-barang', [
+            'data_loanRequests' => $loanRequests
+        ]);
     }
 
     /**
@@ -45,18 +45,16 @@ class LoanRequestController extends Controller
         $rules = [
             'loan_date' => 'required',
             'max_return_date' => 'required',
-            // 'path_file_cdn' => 'required',
+            'path_file_cdn' => 'required',
             'status' => 'required',
-            // 'note' => 'required',
+            'note' => 'required',
             'id_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
         $loanRequest = LoanRequest::create($validatedRequest);
 
-        return response()->json([
-            'data' => $loanRequest
-        ]);
+        return $loanRequest;
     }
 
     /**
@@ -67,19 +65,7 @@ class LoanRequestController extends Controller
      */
     public function show(LoanRequest $loanRequest)
     {
-        if ($loanRequest) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Detail LoanRequest!',
-                'data'    => $loanRequest
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Data Tidak Ditemukan!',
-                'data'    => ''
-            ], 401);
-        }
+        return $loanRequest;
     }
 
     /**
@@ -113,7 +99,7 @@ class LoanRequestController extends Controller
             // 'path_file_cdn' => 'required',
             'status' => 'required',
             // 'note' => 'required',
-            'id_item' => 'required',
+            // 'id_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
@@ -121,9 +107,7 @@ class LoanRequestController extends Controller
         $updatedLoanRequest = LoanRequest::where('id', $loanRequest->id)
             ->update($validatedRequest);
 
-        return response()->json([
-            'data' =>  $updatedLoanRequest
-        ]);
+        return $updatedLoanRequest;
     }
 
     /**
