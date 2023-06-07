@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-admin.head')
+    @include ('template-peminjam.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-admin.left-sidebar')
+        @include ('template-peminjam.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-admin.navbar')
+                @include ('template-peminjam.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -43,7 +43,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Nama Barang</th>
+                                        <th>Barang</th>
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Tgl Pinjam</th>
@@ -66,43 +66,43 @@
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><mark class="bg-success">Selesai</span></mark></td>  
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>  
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
+                                        <td>Proyektor</td>
+                                        <td>Epson</td>
                                         <td>1</td>
                                         <td>25-05-2023</td>
                                         <td>28-05-2023</td>
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
+                                        <td>Spidol</td>
+                                        <td>Snowman</td>
                                         <td>1</td>
                                         <td>25-05-2023</td>
                                         <td>28-05-2023</td>
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
+                                        <td>Speaker</td>
+                                        <td>Sony</td>
                                         <td>1</td>
                                         <td>25-05-2023</td>
                                         <td>28-05-2023</td>
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
                                     </tr>
                                     <tr>
                                         <td>5</td>
@@ -114,7 +114,7 @@
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><mark class="bg-success">Selesai</span></mark></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,7 +128,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-admin.footer')
+            @include ('template-peminjam.footer')
             <!-- End of Footer -->
 
         </div>
@@ -177,7 +177,7 @@
                     <form class="user">
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
                                 <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                     placeholder="Kategori"> -->
                                     <input class="form-control form-control-sm" list="categories" name="category" id="category">
@@ -187,7 +187,7 @@
                                     </datalist>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
                                 <input class="form-control form-control-sm" list="items" name="item" id="item">
                                 <datalist id="items">
                                     <option value="Laptop">
@@ -196,37 +196,13 @@
                                 </datalist>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
-                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
-                                <datalist id="brands">
-                                    <option value="ASUS">
-                                    <option value="Snowman">
-                                    <option value="Olaf">
-                                </datalist>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
-                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
-                                <datalist id="units">
-                                    <option value="rim">
-                                    <option value="pak">
-                                    <option value="unit">
-                                </datalist>
-                            </div>
-                            <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
                                 <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
                             </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
-                            </div>
                         </div>
-                        <div class="form-group row mb-lg-4">
+                        <div class="form-group row mb-lg-4 justify-content-between">
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Tgl Pinjam</h6>
                                 <div class="input-group date" id="datetimepicker1">
                                     <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
@@ -235,21 +211,22 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
-                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
-                                <datalist id="adds">
-                                    <option value="Barang Baru">
-                                    <option value="Transfer">
-                                </datalist>
+                                <h6 class="h6 text-blue-100 mb-1">Max. Tgl Kembali</h6>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-sm" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
-                            <input class="form-control form-control-sm" list="users" name="user" id="user">
-                            <datalist id="users">
-                                <option value="Alwi">
-                                <option value="Bayu">
-                            </datalist>
+                        <div class="mb-4">
+                            <label for="formFileSm" class="form-label h6 text-blue-100 mb-1">Unggah Surat</label>
+                            <input class="form-control form-control-sm" id="formFilesm" type="file">
+                        </div>   
+                        <div class="mb-4">
+                            <label for="exampleFormControlTextarea1" class="form-label h6 text-blue-100 mb-1">Note</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                     </form>
                 </div>
@@ -261,7 +238,7 @@
     </div>
 
     
-@include ('template-admin.script')
+@include ('template-peminjam.script')
 </body>
 
 </html>

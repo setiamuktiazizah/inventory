@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+use App\Models\User;
+
 class Role extends Model
 {
     use HasFactory;
@@ -15,7 +17,7 @@ class Role extends Model
         'credential_type',
     ];
 
-    public function user(): HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class, 'id_role');
     }
@@ -24,7 +26,21 @@ class Role extends Model
     {
         return Role::create([
             'role' => $role,
-            'credential_type' => $credential_type
+            'credential_type' => $credential_type,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

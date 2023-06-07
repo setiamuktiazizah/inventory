@@ -8,7 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Models\AddItem;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Item;
+use App\Models\ItemUnit;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Gate;
 use DataTables;
 
@@ -21,53 +24,21 @@ class AddItemController extends Controller
      */
     public function index()
     {
-        // if (request()->ajax()) {
-        //     $addItem = AddItem::query();
-        //     return DataTables::of($addItem)
-
-        //         ->make();
-        // }
-        // return view('home');
-
-        // if(!Gate::allows(['admin', 'operator'])){
-        //     abort(403);
-        // }
-
         $user = User::all();
         $category = Category::all();
         $addItems = AddItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record AddItem',
-            'data' => $addItems
-        ], 200);
-        return view('pengadaan-barang', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category]);
+        // $addItems = AddItem::all();
+        $item = Item::all();
+        $itemUnit = ItemUnit::all();
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record AddItem',
+        //     'data' => $addItems
+        // ], 200);
+        return view('pengadaan-barang', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category, 'data_items' => $item, 'data_itemUnits' => $itemUnit]);
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
-
-
-        return view('welcome');
-
-        // $user = User::all();
-        // $category = Category::all();
-        // $addItems = AddItem::latest()->get();
-        // return view('pengadaan-barang', ['data_add' => $addItems, 'data_user' => $user, 'data_category' => $category]);
-    }
-
-    public function getAddItem(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = AddItem::latest()->get();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
     }
     /**
      * Show the form for creating a new resource.
@@ -92,25 +63,31 @@ class AddItemController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
+        $this->validate($request, [
             'date' => 'required',
             'name' => 'required',
             'brand' => 'required',
             'quantity' => 'required',
             'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required'
-        ];
+            'barcode' => 'required',
+        ]);
 
-        $validatedRequest = $request->validate($rules);
-        // $validatedRequest['created_by'] = auth()::user()->id;
+        AddItem::create([
+            'date' => $request->date,
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'id_category' => $request->id_category,
+            'barcode' => $request->barcode,
+            'cause' => $request->add,
+            'created_by' => '1',
+            'updated_by' => 'NULL',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
-        $addItem = AddItem::create($validatedRequest);
-
-        // return response()->json([
-        //     'data' => $addItem
-        // ]);
+        return redirect('/pengadaan-barang');
     }
 
     /**
@@ -147,14 +124,16 @@ class AddItemController extends Controller
      * @param  \App\Models\AddItem  $addItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(AddItem $addItem)
+    public function edit($id, AddItem $addItem)
     {
         //TODO: nunggu view edit addItem
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
-
-        return "AddItem_edit";
+        $category = Category::all();
+        // $addItem = AddItem::all();
+        $addItem = AddItem::findOrFail($id);
+        return view('pengadaan-barang', compact('addItem', 'category'));
     }
 
     /**
@@ -166,28 +145,47 @@ class AddItemController extends Controller
      */
     public function update(Request $request, AddItem $addItem)
     {
-        //TODO: tambah cek rules
-        $rules = [
+        $validatedData = $request->validate([
             'date' => 'required',
             'name' => 'required',
             'brand' => 'required',
             'quantity' => 'required',
             'price' => 'required',
-            'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required',
-            //'edited_by' => 'required' //belom ada fieldnya
-        ];
-
-        $validatedRequest = $request->validate($rules);
-        // $validatedRequest['updated_by'] = auth()::user()->id;
-
-        $updatedAddItem = AddItem::where('id', $addItem->id)
-            ->update($validatedRequest);
-
-        return response()->json([
-            'data' =>  $updatedAddItem
+            'barcode' => 'required',
         ]);
+
+        $validatedData['cause'] = $request->add;
+        $validatedData['created_by'] = $request->created_by;
+        $validatedData['updated_by'] = "1";
+        $validatedData['created_at'] = $request->created_at;
+        $validatedData['updated_at'] = Carbon::now();
+
+        $addItem = AddItem::where('id', $addItem->id)
+            ->update($validatedData);
+
+        return redirect('/pengadaan-barang');
+        // //TODO: tambah cek rules
+        // $rules = [
+        //     'date' => 'required',
+        //     'name' => 'required',
+        //     'brand' => 'required',
+        //     'quantity' => 'required',
+        //     'price' => 'required',
+        //     'cause' => 'required',
+        //     'id_category' => 'required',
+        //     'created_by' => 'required',
+        //     //'edited_by' => 'required' //belom ada fieldnya
+        // ];
+
+        // $validatedRequest = $request->validate($rules);
+        // // $validatedRequest['updated_by'] = auth()::user()->id;
+
+        // $updatedAddItem = AddItem::where('id', $addItem->id)
+        //     ->update($validatedRequest);
+
+        // return response()->json([
+        //     'data' =>  $updatedAddItem
+        // ]);
     }
 
     /**

@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use App\Models\ReduceItem;
 use App\Models\LoanRequest;
-use App\Models\LoanItem;
 use App\Models\AddItem;
-use App\Models\Category;
+use App\Models\User;
 
 class Item extends Model
 {
@@ -19,12 +18,9 @@ class Item extends Model
 
     protected $fillable = [
         'id_add_item',
-        'id_category',
-        'barcode',
-        'name',
-        'brand',
         'quantity',
-        'condition'
+        'condition',
+        'is_empty'
     ];
 
     public function reduce_items(): HasMany
@@ -34,44 +30,39 @@ class Item extends Model
 
     public function loan_requests(): HasMany
     {
-        return $this->hasMany(LoanRequest::class);
-    }
-
-    public function loan_items(): HasMany
-    {
-        return $this->hasMany(LoanItem::class);
+        return $this->hasMany(LoanRequest::class, 'id_item');
     }
 
     public function add_item(): BelongsTo
     {
-        return $this->belongsTo(AddItem::class);
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(AddItem::class, 'id_add_item');
     }
 
     public static function customCreate(
         $id_add_item,
-        $id_category,
-        $barcode,
-        $name,
-        $brand,
         $quantity,
-        $condition
+        $condition,
+        $is_empty
     ) {
         return Item::create([
             'id_add_item' => $id_add_item,
-            'id_category' => $id_category,
-            'barcode' => $barcode,
-            'name' => $name,
-            'brand' => $brand,
             'quantity' => $quantity,
             'condition' => $condition,
+            'is_empty' => $is_empty,
 
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
         ]);
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

@@ -56,7 +56,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login', [
+        return view('login', [
             'displayCaptcha' => $this->shouldDisplayCaptcha(),
         ]);
     }
@@ -73,5 +73,7 @@ class LoginController extends Controller
         }
 
         $request->validate($rules);
+
+        return redirect('/dashboard-admin');
     }
 }

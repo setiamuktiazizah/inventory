@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Models\ItemUnit;
-use App\Models\Item;
 use App\Models\SuperCategory;
 use App\Models\AddItem;
+use App\Models\User;
 
 
 class Category extends Model
@@ -25,22 +25,22 @@ class Category extends Model
 
     public function item_unit(): BelongsTo
     {
-        return $this->belongsTo(ItemUnit::class);
+        return $this->belongsTo(ItemUnit::class, 'id_item_unit');
     }
 
     public function super_category(): BelongsTo
     {
-        return $this->belongsTo(SuperCategory::class);
-    }
-
-    public function items(): HasMany
-    {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(SuperCategory::class, 'id_super_category');
     }
 
     public function add_items(): HasMany
     {
         return $this->hasMany(AddItem::class, 'id_category');
+    }
+
+    public function reduce_items(): HasMany
+    {
+        return $this->hasMany(ReduceItem::class, 'id_category');
     }
 
     public static function customCreate($id_super_category, $id_item_unit, $name, $quantity)
@@ -54,5 +54,16 @@ class Category extends Model
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
         ]);
+    }
+
+
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
