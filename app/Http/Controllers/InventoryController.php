@@ -37,10 +37,10 @@ class InventoryController extends Controller
         return view('dashboard-peminjam');
     }
 
-    // public function peminjamanPengembalianPage()
-    // {
-    //     return view('peminjaman-pengembalian');
-    // }
+    public function peminjamanPengembalianPage()
+    {
+        return view('peminjaman-pengembalian');
+    }
 
     public function dataBarangPage()
     {
@@ -98,8 +98,7 @@ class InventoryController extends Controller
         return view('peminjaman-user');
     }
 
-    public function dashboardPage()
-    {
+    public function dashboardPage(){
         return view('dashboard');
     }
 
@@ -116,5 +115,30 @@ class InventoryController extends Controller
     public function pengembalianOperatorPage()
     {
         return view('pengembalian-operator');
+    }
+
+    public function peminjaman1Page()
+    {
+        return view('peminjaman-1');
+    }
+
+    public function peminjaman2Page()
+    {
+        return view('peminjaman-2');
+    }
+
+    public function peminjaman3Page()
+    {
+        return view('peminjaman-3');
+    }
+
+    public function peminjamanEdit()
+    {
+        return view('peminjaman-edit');
+    }
+
+    public function ubahStatusPage()
+    {
+        return view('ubah-status');
     }
 }

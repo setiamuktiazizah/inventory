@@ -104,7 +104,7 @@ Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOpera
 
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 
-Route::get('/ubah-status', [InventoryController::class, 'ubahStatusPage'])->name('ubah-status');
+Route::get('/ubah-status', [InventoryController::class, 'ubahStatusPage']);
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 // Route::get('/page', [PageController::class, 'index'])->name('page-name');
