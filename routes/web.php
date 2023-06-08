@@ -85,3 +85,7 @@ Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage'
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
 Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
+
+Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+
+Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);

@@ -112,7 +112,7 @@ class InventoryController extends Controller
         return view('peminjaman-operator');
     }
 
-    public function PengembalianOperatorPage()
+    public function pengembalianOperatorPage()
     {
         return view('pengembalian-operator');
     }
