@@ -72,5 +72,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 //Route::get('/login', [InventoryController::class, 'loginPage']);
 
-// Route::get('/register', [InventoryController::class, 'registerPage']);
-// Route::post('/register', [RegisterController::class, '__invoke']);
+Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+
+Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
