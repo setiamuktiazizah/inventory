@@ -54,7 +54,8 @@
                                         <td>{{$item->add_item->brand}}</td>
                                         <td>{{$item->quantity}}</td>
                                         <td>
-                                            <mark class="bg-success">{{$item->condition}}</mark>
+                                            <div class="badge rounded-pill bg-success text-white">{{$item->condition}}</span></div>
+                                            {{-- <mark class="bg-success">{{$item->condition}}</mark> --}}
                                         </td>
                                     </tr>
                                     @endforeach
