@@ -94,14 +94,20 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
-Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+// Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
-
-Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
+Route::get('/pengajuan-peminjaman-operator', [InventoryController::class, 'pengajuanPeminjamanPage']);
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+
+Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
+
+Route::get('/ubah-status', [InventoryController::class, 'ubahStatusPage'])->name('ubah-status');
+
+Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+// Route::get('/page', [PageController::class, 'index'])->name('page-name');
 
 Route::get('/peminjaman-1', [InventoryController::class, 'peminjaman1Page']);
 
