@@ -221,7 +221,7 @@
                         </div> -->
                         <div class="form-group row justify-content-between mb-lg-4">
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Peminjaman</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Tgl Peminjaman</h6>
                                 <div class="input-group date" id="datetimepicker1">
                                     <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Pengembalian</h6>
+                                <h6 class="h6 text-blue-100 mb-1">Tgl Pengembalian</h6>
                                 <div class="input-group date" id="datetimepicker1">
                                     <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">

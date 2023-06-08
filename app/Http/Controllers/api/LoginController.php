@@ -84,7 +84,7 @@ class LoginController extends Controller
 
         $token_jwt = cookie('token', $token, 60);
         $name = cookie('name', auth()->guard('api')->user()->name, 60);
-        return response(view('/dashboard-admin'))->cookie($token_jwt)->cookie($name);
+        return response(view('dashboard'))->cookie($token_jwt)->cookie($name);
     }
 
 
