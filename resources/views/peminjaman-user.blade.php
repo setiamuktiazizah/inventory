@@ -221,8 +221,11 @@
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label for="formFileSm" class="form-label h6 text-blue-100 mb-1">Unggah Surat</label>
-                            <input class="form-control form-control-sm" id="formFilesm" type="file">
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Unggah Surat</label>
+                              </div>
                         </div>   
                         <div class="mb-4">
                             <label for="exampleFormControlTextarea1" class="form-label h6 text-blue-100 mb-1">Note</label>
