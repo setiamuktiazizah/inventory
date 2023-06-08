@@ -103,4 +103,12 @@ Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPemin
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 
+Route::get('/peminjaman-1', [InventoryController::class, 'peminjaman1Page']);
+
+Route::get('/peminjaman-2', [InventoryController::class, 'peminjaman2Page']);
+
+Route::get('/peminjaman-3', [InventoryController::class, 'peminjaman3Page']);
+
+Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
+
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);

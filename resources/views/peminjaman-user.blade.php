@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-peminjam.head')
+    @include ('template-dashboard.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-peminjam.left-sidebar')
+        @include ('template-dashboard.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-peminjam.navbar')
+                @include ('template-dashboard.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -31,8 +31,8 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman Barang</h1>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPeminjaman">
-                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                        <a href="/peminjaman-1" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Ajukan Peminjaman</a>
                 </div>            
 
                 <!-- DataTales Example -->
@@ -52,6 +52,7 @@
                                         <th>Note</th>
                                         <th>Surat</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -67,6 +68,8 @@
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
                                         <td><div class="badge-pill badge-success">Done</span></div></td>  
+                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -78,7 +81,9 @@
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -90,7 +95,9 @@
                                         <td>27-05-2023</td>
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
                                     </tr>
                                     <tr>
                                         <td>4</td>
@@ -103,6 +110,8 @@
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
                                         <td><div class="badge-pill badge-success">Done</span></div></td> 
+                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                     <tr>
                                         <td>5</td>
@@ -115,6 +124,8 @@
                                         <td>Kondisi baik</td>
                                         <td>Path</td>
                                         <td><div class="badge-pill badge-success">Done</span></div></td> 
+                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,7 +139,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-peminjam.footer')
+            @include ('template-dashboard.footer')
             <!-- End of Footer -->
 
         </div>
@@ -241,7 +252,7 @@
     </div>
 
     
-@include ('template-peminjam.script')
+@include ('template-dashboard.script')
 </body>
 
 </html>
