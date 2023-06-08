@@ -140,8 +140,6 @@
                             @error('price')
                                 <p class="invalid-feedback d-block">{{ $message }}</p>
                             @enderror
-                        </div>
-                        <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
                                 <div class="input-group date" id="datetimepicker1">
@@ -151,6 +149,8 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
                                 <input class="form-control form-control-sm" list="adds" name="add" id="add">

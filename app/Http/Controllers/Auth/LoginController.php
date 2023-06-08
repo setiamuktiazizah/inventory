@@ -74,6 +74,10 @@ class LoginController extends Controller
 
         $request->validate($rules);
 
+<<<<<<< HEAD
         return redirect('/dashboard-admin');
+=======
+        return redirect('dashboard');
+>>>>>>> 4641aa5a72b00f566b169158424e6f9ef0ba0dc0
     }
 }

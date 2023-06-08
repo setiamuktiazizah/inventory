@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="/dashboard-operator">
+    <a class="nav-link" href="/dashboard-admin">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -31,35 +31,30 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
+<!-- ADMIN -->
 <!-- Nav Item - Pengadaan Barang -->
-<li class="nav-item ">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-        aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Peminjaman & Pengembalian Barang</span>
-    </a>
-    <div id="collapsePages" class="collapse " aria-labelledby="headingPages"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Update:</h6>
-            <a class="collapse-item" href="/pengajuan-peminjaman-operator">Ajuan Peminjaman</a>
-            <a class="collapse-item" href="/peminjaman-operator">Peminjaman</a>
-            <a class="collapse-item" href="/pengembalian-operator">Pengembalian</a>
+@can('admin')
+<li class="nav-item">
+    <a class="nav-link" href="/pengadaan-barang">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Pengadaan Barang</span></a>
+</li>
 
-        </div>
-    </div>
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Nav Item - Pengurangan Barang -->
+<li class="nav-item">
+    <a class="nav-link" href="/pengurangan-barang">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Pengurangan Barang</span></a>
 </li>
 
 <!-- Divider -->
 <hr class="sidebar-divider">
 
 <!-- Nav Item - Laporan  -->
-<li class="nav-item">
-    <a class="nav-link" href="/laporan-peminjaman-pengembalian-operator">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Laporan Peminjaman & Pengembalian Barang</span></a>
-</li>
-<!-- <li class="nav-item ">
+<li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
@@ -69,38 +64,66 @@
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Riwayat:</h6>
-            <a class="collapse-item" href="laporan-peminjaman-pengembalian-barang.html">Peminjaman & Pengembalian Barang</a>
+            <a class="collapse-item" href="/laporan-pengadaan-barang">Pengadaan Barang</a>
+            <a class="collapse-item" href="/laporan-pengurangan-barang">Pengurangan Barang</a>
         </div>
     </div>
-</li> -->
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider">
 
-<!-- Nav Item - Role -->
-<!-- <li class="nav-item">
-    <a class="nav-link" href="index.html">
+<!-- Nav Item - Manajemen User -->
+<li class="nav-item">
+    <a class="nav-link" href="/manajemen-user">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Role</span></a>
-</li> -->
+        <span>Manajemen User</span></a>
+</li>
 
 <!-- Divider -->
-<!-- <hr class="sidebar-divider"> -->
+<hr class="sidebar-divider">
+@endcan
 
-<!-- Nav Item - Hak Akses -->
-<!-- <li class="nav-item">
-    <a class="nav-link" href="index.html">
+<!-- OPERATOR  -->
+<!-- Nav Item - Peminjaman Barang -->
+@can('operator')
+<li class="nav-item">
+    <a class="nav-link" href="/peminjaman-pengembalian">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Hak Akses</span></a>
-</li> -->
+        <span>Peminjaman & Pengembalian Barang</span></a>
+</li>
 
 <!-- Divider -->
-<!-- <hr class="sidebar-divider"> -->
+<hr class="sidebar-divider">
+
+<!-- Nav Item - Laporan  -->
+<li class="nav-item">
+    <a class="nav-link" href="/laporan-peminjaman-pengembalian-operator">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Laporan Peminjaman & Pengembalian Barang</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+@endcan
+
+<!-- USER -->
+<!-- Nav Item - Peminjaman Barang -->
+@can('user')
+<li class="nav-item">
+    <a class="nav-link" href="/peminjaman-user">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Peminjaman</span></a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+@endcan
 
 <!-- Nav Item - Akun -->
 <li class="nav-item">
     <a class="nav-link" href="/profil">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-fw fa-user"></i>
         <span>Akun</span></a>
 </li>
 
