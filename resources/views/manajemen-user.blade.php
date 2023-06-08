@@ -29,12 +29,12 @@
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Manajemen User</h1>
                     <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
                         <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -53,7 +53,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($users as $user)
+                                    @foreach($data_user as $user)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
                                         <td>{{$user->name}} </td>
@@ -62,18 +62,18 @@
                                         <td>{{$user->no_hp}} </td>
                                         <td>{{$user->no_credential}} </td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal">
+                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal" data-id="$user->id" id="editUser">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
                                                 <span class="text">Edit</span>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                            {{-- <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
                                                 </span>
                                                 <span class="text">Hapus</span>
-                                            </a>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                     @endforeach
@@ -193,7 +193,7 @@
         </div>
     </div>
 
-    <!-- Tambah Data Modal-->
+    {{-- <!-- Tambah Data Modal-->
     <div class="modal" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -210,18 +210,18 @@
                             <h6 class="h6 text-blue-100 mb-1">Nama</h6>
                             <input type="email" class="form-control form-control-user"
                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                placeholder="Masukkan email" readonly>
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Email</h6>
                             <input type="email" class="form-control form-control-user"
                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                placeholder="Masukkan email" readonly>
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Password*</h6>
                             <input type="password" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
+                                id="exampleInputPassword" placeholder="Minimum 8 karakter" readonly>
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Role</h6>
@@ -233,12 +233,12 @@
                             <h6 class="h6 text-blue-100 mb-1">No HP</h6>
                             <input type="text" class="form-control form-control-user"
                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                placeholder="Masukkan email" readonly>
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">No Induk</h6>
                             <input type="text" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
+                                id="exampleInputPassword" placeholder="Minimum 8 karakter" readonly>
                         </div>
                     </form>
                 </div>
@@ -247,7 +247,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -261,45 +261,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="user">
+                    <form class="user" id="userData">
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Nama</h6>
                             <input type="email" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                id="name" aria-describedby="emailHelp" name="name"
+                                 readonly value="">
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Email</h6>
                             <input type="email" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                id="email" name="email" aria-describedby="emailHelp"
+                                 readonly value="">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Password*</h6>
                             <input type="password" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
-                        </div>
+                                id="exampleInputPassword"  readonly>
+                        </div> --}}
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Role</h6>
                             <input type="text" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                id="id_role" name="id_role" aria-describedby="emailHelp" value=""
+                                >
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">No HP</h6>
                             <input type="text" class="form-control form-control-user"
-                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                placeholder="Masukkan email">
+                                id="no_hp" name="no_hp" aria-describedby="emailHelp" value=""
+                                readonly>
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">No Induk</h6>
                             <input type="text" class="form-control form-control-user"
-                                id="exampleInputPassword" placeholder="Minimum 8 karakter">
+                                id="no_credential" name="no_credential" value=""  readonly>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary" href="/manajemen-user">Simpan</a>
+                    {{-- <a class="btn btn-primary" href="/manajemen-user">Simpan</a> --}}
+                    <input type="submit" value="Submit" id="submit" class="btn btn-primary">
                 </div>
             </div>
         </div>
@@ -329,4 +330,69 @@
 @include ('template-admin.script')
 </body>
 
-</html
+</html>
+
+@push('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+
+$(document).ready(function () {
+
+// $.ajaxSetup({
+//     headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+// });
+
+$('body').on('click', '#submit', function (event) {
+    event.preventDefault()
+
+    var id_role = $("#id_role").val();
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var password = $("#password").val();
+    var no_hp = $("#no_hp").val();
+    var no_credential = $("#no_credential").val();
+   
+    $.ajax({
+      url: 'manajemen-user/' + id,
+      type: "POST",
+      data: {
+        name: name,
+        email: email,
+        password: password,
+        no_hp: no_hp,
+        no_credential: no_credential,
+      },
+      dataType: 'json',
+      success: function (data) {
+          
+          $('#userData').trigger("reset");
+          $('#editModal').modal('hide');
+          window.location.reload(true);
+      }
+  });
+});
+
+$('body').on('click', '#editModal', function (event) {
+
+    event.preventDefault();
+    var id = $(this).data('id');
+    console.log(id)
+    $.get('manajemen-user/' + id + '/edit', function (data) {
+        //  $('#userCrudModal').html("Edit category");
+        //  $('#submit').val("Edit category");
+         $('#practice_modal').modal('show');
+        //  $('#color_id').val(data.data.id);
+         $('#name').val(data.data.name);
+         $('#email').val(data.data.email);
+         $('#password').val(data.data.password);
+         $('#no_hp').val(data.data.no_hp);
+         $('#no_credential').val(data.data.no_credential);
+     })
+});
+
+}); 
+</script>
+@endpush 
