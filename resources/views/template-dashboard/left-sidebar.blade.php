@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="/dashboard-admin">
+    <a class="nav-link" href="/dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -87,23 +87,24 @@
 <!-- OPERATOR  -->
 <!-- Nav Item - Peminjaman Barang -->
 @can('operator')
-<li class="nav-item">
-    <a class="nav-link" href="/peminjaman-pengembalian">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Peminjaman & Pengembalian Barang</span></a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Nav Item - Laporan  -->
-<li class="nav-item">
-    <a class="nav-link" href="/laporan-peminjaman-pengembalian-operator">
+<!-- Nav Item - Peminjaman Barang -->
+<li class="nav-item ">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+        aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
-        <span>Laporan Peminjaman & Pengembalian Barang</span></a>
-</li>
+        <span>Peminjaman & Pengembalian Barang</span>
+    </a>
+    <div id="collapsePages" class="collapse " aria-labelledby="headingPages"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Update:</h6>
+            <a class="collapse-item" href="/pengajuan-peminjaman-operator">Ajuan Peminjaman</a>
+            <a class="collapse-item" href="/peminjaman-operator">Peminjaman</a>
+            <a class="collapse-item" href="/pengembalian-operator">Pengembalian</a>
 
-<!-- Divider -->
+        </div>
+    </div>
+</li>
 <hr class="sidebar-divider">
 @endcan
 

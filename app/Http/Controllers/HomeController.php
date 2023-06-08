@@ -24,13 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id_role;
-        if ($id == 1) {
-            return redirect('/dashboard-admin');
-        } elseif ($id == 2) {
-            return redirect('/dashboard-operator');
-        } else {
-            return redirect('/dashboard-peminjam');
-        }
+        // $id = Auth::user()->id_role;
+        // if ($id == 1) {
+        //     return redirect('/dashboard-admin');
+        // } elseif ($id == 2) {
+        //     return redirect('/dashboard-operator');
+        // } else {
+        //     return redirect('/dashboard-peminjam');
+        // }
+        return redirect('/dashboard');
     }
 }
