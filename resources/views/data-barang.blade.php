@@ -46,17 +46,7 @@
                                         <th>Kondisi</th>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data['data']['original']['data'] as $d)
-                                    <tr>
-                                        <td>{{$d['id']}}</td>
-                                        <td>{{$d['barcode']}}</td>
-                                        <td>{{$d['name']}}</td>
-                                        <td>{{$d['brand']}}</td>
-                                        <td>{{$d['quantity']}}</td>
-                                        <td><mark class="bg-success">{{$d['condition']}}</span></mark></td>
-                                    </tr>
-                                    @endforeach
-                                    {{-- @foreach($data as $d)
+                                    @foreach($data as $d)
                                     <tr>
                                         <td>{{$d->id}}</td>
                                         <td>{{$d->barcode}}</td>
@@ -65,7 +55,7 @@
                                         <td>{{$d->quantity}}</td>
                                         <td><mark class="bg-success">{{$d->condition}}</span></mark></td>
                                     </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                     {{-- <tr>
                                         <td>2</td>
                                         <td>B12345</td>

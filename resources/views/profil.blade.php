@@ -39,19 +39,19 @@
                                 <tbody class="text-left">
                                     <tr>
                                         <td>No. Induk</td>
-                                        <td>{{$data['data']['original']['no_credential']}}</td>
+                                        <td>{{ Auth::user()->no_credential }}</td>
                                     </tr>
                                     <tr>
                                         <td>Nama</td>
-                                        <td>{{$data['data']['original']['name']}}</td>
+                                        <td>{{ Auth::user()->name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td>{{$data['data']['original']['email']}}</td>
+                                        <td>{{ Auth::user()->email }}</td>
                                     </tr>
                                     <tr>
                                         <td>No. HP</td>
-                                        <td>{{$data['data']['original']['no_hp']}} <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
+                                        <td>{{ Auth::user()->no_hp }} <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
                                         <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>

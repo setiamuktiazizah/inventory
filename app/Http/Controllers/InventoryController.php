@@ -19,9 +19,7 @@ class InventoryController extends Controller
 
     public function dashboardAdminPage()
     {
-        // $name = auth()->guard('api')->user()->name;
-        $name = "John Doe";
-        return view('dashboard-admin')->with('name', $name);
+        return view('dashboard-admin');
     }
 
     public function loginPage()
@@ -44,17 +42,10 @@ class InventoryController extends Controller
         return view('peminjaman-pengembalian');
     }
 
-    public function dataBarangPage(Request $request)
+    public function dataBarangPage()
     {
-        $token = Cookie::get('token');
-        $request->header('Accept', 'application/json');
-        $request->header('Content-Type', 'application/json');
-        $request->header('Authorization', $token);
-        $request = Request::create('api/v1/item', 'GET');
-        $response = Route::dispatch($request);
-        $data = Response::Json(['data' => $response]);
-        $data1 = json_decode($data->content(), TRUE);
-        return view('data-barang')->with('data', $data1);
+
+        return view('data-barang');
     }
 
     public function pengadaanBarangPage()
@@ -72,18 +63,9 @@ class InventoryController extends Controller
         return view('register');
     }
 
-    public function profilPage(Request $request)
+    public function profilPage()
     {
-
-        $token = Cookie::get('token');
-        $request->header('Accept', 'application/json');
-        $request->header('Content-Type', 'application/json');
-        $request->header('Authorization', $token);
-        $request = Request::create('api/user', 'GET');
-        $response = Route::dispatch($request);
-        $data = Response::Json(['data' => $response]);
-        $data1 = json_decode($data->content(), TRUE);
-        return view('profil')->with('data', $data1);
+        return view('profil');
     }
 
     public function manajemenUserPage()
@@ -105,11 +87,13 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
-    public function laporanPeminjamanPengembalianOperatorPage(){
+    public function laporanPeminjamanPengembalianOperatorPage()
+    {
         return view('laporan-peminjaman-pengembalian-operator');
     }
 
-    public function peminjamanUserPage(){
+    public function peminjamanUserPage()
+    {
         return view('peminjaman-user');
     }
 }
