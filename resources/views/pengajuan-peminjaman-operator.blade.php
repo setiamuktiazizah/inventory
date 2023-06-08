@@ -49,6 +49,7 @@
                                         <th>Surat</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
+                                    </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     <tr>
@@ -64,11 +65,9 @@
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
                                         <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>
-                                        <button onclick="window.location.href='{{ route('ubah-status') }}'" class="btn btn-info btn-sm">                                                 <span class="icon text-white-50">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-edit"></i>
-                                            </span>
-                                        <span class="text">Edit</span></button>
+                                            <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -83,11 +82,9 @@
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
                                         <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>
-                                        <button onclick="window.location.href='{{ route('ubah-status') }}'" class="btn btn-info btn-sm">                                                 <span class="icon text-white-50">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-edit"></i>
-                                            </span>
-                                            <span class="text">Edit</span></button>
+                                            <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -102,19 +99,15 @@
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
                                         <td><div class="badge-pill badge-success">Done</span></div></td>
                                         <td>
-                                        <button onclick="window.location.href='{{ route('ubah-status') }}'" class="btn btn-info btn-sm">                                                 <span class="icon text-white-50">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-edit"></i>
-                                            </span>
-                                        <span class="text">Edit</span></button>
+                                            <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
                 </div>
                 <!-- /.container-fluid -->
 

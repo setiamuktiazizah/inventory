@@ -87,7 +87,7 @@
                                 </select>
                             </div>
                             <a href="/pengajuan-peminjaman-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                            Selesai <i class="fas text-white-50"></i></a></form>
+                            Simpan <i class="fas text-white-50"></i></a></form>
                         </div>
                     </div>
                 </div>
