@@ -30,14 +30,14 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Laporan Peminjaman Pengembalian Operator</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Laporan Peminjaman Pengembalian</h1>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-dark shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
                             <i class="fas fa-download fa-md text-white-50"></i> Unduh PDF</a>
-                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-dark shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-dark shadow-md" data-toggle="modal" data-target="#tambahModal">
                             <i class="fas fa-download fa-md text-white-50"></i> Unduh Excel</a>
-                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#periodeModal">
-                            <i class="fas fa-calendar fa-md text-white-50"></i> Periode</a>
+                        <!-- <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#periodeModal">
+                            <i class="fas fa-calendar fa-md text-white-50"></i> Periode</a> -->
                     </div>
                 </div>                
 
@@ -45,6 +45,8 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
+                        <a href="#" class="float-right d-none d-md-inline-block btn btn-md btn-primary shadow-md align-items-center justify-content-left mb-4" data-toggle="modal" data-target="#periodeModal">
+                            <i class="fas fa-calendar fa-md text-white-50"></i> Periode</a>
                             <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center">
                                     <tr>

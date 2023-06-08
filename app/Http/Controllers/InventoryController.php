@@ -98,6 +98,10 @@ class InventoryController extends Controller
         return view('peminjaman-user');
     }
 
+    public function dashboardPage(){
+        return view('dashboard');
+    }
+
     public function pengajuanPeminjamanPage()
     {
         return view('pengajuan-peminjaman-operator');

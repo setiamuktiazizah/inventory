@@ -7,9 +7,11 @@ use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\Api\RegisterController;
-use App\Http\Controllers\Api\LoginController;
+// use App\Http\Controllers\Api\RegisterController;
+// use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\api\v1\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 use Illuminate\Http\Request;
 
@@ -43,6 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/data-barang', [ItemController::class, 'index']);
 
+    Route::get('/login', [LoginController::class, 'showLoginForm']);
+    Route::post('/login', [LoginController::class, 'validateLogin']);
+  
+  
     Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 
     Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
@@ -73,5 +79,9 @@ Route::group(['middleware' => ['auth']], function () {
 //Route::get('/login', [InventoryController::class, 'loginPage']);
 
 Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+
+Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+
+Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
 Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
