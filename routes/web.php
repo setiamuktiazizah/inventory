@@ -45,8 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/data-barang', [ItemController::class, 'index']);
 
-    Route::get('/login', [LoginController::class, 'showLoginForm']);
-    Route::post('/login', [LoginController::class, 'validateLogin']);
+    // Route::get('/login', [LoginController::class, 'showLoginForm']);
+    // Route::post('/login', [LoginController::class, 'validateLogin']);
   
   
     Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
