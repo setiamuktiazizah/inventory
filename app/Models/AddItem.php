@@ -15,6 +15,8 @@ class AddItem extends Model
 {
     use HasFactory;
 
+    public $timestamps = true;
+
     protected $fillable = [
         'id_category',
         'date',
@@ -24,6 +26,7 @@ class AddItem extends Model
         'price',
         'cause',
         'created_by',
+        'barcode'
     ];
 
     // public function user(): BelongsTo
@@ -68,16 +71,21 @@ class AddItem extends Model
         ]);
     }
 
-    
-    public function created_by(): BelongsTo
+
+    public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function updated_by(): BelongsTo
+    public function editor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
+
+    // public function updated_by(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'updated_by');
+    // }
 }
 
 // ====== Create ======
