@@ -38,7 +38,7 @@ class ReduceItem extends Model
         ]);
     }
 
-    
+
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');

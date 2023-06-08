@@ -97,14 +97,24 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    
-    public function created_by(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
+
+    // public function created_by(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'created_by');
+    // }
 
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function create_add_items(): HasMany
+    {
+        return $this->hasMany(AddItem::class, 'created_by');
+    }
+
+    public function edit_add_items(): HasMany
+    {
+        return $this->hasMany(AddItem::class, 'edited_by');
     }
 }

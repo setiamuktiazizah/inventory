@@ -13,7 +13,12 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
+<<<<<<< HEAD
+        "php-open-source-saver/jwt-auth": "1.4.2",
+        "yajra/laravel-datatables-oracle": "^10.4"
+=======
         "php-open-source-saver/jwt-auth": "1.4.2"
+>>>>>>> 369c14fbd90f1d90ca7de82074d71312a578890a
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

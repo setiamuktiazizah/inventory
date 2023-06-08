@@ -7,6 +7,7 @@ use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
+
 // use App\Http\Controllers\Api\RegisterController;
 // use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\api\v1\UserController;
@@ -26,6 +27,11 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('additem', [
+  
+  
+  Controller::class, 'index']);
+
 Route::get('/', [InventoryController::class, 'index']);
 
 Auth::routes();
@@ -39,7 +45,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard-operator', [InventoryController::class, 'dashboardOperatorPage']);
 
+
     Route::get('/dashboard-peminjam', [InventoryController::class, 'dashboardPeminjamPage']);
+
+    Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
+    Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
+    Route::get('/pengadaan-barang/{addItem}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
+    Route::post('/pengadaan-barang/{addItem}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
+// Route::resource('/addItem', [AddItemController::class]);
+
 
     Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanPengembalianPage']);
 
@@ -49,7 +63,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::post('/login', [LoginController::class, 'validateLogin']);
   
   
-    Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
+//     Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 
     Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
@@ -84,4 +98,7 @@ Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage'
 
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
+
 Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
+
+
