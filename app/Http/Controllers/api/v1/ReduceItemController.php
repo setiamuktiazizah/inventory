@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\ReduceItem;
 use App\Models\Item;
+use App\Models\AddItem;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -25,6 +26,8 @@ class ReduceItemController extends Controller
 
 
         $reduceItems = ReduceItem::latest()->get();
+        $addItems = AddItem::all();
+        $categories = Category::all();
 
         // return response([
         //     'success' => true,
@@ -32,9 +35,7 @@ class ReduceItemController extends Controller
         //     'data' => $reduceItems
         // ], 200);
 
-        return view('pengurangan-barang', ['reduceItems' => $reduceItems]);
-
-
+        return view('pengurangan-barang', ['reduceItems' => $reduceItems, 'addItems' => $addItems]);
     }
 
     /**

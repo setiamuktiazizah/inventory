@@ -68,22 +68,22 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data_add as $add)
+                                    @foreach($data_addItems as $addItem)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
-                                        <td>{{$add->date}} </td>
-                                        <td>{{$add->category->name}} </td>
-                                        <td>{{$add->name}} </td>
-                                        <td>{{$add->brand}} </td>
-                                        <td>{{$add->quantity}} </td>
-                                        <td>{{$add->price}} </td>
-                                        <td>{{$add->cause}} </td>
-                                        <td>admin</td>
-                                        {{-- <td>{{$add->user->name}} </td> --}}
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
+                                        <td>{{$addItem->date}} </td>
+                                        <td>{{$addItem->category->name}} </td>
+                                        <td>{{$addItem->name}} </td>
+                                        <td>{{$addItem->brand}} </td>
+                                        <td>{{$addItem->quantity}} </td>
+                                        <td>{{$addItem->price}} </td>
+                                        <td>{{$addItem->cause}} </td>
+                                        <td>{{$addItem->creator->name}} </td>
+                                        <td><a href="{{url('/pengadaan-barang/'.$addItem->id)}} " class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal" data-id="{{ $addItem->id }}">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
                                     @endforeach
+
                                     {{-- @foreach ($data_add as $add)
                                     <tr>
 
@@ -388,61 +388,69 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="user">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('pengadaan-barang.store') }}">
+                        @csrf
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
-                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                    placeholder="Kategori"> -->
-                                    <input class="form-control form-control-sm" list="category" name="category" id="category">
-                                    <datalist id="category">
-                                        <option value="Aset">
-                                        <option value="Bolpen">
+                                    <input class="form-control form-control-sm" list="categories" name="id_category" id="category">
+                                    <datalist id="categories" value=" ">
+                                        @foreach ($data_categories as $category)
+                                            <option value="{{$category->id}}" >{{$category->name}} </option>
+                                        @endforeach
                                     </datalist>
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
-                                <input class="form-control form-control-sm" list="item" name="item" id="item">
-                                <datalist id="item">
-                                    <option value="Laptop">
-                                    <option value="Bolpen">
-                                    <option value="LCD">
-                                </datalist>
+                                <input type="text" name="name" class="form-control" value="" id="name">
+                                @error('name')
+                                    <p class="invalid-feedback d-block">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Merk</h6>
-                                <input class="form-control form-control-sm" list="brand" name="brand" id="brand">
+                                <input type="text" name="brand" class="form-control" value="" id="brand">
+                                {{-- <input class="form-control form-control-sm" list="brand" name="brand" id="brand">
                                 <datalist id="brand">
                                     <option value="ASUS">
                                     <option value="Snowman">
                                     <option value="Olaf">
-                                </datalist>
+                                </datalist> --}}
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
+                            {{-- <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
                                 <input class="form-control form-control-sm" list="units" name="unit" id="unit">
-                                <datalist id="units">
+                                <datalist id="units" value=" ">
                                     <option value="rim">
                                     <option value="pak">
                                     <option value="unit">
-                                </datalist>
-                            </div>
+                                </datalist> --}}
+                                    {{-- @foreach ($data_itemUnits as $itemUnit)
+                                        <option value="{{$itemUnit->id}}" >{{$itemUnit->name}} </option>
+                                    @endforeach --}}
+                            {{-- </div> --}}
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" />
+                                @error('quantity')
+                                    <p class="invalid-feedback d-block">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="price" class="form-control form-control-sm" name="price" />
                             </div>
+                            @error('price')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
                                 <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
+                                    <input type="date" class="form-control form-control-sm" name="date" />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -457,19 +465,30 @@
                                 </datalist>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="col-sm-4">
+                            <h6 class="h6 text-blue-100 mb-1">Barcode</h6>
+                            <input min="1" type="number" id="barcode" class="form-control form-control-sm" name="barcode"/>
+                        </div>
+                        @error('barcode')
+                            <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
+                        {{-- <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Admin</h6>
                             <input class="form-control form-control-sm" list="users" name="user" id="user">
                             <datalist id="users">
                                 <option value="Alwi">
                                 <option value="Bayu">
                             </datalist>
-                        </div>
-                    </form>
+                        </div> --}}
+                    
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-primary">Simpan</a>
+                    {{-- <a class="btn btn-primary">Simpan</a> --}}
+                    <section>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </section>
                 </div>
+            </form>
             </div>
         </div>
     </div>
@@ -480,32 +499,32 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pengadaan Barang</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Pengadaan Barang</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="user">
+                    <form method="post" enctype="multipart/form-data" action="{{url('/pengadaan-barang/'.$addItem->id.'/store')}}" class="user">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" name="id" value="id">
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
-                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                    placeholder="Kategori"> -->
-                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
-                                    <datalist id="categories">
-                                        <option value="Aset">
-                                        <option value="Bolpen">
-                                    </datalist>
+                                <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                <datalist id="categories" value="{{$addItem->category->id}} ">
+                                    @foreach ($data_categories as $category)
+                                        <option value="{{$category->id}}" >{{$category->name}} </option>
+                                    @endforeach
+                                </datalist>
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
-                                <input class="form-control form-control-sm" list="items" name="item" id="item">
-                                <datalist id="items">
-                                    <option value="Laptop">
-                                    <option value="Bolpen">
-                                    <option value="LCD">
-                                </datalist>
+                                <input type="text" name="name" class="form-control" value="{{ old('name', $addItem->name)}}" id="name">
+                                @error('name')
+                                    <p class="invalid-feedback d-block">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Merk</h6>
@@ -518,7 +537,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
+                            {{-- <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
                                 <input class="form-control form-control-sm" list="units" name="unit" id="unit">
                                 <datalist id="units">
@@ -526,10 +545,10 @@
                                     <option value="pak">
                                     <option value="unit">
                                 </datalist>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" value="{{ old('quantity', $addItem->quantity)}}" />
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
@@ -563,11 +582,12 @@
                                 <option value="Bayu">
                             </datalist>
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <a class="btn btn-primary">Simpan</a>
                 </div>
+            </form>
             </div>
         </div>
     </div>

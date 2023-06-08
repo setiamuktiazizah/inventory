@@ -75,75 +75,7 @@
                                         <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
-                                    @endforeach
-                                    {{-- @foreach ($data_add as $add)
-                                    <tr>
-
-                                        <td>1</td>
-                                        <td>02-05-2023</td>
-                                        <td>Aset</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>5.600.000</td>
-                                        <td>Baru</td>
-                                        <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>02-05-2023</td>
-                                        <td>Aset</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>5.600.000</td>
-                                        <td>Baru</td>
-                                        <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>02-05-2023</td>
-                                        <td>Aset</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>5.600.000</td>
-                                        <td>Baru</td>
-                                        <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>02-05-2023</td>
-                                        <td>Aset</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>5.600.000</td>
-                                        <td>Baru</td>
-                                        <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>02-05-2023</td>
-                                        <td>Aset</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>5.600.000</td>
-                                        <td>Baru</td>
-                                        <td>Nina Aidha</td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr>
-
+                                    @endforeach  
                                 </tbody>
                             </table>
                         </div>
@@ -368,6 +300,7 @@
         </div>
     </div> --}}
 
+
     <!-- Tambah Data Pengurangan Barang Modal-->
     <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -384,30 +317,29 @@
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
-                                <!-- <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                    placeholder="Kategori"> -->
-                                    <input class="form-control form-control-sm" list="category" name="category" id="category">
-                                    <datalist id="category">
-                                        <option value="Aset">
-                                        <option value="Bolpen">
+                                    <input class="form-control form-control-sm" list="categories" name="category" id="category">
+                                    <datalist id="categories" value="">
+                                        {{-- @foreach ($data_categories as $category)
+                                            <option value="{{$category->id}}" >{{$category->name}} </option>
+                                        @endforeach --}}
                                     </datalist>
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Barang</h6>
-                                <input class="form-control form-control-sm" list="item" name="item" id="item">
-                                <datalist id="item">
-                                    <option value="Laptop">
-                                    <option value="Bolpen">
-                                    <option value="LCD">
+                                <input class="form-control form-control-sm" list="items" name="item" id="item">
+                                <datalist id="items">
+                                    {{-- @foreach ($addItems as $addItem)
+                                            <option value="{{$addItem->id}}" >{{$addItem->name}} </option>
+                                    @endforeach --}}
                                 </datalist>
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Merk</h6>
-                                <input class="form-control form-control-sm" list="brand" name="brand" id="brand">
-                                <datalist id="brand">
-                                    <option value="ASUS">
-                                    <option value="Snowman">
-                                    <option value="Olaf">
+                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
+                                <datalist id="items">
+                                    {{-- @foreach ($addItems as $addItem)
+                                            <option value="{{$addItem->id}}" >{{$addItem->brand}} </option>
+                                    @endforeach --}}
                                 </datalist>
                             </div>
                         </div>
@@ -415,11 +347,14 @@
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
                                 <input class="form-control form-control-sm" list="units" name="unit" id="unit">
-                                <datalist id="units">
+                                <datalist id="units" value=" ">
                                     <option value="rim">
                                     <option value="pak">
                                     <option value="unit">
                                 </datalist>
+                                    {{-- @foreach ($data_itemUnits as $itemUnit)
+                                        <option value="{{$itemUnit->id}}" >{{$itemUnit->name}} </option>
+                                    @endforeach --}}
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
@@ -449,14 +384,14 @@
                                 </datalist>
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Admin</h6>
                             <input class="form-control form-control-sm" list="users" name="user" id="user">
                             <datalist id="users">
                                 <option value="Alwi">
                                 <option value="Bayu">
                             </datalist>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
                 <div class="modal-footer">
