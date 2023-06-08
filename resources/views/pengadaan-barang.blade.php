@@ -31,8 +31,21 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Pengadaan Barang</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <div class="float-right d-none d-md-inline-block mr-4 dropdown">
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-download fa-md text-secondary-50"></i> Export
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-pdf fa-fw mr-2 text-gray-400"></i>PDF</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
+                            </div>
+                        </div>
+                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                            <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
                         <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                    </div>
                 </div>            
 
                 <!-- DataTales Example -->
@@ -65,7 +78,8 @@
                                         <td>{{$add->quantity}} </td>
                                         <td>{{$add->price}} </td>
                                         <td>{{$add->cause}} </td>
-                                        <td>{{$add->user->name}} </td>
+                                        <td>admin</td>
+                                        {{-- <td>{{$add->user->name}} </td> --}}
                                         <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
