@@ -23,7 +23,7 @@ class UserController extends Controller
         //     'message' => 'List Record User',
         //     'data' => $users
         // ], 200);
-        return view('manajemen-user', ['users' => $users]);
+        return view('manajemen-user', ['data_user' => $users]);
     }
 
     /**
@@ -44,21 +44,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'no_hp' => 'required',
-            'no_credential' => 'required',
-            'id_role' => 'required',
-        ];
+        // $rules = [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'no_hp' => 'required',
+        //     'no_credential' => 'required',
+        //     'id_role' => 'required',
+        // ];
 
-        $validatedRequest = $request->validate($rules);
-        $user = User::create($validatedRequest);
+        // $validatedRequest = $request->validate($rules);
+        // $user = User::create($validatedRequest);
 
-        return response()->json([
-            'data' => $user
-        ]);
+        // return response()->json([
+        //     'data' => $user
+        // ]);
     }
 
     /**
@@ -90,9 +90,13 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return response()->json([
+            'data' => $user
+        ]);
     }
 
     /**
@@ -102,26 +106,51 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+
+    public function update(Request $request)
     {
-        $rules = [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'no_hp' => 'required',
-            'no_credential' => 'required',
-            'id_role' => 'required',
-        ];
+        User::updateOrCreate(
+            [
+                'name' => $request->name,
+            ],
+            [
+                'email' => $request->email,
+            ],
+            [
+                'password' => $request->password,
+            ],
+            [
+                'no_hp' => $request->no_hp,
+            ],
+            [
+                'no_credential' => $request->no_credential,
+            ],
+            ['id_role' => $request->id_role,],
+        );
 
-        $validatedRequest = $request->validate($rules);
-
-        $updatedUser = User::where('id', $user->id)
-            ->update($validatedRequest);
-
-        return response()->json([
-            'data' =>  $updatedUser
-        ]);
+        return response()->json(['success' => true]);
     }
+
+    // public function update(Request $request, User $user)
+    // {
+    //     $rules = [
+    //         'name' => 'required',
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //         'no_hp' => 'required',
+    //         'no_credential' => 'required',
+    //         'id_role' => 'required',
+    //     ];
+
+    //     $validatedRequest = $request->validate($rules);
+
+    //     $updatedUser = User::where('id', $user->id)
+    //         ->update($validatedRequest);
+
+    //     return response()->json([
+    //         'data' =>  $updatedUser
+    //     ]);
+    // }
 
     /**
      * Remove the specified resource from storage.

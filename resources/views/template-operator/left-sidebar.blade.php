@@ -99,7 +99,7 @@
 
 <!-- Nav Item - Akun -->
 <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="/profil">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Akun</span></a>
 </li>

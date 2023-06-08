@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Cookie;
 
 class InventoryController extends Controller
 {
@@ -14,9 +19,7 @@ class InventoryController extends Controller
 
     public function dashboardAdminPage()
     {
-        // $name = auth()->guard('api')->user()->name;
-        $name = "John Doe";
-        return view('dashboard-admin')->with('name', $name);
+        return view('dashboard-admin');
     }
 
     public function loginPage()
@@ -41,6 +44,7 @@ class InventoryController extends Controller
 
     public function dataBarangPage()
     {
+
         return view('data-barang');
     }
 
@@ -83,7 +87,7 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
-
+  
     public function laporanPeminjamanPengembalianOperatorPage()
     {
         return view('laporan-peminjaman-pengembalian-operator');
