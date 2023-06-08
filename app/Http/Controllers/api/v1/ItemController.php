@@ -16,14 +16,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::latest()->get();
-        return view('data-barang')->with('data', $items);
-        // $itemUnits = Item::latest()->get();
-        // return response([
-        //     'success' => true,
-        //     'message' => 'List Record Item',
-        //     'data' => $itemUnits
-        // ], 200);
+        $items = Item::where('is_empty', false)->get();
+        return view('data-barang')->with('data_items', $items);
     }
 
     /**
@@ -31,14 +25,16 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        // if(!Gate::allows(['admin'])){
-        //     abort(403);
-        // }
+    // public function create()
+    // {
+    //     // if(!Gate::allows(['admin'])){ 
+    //     //     abort(403);
+    //     // }
 
-        return "Item_create";
-    }
+    //     return "Item_create";
+    // }
+    // ====> Automatically created everytime AddItem successfully created
+
 
     /**
      * Store a newly created resource in storage.
@@ -46,25 +42,25 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $rules = [
-            'barcode' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
-            'condition' => 'required',
-            'id_add_item' => 'required',
-            'id_category' => 'required',
-        ];
+    // public function store(Request $request)
+    // {
+    //     $rules = [
+    //         'barcode' => 'required',
+    //         'name' => 'required',
+    //         'brand' => 'required',
+    //         'quantity' => 'required',
+    //         'condition' => 'required',
+    //         'id_add_item' => 'required',
+    //         'id_category' => 'required',
+    //     ];
 
-        $validatedRequest = $request->validate($rules);
-        $item = Item::create($validatedRequest);
+    //     $validatedRequest = $request->validate($rules);
+    //     $item = Item::create($validatedRequest);
 
-        return response()->json([
-            'data' => $item
-        ]);
-    }
+    //     return response()->json([
+    //         'data' => $item
+    //     ]);
+    // }
 
     /**
      * Display the specified resource.
@@ -74,19 +70,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        if ($item) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Detail Item!',
-                'data'    => $item
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Data Tidak Ditemukan!',
-                'data'    => ''
-            ], 401);
-        }
+        return $item;
     }
 
     /**
@@ -115,13 +99,9 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         $rules = [
-            'barcode' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required',
+            // 'quantity' => 'required', // berkurang otomatis lewat ReduceItem
             'condition' => 'required',
-            'id_add_item' => 'required',
-            'id_category' => 'required',
+            // 'id_add_item' => 'required', // sensitive
         ];
 
         $validatedRequest = $request->validate($rules);
@@ -129,9 +109,7 @@ class ItemController extends Controller
         $updatedItem = Item::where('id', $item->id)
             ->update($validatedRequest);
 
-        return response()->json([
-            'data' =>  $updatedItem
-        ]);
+        return $updatedItem;
     }
 
     /**
@@ -140,13 +118,14 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
-    {
-        // if(!Gate::allows(['admin'])){
-        //     abort(403);
-        // }
+    // public function destroy(Item $item)
+    // {
+    //     // if(!Gate::allows(['admin'])){
+    //     //     abort(403);
+    //     // }
 
-        $item->delete();
-        return "Item_destroy";
-    }
+    //     $item->delete();
+    //     return "Item_destroy";
+    // }
+    // =====> Undestroyable
 }

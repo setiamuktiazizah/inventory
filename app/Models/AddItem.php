@@ -26,10 +26,10 @@ class AddItem extends Model
         'created_by',
     ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'created_by');
-    }
+    // public function user(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'created_by');
+    // }
 
     public function category(): BelongsTo
     {
@@ -38,7 +38,7 @@ class AddItem extends Model
 
     public function item(): HasOne
     {
-        return $this->hasOne(Item::class);
+        return $this->hasOne(Item::class, 'id_add_item');
     }
 
     public static function customCreate(
@@ -49,6 +49,7 @@ class AddItem extends Model
         $quantity,
         $price,
         $cause,
+        $barcode
         // $created_by,
         // $created_at
     ) {
@@ -60,10 +61,22 @@ class AddItem extends Model
             'quantity' => $quantity,
             'price' => $price,
             'cause' => $cause,
+            'barcode' => $barcode,
 
             'created_at' => '2023-05-05 02:57:03',
             'created_by' => 1,
         ]);
+    }
+
+    
+    public function created_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updated_by(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
 

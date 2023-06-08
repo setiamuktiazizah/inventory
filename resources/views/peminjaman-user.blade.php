@@ -43,7 +43,7 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Nama Barang</th>
+                                        <th>Barang</th>
                                         <th>Merk</th>
                                         <th>Jumlah</th>
                                         <th>Tgl Pinjam</th>
