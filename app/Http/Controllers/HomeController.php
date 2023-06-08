@@ -32,6 +32,6 @@ class HomeController extends Controller
         // } else {
         //     return redirect('/dashboard-peminjam');
         // }
-        return redirect('/dashboard');
+        return redirect ('/dashboard');
     }
 }
