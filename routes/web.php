@@ -5,9 +5,11 @@ use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\Api\RegisterController;
-use App\Http\Controllers\Api\LoginController;
+// use App\Http\Controllers\Api\RegisterController;
+// use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\api\v1\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 use Illuminate\Http\Request;
 
@@ -39,8 +41,8 @@ Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('peng
 Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
 
-Route::get('/login', [LoginController::class, 'loginPage']);
-Route::post('/login', [LoginController::class, '__invoke']);
+Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::post('/login', [LoginController::class, 'validateLogin']);
 
 //Route::get('/login', [InventoryController::class, 'loginPage']);
 
@@ -71,3 +73,5 @@ Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanP
 Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);
 
 Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+
+Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
