@@ -71,3 +71,5 @@ Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanP
 Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);
 
 Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+
+Route::get('/pengajuan-peminjaman', [InventoryController::class, 'pengajuanPeminjamanPage']);
