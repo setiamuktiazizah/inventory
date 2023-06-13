@@ -95,7 +95,10 @@ class LoanRequestController extends Controller
         //     abort(403);
         // }
 
-        return "LoanRequest_edit";
+        // return $loanRequest;
+        return view('ubah-status', [
+            'data_loanRequest' => $loanRequest
+        ]);
     }
 
     /**
@@ -107,21 +110,22 @@ class LoanRequestController extends Controller
      */
     public function update(Request $request, LoanRequest $loanRequest)
     {
+        // return $request;
         $rules = [
-            'loan_date' => 'required',
-            'max_return_date' => 'required',
+            // 'loan_date' => 'required',
+            // 'max_return_date' => 'required',
             // 'path_file_cdn' => 'required',
             'status' => 'required',
             // 'note' => 'required',
             // 'id_item' => 'required',
         ];
-
+        
         $validatedRequest = $request->validate($rules);
 
         $updatedLoanRequest = LoanRequest::where('id', $loanRequest->id)
             ->update($validatedRequest);
 
-        return $updatedLoanRequest;
+        return redirect("/pengajuan-peminjaman-operator");
     }
 
     /**

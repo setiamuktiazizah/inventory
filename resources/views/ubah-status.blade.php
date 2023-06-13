@@ -34,34 +34,25 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form>
                             <fieldset disabled>
                               <div class="form-row justify-content-between mt-4">
-                                <div class="form-group col-6 col-md-4">
+                                <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Barang</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Laptop">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->item->add_item->name }}">
                                 </div>
-                                <div class="form-group col-6 col-md-4">
+                                <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="ASUS">
-                                </div>
-                                <div class="form-group col-6 col-md-4">
-                                    <label for="disabledTextInput" class="font-weight-bold text-primary">Jumlah</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="1">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->item->add_item->brand }}">
                                 </div>
                               </div>
                               <div class="form-row justify-content-between mt-4">
-                                <div class="form-group col-6 col-md-4">
+                                <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Tanggal Pinjam</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="23/03/2023">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->loan_date}}">
                                 </div>
-                                <div class="form-group col-6 col-md-4">
+                                <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Maks. Tanggal Pinjam</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="26/03/2023">
-                                </div>
-                                <div class="form-group col-6 col-md-4">
-                                    <label for="disabledTextInput" class="font-weight-bold text-primary">Tanggal Kembali</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="25/03/2023">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->max_return_date}}">
                                 </div>
                               </div>
                               <div class="form-row justify-content-between">
@@ -70,24 +61,30 @@
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Untuk keperluan kelas</textarea>
                                 </div>
                               </div>
-                              <div class="form-group-col-md-8 mt-4">
+                            <div class="form-group-col-md-8 mt-4">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Surat</label>
                                 <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="pathfile">
                             </div>
                             </fieldset>
-                            <div class="form-group mt-4">
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Status</label>
-                                <select class="custom-select">
-                                    <option selected>Pilih</option>
-                                    <option value="1">Acc</option>
-                                    <option value="2">Active</option>
-                                    <option value="3">Done</option>
-                                    <option value="4">Done Late</option>
-                                    <option value="5">Pending</option>
-                                </select>
-                            </div>
-                            <a href="/pengajuan-peminjaman-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                            Simpan <i class="fas text-white-50"></i></a></form>
+
+                            <form action="/ubah-status-update/{{ $data_loanRequest->id }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group mt-4">
+                                    <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Status</label>
+                                    <select class="custom-select" name="status" id="status">
+                                        <option value="pending" selected>Pilih</option>
+                                        <option value="accepted">Terima</option>
+                                        <option value="rejected">Tolak</option>
+                                    </select>
+                                </div>
+                                <button name="submit" type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                    Simpan
+                                    <i class="fas text-white-50"></i>
+                                </button>
+                                {{-- <a href="/pengajuan-peminjaman-operator" class=>
+                                Simpan <i class="fas text-white-50"></i></a> --}}
+                            </form>
                         </div>
                     </div>
                 </div>

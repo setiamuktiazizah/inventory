@@ -75,7 +75,7 @@
                                             <td>{{ $loanRequest->note }}</td>
                                             
                                             <td>
-                                                <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                <a href="/ubah-status/{{ $loanRequest->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                                     <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
                                             </td>
                                         </tr>    
