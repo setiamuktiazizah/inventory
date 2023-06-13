@@ -31,13 +31,13 @@
 
                 <!-- CARD ALL USER TYPE-->
                         <!-- Card Barang -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            <a href="/data-barang">Barang</a></div>
+                                            <a href="/data-barang" class="stretched-link">Barang</a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -93,16 +93,48 @@
                         <!-- Card Penminjaman Barang -->
                         @can('operator')
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="position-relative card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="/pengajuan-peminjaman" class="stretched-link">Ajuan Peminjaman</a></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="/peminjaman-pengembalian">Peminjaman Barang</a></div>
+                                            <a href="/peminjaman-operator" class="stretched-link">Peminjaman</a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                            <i class="fas fa-inbox fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="/pengembalian-operator" class="stretched-link">Pengembalian</a></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sign-out-alt fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

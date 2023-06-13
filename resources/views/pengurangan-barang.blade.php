@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-admin.head')
+    @include ('template-dashboard.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-admin.left-sidebar')
+        @include ('template-dashboard.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-admin.navbar')
+                @include ('template-dashboard.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -31,8 +31,21 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Pengurangan Barang</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <div class="float-right d-none d-md-inline-block mr-4 dropdown">
+                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-download fa-md text-secondary-50"></i> Export
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-pdf fa-fw mr-2 text-gray-400"></i>PDF</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
+                            </div>
+                        </div>
+                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                            <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
                         <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                    </div>
                 </div>            
 
                 <!-- DataTales Example -->
@@ -68,6 +81,225 @@
                         </div>
                     </div>
                 </div>
+
+
+            {{-- <!-- The Modal Input -->
+            <div class="modal fade" id="tambahModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Input Data Pengurangan Barang</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" required></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <form method="post" enctype="multipart/form-data" action="">
+                  @csrf
+                  <div class="form-group">
+                      <label>Tanggal</label>
+                      <input type="date" name="date" class="form-control @error('date')
+                          is-invalid
+                      @enderror">
+                  </div>
+                  @error('date')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" name="name" class="form-control @error('name')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('name')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text" name="brand" class="form-control @error('brand')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('brand')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="text" name="quantity" class="form-control @error('quantity')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('quantity')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Harga</label>
+                    <input type="text" name="price" class="form-control @error('price')
+                        is-invalid
+                    @enderror">
+                  </div>
+                  @error('price')
+                      <p class="invalid-feedback d-block">{{ $message }}</p>
+                  @enderror
+
+                  <div class="form-group">
+                    <label>Jenis Pengadaan</label>
+                    <select class="form-select" id="cause" name="cause" value="">
+                        <option value="baru">Barang Baru</option>
+                        <option value="donasi">Donasi</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="categorys" class="form-label">Jenis Kategori</label>
+                    <select class="form-select" id="category" name="category_id">
+                        @foreach ($data_category as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <section>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </section>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+            
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            @include ('template-dashboard.footer')
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+   
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <section>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              </section>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    
+              <!-- The Modal Edit -->
+        <div class="modal fade" id="updateModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Data Pengurangan Barang</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form method="POST" action="" id="form_edit" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="form-group">
+                        <label>Tanggal</label>
+                        <input type="text" name="date" class="form-control" value="{{$add->date}} " id="date">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" name="name" class="form-control" value="{{$add->name}} " id="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" name="brand" class="form-control" value="{{$add->brand}} " id="brand">
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="text" name="quantity" class="form-control" value="{{$add->quantity}} " id="quantity">
+                    </div>
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="text" name="price" class="form-control" value="{{$add->price}} " id="price">
+                    </div>
+                    <div class="form-group">
+                        <label>Jenis Pengadaan</label>
+                        <select class="form-select" id="cause" name="cause" value="{{$add->cause}} ">
+                            <option value="baru">Barang Baru</option>
+                            <option value="donasi">Donasi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <select class="form-select" name="id_category" value="{{$add->category->id}} " >
+                            @foreach ($data_category as $category)
+                                <option value="{{ $category->id }}"> {{$category->name}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div>
+
+            </form>
+            </div>
+          </div>
+        </div>
+
+    
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold text-primary" id="exampleModalLabel" >Keluar?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+                    <a class="btn btn-primary" href="/">Keluar</a>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
 
     <!-- Tambah Data Pengurangan Barang Modal-->
     <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -266,7 +498,7 @@
             </div>
         </div>
     </div>
-@include ('template-admin.script')
+@include ('template-dashboard.script')
 </body>
 
 </html>
