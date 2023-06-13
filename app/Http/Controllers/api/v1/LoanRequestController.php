@@ -17,11 +17,25 @@ class LoanRequestController extends Controller
     public function index()
     {
         //TODO: buat peminjam cuman nunjukin request yg dia buat
+        if(!Gate::allows(['user'])){
 
-        $loanRequests = LoanRequest::latest()->get();
-        return view('permohonan-peminjaman-barang', [
-            'data_loanRequests' => $loanRequests
-        ]);
+
+            $loanRequests = LoanRequest::latest()->get();
+
+            return view('pengajuan-peminjaman-operator', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        } else if(!Gate::allows(['admin', 'operator'])){
+            $user_id = auth()->user()->id;
+            $loanRequests = LoanRequest::where('created_by', $user_id)->get();
+
+            return view('permohonan-user', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        }
+        
+
+        return "error";
     }
 
     /**

@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\api\v1\ItemController;
 use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
+use App\Http\Controllers\api\v1\LoanRequestController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
 
@@ -98,7 +100,7 @@ Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage'
 
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
-Route::get('/pengajuan-peminjaman-operator', [InventoryController::class, 'pengajuanPeminjamanPage']);
+Route::get('/pengajuan-peminjaman-operator', [LoanRequestController::class, 'index']);
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 
