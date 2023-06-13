@@ -94,7 +94,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 //Route::get('/login', [InventoryController::class, 'loginPage']);
 
-Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+Route::get('/peminjaman-user', [LoanRequestController::class, 'index']);
 
 // Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 

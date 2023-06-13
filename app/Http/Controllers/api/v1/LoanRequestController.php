@@ -29,7 +29,7 @@ class LoanRequestController extends Controller
             $user_id = auth()->user()->id;
             $loanRequests = LoanRequest::where('created_by', $user_id)->get();
 
-            return view('permohonan-user', [
+            return view('peminjaman-user', [
                 'data_loanRequests' => $loanRequests
             ]);
         }
