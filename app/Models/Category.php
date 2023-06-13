@@ -38,6 +38,11 @@ class Category extends Model
         return $this->hasMany(AddItem::class, 'id_category');
     }
 
+    public function reduce_items(): HasMany
+    {
+        return $this->hasMany(ReduceItem::class, 'id_category');
+    }
+
     public static function customCreate($id_super_category, $id_item_unit, $name, $quantity)
     {
         return Category::create([
@@ -51,7 +56,7 @@ class Category extends Model
         ]);
     }
 
-    
+
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
