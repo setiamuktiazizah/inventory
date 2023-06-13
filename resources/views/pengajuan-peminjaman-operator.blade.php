@@ -74,10 +74,14 @@
 
                                             <td>{{ $loanRequest->note }}</td>
                                             
-                                            <td>
-                                                <a href="/ubah-status/{{ $loanRequest->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                                    <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
-                                            </td>
+                                            @if($loanRequest->status == "pending")
+                                                <td>
+                                                    <a href="/ubah-status/{{ $loanRequest->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
                                         </tr>    
                                     @endforeach
                                     {{-- <tr>
