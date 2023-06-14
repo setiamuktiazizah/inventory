@@ -145,5 +145,29 @@ class InventoryController extends Controller
     public function editAkunPage()
     {
         return view('edit-akun');
+
+    public function manajemenUserEditPage()
+    {
+        return view('manajemen-user-edit');
+    }
+    
+    public function tambahPengadaanPage()
+    {
+        return view('tambah-pengadaan');
+    }
+
+    public function editPengadaanPage()
+    {
+        return view('edit-pengadaan');
+    }
+
+    public function tambahPenguranganPage()
+    {
+        return view('tambah-pengurangan');
+    }
+
+    public function editPenguranganPage()
+    {
+        return view('edit-pengurangan');
     }
 }
