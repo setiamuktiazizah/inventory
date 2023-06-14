@@ -91,7 +91,7 @@
 
                 <!-- CARD OPERATOR  -->
                         <!-- Card Penminjaman Barang -->
-                        @can('operator')
+                        @canany (['operator', 'admin']) 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="position-relative card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endcan
+                        @endcanany 
 
                 <!-- CARD USER -->
                         <!-- Card Pengajuan Peminjaman Barang -->

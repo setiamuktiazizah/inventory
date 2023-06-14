@@ -43,7 +43,7 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
+                        <a href="/tambah-pengadaan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
                     </div>
                 </div>            
@@ -79,7 +79,7 @@
                                         <td>{{$addItem->price}} </td>
                                         <td>{{$addItem->cause}} </td>
                                         <td>{{$addItem->creator->name}} </td>
-                                        <td><a href="{{url('/pengadaan-barang/'.$addItem->id)}} " class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal" data-id="{{ $addItem->id }}">
+                                        <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
                                     @endforeach

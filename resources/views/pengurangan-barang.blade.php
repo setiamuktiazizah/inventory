@@ -43,7 +43,7 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
+                        <a href="/tambah-pengurangan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
                     </div>
                 </div>            
@@ -72,7 +72,7 @@
                                         <td>{{$reduceItem->quantity}} </td>
                                         <td>{{$reduceItem->cause}} </td>
                                         {{-- <td>{{$reduceItem->quantity}} </td> --}}
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
+                                        <td><a href="/edit-pengurangan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
                                     </tr>
                                     @endforeach  
