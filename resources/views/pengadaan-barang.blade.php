@@ -41,7 +41,7 @@
                                 <a class="dropdown-item" href="#"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
                             </div>
                         </div>
-                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#tambahModal">
+                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
                         <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
@@ -591,6 +591,48 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Periode -->
+       <div class="modal fade" id="periodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Pilih Periode</h5>
+                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+               </div>
+               <div class="modal-body">
+                   <form class="user">
+                       <div class="form-group row justify-content-between mb-lg-4">
+                           <div class="col-sm-4">
+                               <h6 class="h6 text-blue-100 mb-1">Tanggal Awal</h6>
+                               <div class="input-group date" id="datetimepicker1">
+                                   <input type="date" class="form-control form-control-sm" />
+                                   <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-calendar"></span>
+                                   </span>
+                               </div>
+                           </div>
+                           <div class="col-sm-4">
+                               <h6 class="h6 text-blue-100 mb-1">Tanggal Akhir</h6>
+                               <div class="input-group date" id="datetimepicker1">
+                                   <input type="date" class="form-control form-control-sm" />
+                                   <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-calendar"></span>
+                                   </span>
+                               </div>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+               <div class="modal-footer">
+                   <a class="btn btn-primary">Simpan</a>
+               </div>
+           </div>
+       </div>
+   </div>
 @include ('template-dashboard.script')
 </body>
 
