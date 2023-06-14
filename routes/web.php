@@ -118,3 +118,5 @@ Route::get('/peminjaman-3', [InventoryController::class, 'peminjaman3Page']);
 Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
 
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
+
+Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);

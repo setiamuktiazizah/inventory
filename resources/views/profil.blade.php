@@ -51,8 +51,9 @@
                                     </tr>
                                     <tr>
                                         <td>No. HP</td>
-                                        <td>{{ Auth::user()->no_hp }} <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
+                                        <td>{{ Auth::user()->no_hp }} 
+                                            <a href="/edit-akun" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -101,7 +102,7 @@
         </div>
     </div>
 
-    <!-- Edit Akun Modal-->
+    {{-- <!-- Edit Akun Modal-->
     <div class="modal fade" id="editAkunModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -141,7 +142,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @include ('template-dashboard.script')
 </body>
 
