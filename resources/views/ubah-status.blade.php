@@ -73,7 +73,7 @@
                                 <div class="form-group mt-4">
                                     <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Status</label>
                                     <select class="custom-select" name="status" id="status">
-                                        <option value="pending" selected>Pilih</option>
+                                        <option value="" selected>Pilih</option>
                                         <option value="accepted">Terima</option>
                                         <option value="rejected">Tolak</option>
                                     </select>

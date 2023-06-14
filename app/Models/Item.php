@@ -12,6 +12,9 @@ use App\Models\LoanRequest;
 use App\Models\AddItem;
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
+
+
 class Item extends Model
 {
     use HasFactory;
@@ -64,5 +67,16 @@ class Item extends Model
     public function updated_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public static function getAvailableItems($id_category)
+    {
+        return DB::table('items')
+            ->join('add_items', 'items.id_add_item', '=', 'add_items.id')
+            ->select('items.*', 'add_items.name', 'add_items.brand')
+            ->where('items.is_empty', false)
+            ->where('add_items.id_category', $id_category)
+            ->get();
+
     }
 }

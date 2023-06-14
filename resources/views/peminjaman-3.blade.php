@@ -33,21 +33,33 @@
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Detail Peminjaman</h1>
                 </div>            
 
+                {{-- @dd($previous_request) --}}
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Maksimal Tanggal Kembali</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Catatan</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <a href="/peminjaman-user" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                        <form action="/peminjaman-end" method="post" enctype="multipart/form-data">
+                            @csrf
+                            {{-- <input hidden type="text" id="id_category" name="id_category" value="{{ $previous_request->id_category }}"> --}}
+                            <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
+                            <input hidden type="text" id="id_item" name="id_item" value="{{ $previous_request->id_item }}">
+
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Maksimal Tanggal Kembali</label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-md" id="max_return_date" name="max_return_date"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Catatan</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note"></textarea>
+                        
+                            <button name="submit" type="submit" class="btn btn-success mb-5">
+                                Ajukan Peminjaman <i class="fas fa-arrow-right fa-md text-white-50"></i>
+                            </button>
+                        </form>
+                        {{-- <a href="/peminjaman-user" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
                              Ajukan Peminjaman    <i class="fas fa-arrow-right fa-md text-white-50"></i></a>
-                            
+                             --}}
                     </div>
                 </div>
                 </div>

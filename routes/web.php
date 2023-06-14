@@ -112,11 +112,13 @@ Route::put('/ubah-status-update/{loanRequest}', [LoanRequestController::class, '
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 // Route::get('/page', [PageController::class, 'index'])->name('page-name');
 
-Route::get('/peminjaman-1', [InventoryController::class, 'peminjaman1Page']);
+Route::get('/peminjaman-1', [LoanRequestController::class, 'createStep1']);
 
-Route::get('/peminjaman-2', [InventoryController::class, 'peminjaman2Page']);
+Route::post('/peminjaman-2', [LoanRequestController::class, 'createStep2']);
 
-Route::get('/peminjaman-3', [InventoryController::class, 'peminjaman3Page']);
+Route::post('/peminjaman-3', [LoanRequestController::class, 'createStep3']);
+
+Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
 Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
 

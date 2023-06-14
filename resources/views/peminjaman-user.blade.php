@@ -57,7 +57,7 @@
                                 <tbody class="text-center">
                                     @foreach($data_loanRequests as $loanRequest)
                                         <tr>
-                                            <td>{{ $loop->index }}</td>
+                                            <td>{{ $loop->index +1 }}</td>
                                             <td>{{ $loanRequest->item->add_item->name }}</td>
                                             <td>{{ $loanRequest->item->add_item->brand }}</td>
                                             <td>{{ $loanRequest->loan_date }}</td>
@@ -77,20 +77,6 @@
                                             <td>{{ $loanRequest->note }}</td>   
                                         </tr>
                                     @endforeach
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td>  
-                                        <td><a href="/peminjaman-edit" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
