@@ -43,8 +43,8 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPengadaanModal">
-                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                        @can ('admin') <a href="/tambah-pengurangan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a> @endcan
                     </div>
                 </div>            
 
@@ -60,7 +60,7 @@
                                         <th>Nama</th>
                                         <th>Jumlah</th>
                                         <th>Alasan</th>
-                                        <th>Aksi</th>
+                                        @can ('admin') <th>Aksi</th> @endcan
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -72,8 +72,8 @@
                                         <td>{{$reduceItem->quantity}} </td>
                                         <td>{{$reduceItem->cause}} </td>
                                         {{-- <td>{{$reduceItem->quantity}} </td> --}}
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                        @can ('admin') <td><a href="/edit-pengurangan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> @endcan
                                     </tr>
                                     @endforeach  
                                 </tbody>
@@ -540,6 +540,30 @@
            </div>
        </div>
    </div>
+
+   <!-- Logout Modal-->
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title font-weight-bold text-primary" id="exampleModalLabel" >Keluar?</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">×</span>
+               </button>
+           </div>
+           <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
+           <div class="modal-footer">
+               <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+               <a class="btn btn-primary" onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">Keluar</a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+           </div>
+       </div>
+   </div>
+</div>
 @include ('template-dashboard.script')
 </body>
 
