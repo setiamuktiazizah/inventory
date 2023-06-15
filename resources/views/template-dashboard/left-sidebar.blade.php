@@ -31,9 +31,9 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
-<!-- ADMIN -->
+<!-- ADMIN DAN OPERATOR-->
 <!-- Nav Item - Pengadaan Barang -->
-@can('admin')
+@canany (['operator', 'admin']) 
 <li class="nav-item">
     <a class="nav-link" href="/pengadaan-barang">
         <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -53,20 +53,6 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
 
-<!-- Nav Item - Manajemen User -->
-<li class="nav-item">
-    <a class="nav-link" href="/manajemen-user">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Manajemen User</span></a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-@endcan
-
-<!-- OPERATOR  -->
-<!-- Nav Item - Peminjaman Barang -->
-@can('operator')
 <!-- Nav Item - Peminjaman Barang -->
 <li class="nav-item ">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
@@ -77,7 +63,7 @@
     <div id="collapsePages" class="collapse " aria-labelledby="headingPages"
         data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Update:</h6>
+            <h6 class="collapse-header">Menu:</h6>
             <a class="collapse-item" href="/pengajuan-peminjaman-operator">Ajuan Peminjaman</a>
             <a class="collapse-item" href="/peminjaman-operator">Peminjaman</a>
             <a class="collapse-item" href="/pengembalian-operator">Pengembalian</a>
@@ -85,6 +71,20 @@
         </div>
     </div>
 </li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+@endcanany
+
+@can ('admin')
+<!-- Nav Item - Manajemen User -->
+<li class="nav-item">
+    <a class="nav-link" href="/manajemen-user">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Manajemen User</span></a>
+</li>
+
+<!-- Divider -->
 <hr class="sidebar-divider">
 @endcan
 

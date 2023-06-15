@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
@@ -109,26 +110,15 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        User::updateOrCreate(
-            [
-                'name' => $request->name,
-            ],
-            [
-                'email' => $request->email,
-            ],
-            [
-                'password' => $request->password,
-            ],
-            [
-                'no_hp' => $request->no_hp,
-            ],
-            [
-                'no_credential' => $request->no_credential,
-            ],
-            ['id_role' => $request->id_role,],
-        );
+        $email = Auth::user()->email;
+        $user = User::where('email', $email)->first();
 
-        return response()->json(['success' => true]);
+        if ($user != NULL) {
+            $user->update(['no_hp' => $request->no_hp]);
+        }
+
+
+        return redirect('/profil');
     }
 
     // public function update(Request $request, User $user)

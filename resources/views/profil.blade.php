@@ -83,6 +83,7 @@
     </a>
 
     <!-- Logout Modal-->
+    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -96,7 +97,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>
@@ -114,32 +119,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="user">
+                    <form class="user" action='/profil' method="POST">
+                        @csrf
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Nomor Induk</h6>
                             <input type="number" class="form-control form-control-user"
-                                id="inputNoInduk" readonly>
+                                id="inputNoInduk" readonly placeholder="{{Auth::user()->no_credential}}">
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Nama</h6>
                             <input type="text" class="form-control form-control-user"
-                                id="inputName" readonly>
+                                id="inputName" readonly placeholder="{{Auth::user()->name}}">
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">Email</h6>
                             <input type="email" class="form-control form-control-user"
-                                id="inputEmail" aria-describedby="emailHelp" readonly>
+                                id="inputEmail" aria-describedby="emailHelp" readonly placeholder="{{Auth::user()->email}}"> 
                         </div>
                         <div class="form-group">
                             <h6 class="h6 text-blue-100 mb-1">No HP</h6>
-                            <input type="tel" class="form-control form-control-user" id="inputPhone"
-                                            placeholder="08xxxxxxxxxx" pattern="[0][8][0-9]{10}">
+                            <input type="tel" class="form-control form-control-user" id="no_hp" name="no_hp"
+                                            placeholder="{{Auth::user()->no_hp}}" pattern="[0][8][0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary">Simpan</a>
-                </div>
+                
             </div>
         </div>
     </div> --}}

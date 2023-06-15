@@ -49,7 +49,7 @@
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -74,7 +74,7 @@
                                                 </span>
                                                 <span class="text">Hapus</span>
                                             </a> --}}
-                                        </td>
+                                        </td> 
                                     </tr>
                                     @endforeach
                                     {{-- <tr>
@@ -187,7 +187,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
