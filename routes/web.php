@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\api\v1\ItemController;
 use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
+use App\Http\Controllers\api\v1\LoanRequestController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
 
@@ -92,28 +94,31 @@ Route::group(['middleware' => ['auth']], function () {
 
 //Route::get('/login', [InventoryController::class, 'loginPage']);
 
-Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+Route::get('/peminjaman-user', [LoanRequestController::class, 'index']);
 
 // Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
-Route::get('/pengajuan-peminjaman-operator', [InventoryController::class, 'pengajuanPeminjamanPage']);
+Route::get('/pengajuan-peminjaman-operator', [LoanRequestController::class, 'index']);
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 
-Route::get('/ubah-status', [InventoryController::class, 'ubahStatusPage']);
+Route::get('/ubah-status/{loanRequest}', [LoanRequestController::class, 'edit']);
+Route::put('/ubah-status-update/{loanRequest}', [LoanRequestController::class, 'update']);
 
 Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 // Route::get('/page', [PageController::class, 'index'])->name('page-name');
 
-Route::get('/peminjaman-1', [InventoryController::class, 'peminjaman1Page']);
+Route::get('/peminjaman-1', [LoanRequestController::class, 'createStep1']);
 
-Route::get('/peminjaman-2', [InventoryController::class, 'peminjaman2Page']);
+Route::post('/peminjaman-2', [LoanRequestController::class, 'createStep2']);
 
-Route::get('/peminjaman-3', [InventoryController::class, 'peminjaman3Page']);
+Route::post('/peminjaman-3', [LoanRequestController::class, 'createStep3']);
+
+Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
 Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
 

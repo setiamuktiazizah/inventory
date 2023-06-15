@@ -41,18 +41,50 @@
                                         <th>No.</th>
                                         <th>Barang</th>
                                         <th>Merk</th>
-                                        <th>Jumlah</th>
+                                        {{-- <th>Jumlah</th> --}}
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
-                                        <th>Tgl Kembali</th>
-                                        <th>Note</th>
+                                        {{-- <th>Tgl Kembali</th> --}}
                                         <th>Surat</th>
                                         <th>Status</th>
+                                        <th>Note</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    <tr>
+                                    {{-- @dd($data_loanRequests[0]->item->add) --}}
+                                    @foreach($data_loanRequests as $loanRequest)
+                                        <tr>
+                                            <td>{{ $loop->index }}</td>
+                                            <td>{{ $loanRequest->item->add_item->name }}</td>
+                                            <td>{{ $loanRequest->item->add_item->brand }}</td>
+                                            <td>{{ $loanRequest->loan_date }}</td>
+                                            <td>{{ $loanRequest->max_return_date }}</td>
+                                            <td>{{ $loanRequest->pathfile }}</td>
+
+                                            @if($loanRequest->status == "pending")
+                                                <td><div class="badge-pill badge-warning">Pending</span></div></td>
+                                            @elseif($loanRequest->status == "accepted")
+                                                <td><div class="badge-pill badge-success">Accepted</span></div></td>
+                                            @elseif($loanRequest->status == "rejected")
+                                                <td><div class="badge-pill badge-danger">Rejected</span></div></td>
+                                            @else
+                                                error
+                                            @endif
+
+                                            <td>{{ $loanRequest->note }}</td>
+                                            
+                                            @if($loanRequest->status == "pending")
+                                                <td>
+                                                    <a href="/ubah-status/{{ $loanRequest->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
+                                        </tr>    
+                                    @endforeach
+                                    {{-- <tr>
                                         <td>1</td>
                                         <td>Laptop</td>
                                         <td>ASUS</td>
@@ -68,8 +100,8 @@
                                             <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                                 <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr> --}}
+                                    {{-- <tr>
                                         <td>2</td>
                                         <td>Laptop</td>
                                         <td>ASUS</td>
@@ -102,7 +134,7 @@
                                             <a href="/ubah-status" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                                 <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
@@ -143,7 +175,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>
