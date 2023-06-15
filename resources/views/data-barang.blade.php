@@ -134,9 +134,9 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
                     <a class="btn btn-primary" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Keluar</a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>

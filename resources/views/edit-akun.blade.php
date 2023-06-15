@@ -39,21 +39,21 @@
                               <div class="form-row">
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Nomor Induk</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="060600">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="000">
                                 </div>
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Lee Donghyeok">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="operator">
                                 </div>
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Email</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="haechanaceah@gmail.com">
+                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="operator@gmail.com">
                                 </div>
                               </div>
                             </fieldset>
                                 <div class="form-group mt-4">
                                     <label for="inputNomor" class="font-weight-bold text-primary">No. Hp</label>
-                                    <input type="text" id="inputNomor" class="form-control" placeholder="085161695648">
+                                    <input type="text" id="inputNomor" class="form-control" placeholder="000">
                                 </div>
                                 <a href="/profil" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
                                     Simpan <i class="fas text-white-50"></i></a></form>
