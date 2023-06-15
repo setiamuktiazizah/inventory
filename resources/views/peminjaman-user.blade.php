@@ -52,6 +52,7 @@
                                         <th>Surat</th>
                                         <th>Status</th>
                                         <th>Note</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -75,6 +76,14 @@
                                             @endif
 
                                             <td>{{ $loanRequest->note }}</td>   
+                                            <td>
+                                                <a href="/peminjaman-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-edit"></i>
+                                                    </span>
+                                                    <span class="text">Edit</span>
+                                                </a>
+                                            </td> 
                                         </tr>
                                     @endforeach
                                 </tbody>
