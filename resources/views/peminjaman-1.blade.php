@@ -36,23 +36,26 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Kategori</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Laptop</option>
-                                <option value="2">Bolpoin</option>
-                                <option value="3">Pensil</option>
+                        <form action="/peminjaman-2" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Kategori</label>
+                            <select class="custom-select" id="id_category" name="id_category">
+                                <option selected value="">Pilih</option>
+                                @foreach($data_categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>   
+                                @endforeach
                             </select>
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pinjam</label>
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pinjam</label>
                             <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" />
+                                <input type="date" class="form-control form-control-md" id="loan_date" name="loan_date" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
-                        <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                             Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a>
-                            
+                            <button name="submit" type="submit" class="btn btn-success mb-5">Selanjutnya</button>
+                            {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                 Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
+                        </form>
                     </div>
                 </div>
                 </div>
@@ -90,7 +93,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/login">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>

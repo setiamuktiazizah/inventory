@@ -34,6 +34,7 @@
                 </div>            
 
                 <!-- DataTales Example -->
+                {{-- @dd($available_items[0]) --}}
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -48,46 +49,39 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    <tr>
+                                    @foreach($available_items as $item)
+                                        <tr>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->brand }}</td>
+                                            <td>{{ $item->condition }}</td>
+                                            <td>
+                                                <form action="/peminjaman-3" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    {{-- <input hidden type="text" id="id_category" name="id_category" value="{{ $previous_request->id_category }}"> --}}
+                                                    <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
+                                                    <input hidden type="text" id="id_item" name="id_item" value="{{ $item->id }}">
+
+                                                    <button name="submit" type="submit" class="btn btn-success mb-5">
+                                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Selanjutnya
+                                                    </button>
+                                                    
+                                                </form>
+                                                {{-- <a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam
+                                                </a> --}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td>1</td>
                                         <td>Laptop Asus</td>
                                         <td>Asus</td>
                                         <td>Baik</td>
                                         <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                             <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Laptop Asus</td>
-                                        <td>Asus</td>
-                                        <td>Baik</td>
-                                        <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Laptop Asus</td>
-                                        <td>Asus</td>
-                                        <td>Baik</td>
-                                        <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Laptop Asus</td>
-                                        <td>Asus</td>
-                                        <td>Baik</td>
-                                        <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Laptop Asus</td>
-                                        <td>Asus</td>
-                                        <td>Baik</td>
-                                        <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr>
+                                    </tr> --}}
+
                                 </tbody>
                             </table>
                         </div>
@@ -129,7 +123,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/login">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>
