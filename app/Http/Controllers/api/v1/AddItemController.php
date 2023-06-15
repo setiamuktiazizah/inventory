@@ -134,14 +134,25 @@ class AddItemController extends Controller
      * @param  \App\Models\AddItem  $addItem
      * @return \Illuminate\Http\Response
      */
-    public function edit(AddItem $addItem)
+    public function edit($id)
     {
         //TODO: nunggu view edit addItem
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
+        // $addItem = AddItem::all();
+        $addItem = AddItem::findOrFail($id);
+        $category = Category::findOrFail($addItem->id_category);
+        $user = User::findOrFail($addItem->created_by);
 
-        return "AddItem_edit";
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail AddItem!',
+            'data'    => $addItem,
+            'data2'    => $category,
+            'data3'    => $user
+
+        ], 200);
     }
 
     /**

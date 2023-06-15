@@ -49,7 +49,7 @@
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -61,7 +61,7 @@
                                         <td>{{$user->role->name}} </td>
                                         <td>{{$user->no_hp}} </td>
                                         <td>{{$user->no_credential}} </td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal" data-id="$user->id" id="editUser">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
@@ -74,7 +74,7 @@
                                                 </span>
                                                 <span class="text">Hapus</span>
                                             </a> --}}
-                                        </td>
+                                        </td> 
                                     </tr>
                                     @endforeach
                                     {{-- <tr>

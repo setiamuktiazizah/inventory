@@ -4,6 +4,7 @@
 <head>
     <title>Sistem Inventori</title>
     @include ('template-admin.head')
+   
 </head>
 
 <body id="page-top">
@@ -65,9 +66,9 @@
                                         <td>{{$add->quantity}} </td>
                                         <td>{{$add->price}} </td>
                                         <td>{{$add->cause}} </td>
-                                        <td>{{$add->user->name}} </td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                        <td> Admin </td>
+                                        <td><button type="button" value={{$add->id}} class="btn btn-primary editbtn btn-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</button></td>  
                                     </tr>
                                     @endforeach
                                     {{-- @foreach ($data_add as $add)
@@ -362,8 +363,8 @@
         </div>
     </div> --}}
 
-    <!-- Tambah Data Pengadaan Barang Modal-->
-    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Edit Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -406,7 +407,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
+                            {{-- <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
                                 <input class="form-control form-control-sm" list="units" name="unit" id="unit">
                                 <datalist id="units">
@@ -414,7 +415,7 @@
                                     <option value="pak">
                                     <option value="unit">
                                 </datalist>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
                                 <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
@@ -460,8 +461,8 @@
         </div>
     </div>
     
-    <!-- Edit Data Pengadaan Barang Modal-->
-    <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Tambah Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -473,6 +474,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="user">
+                        <input type="hidden" name="add_id" id="add_id"/>
                         <div class="form-group row mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
@@ -504,7 +506,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
+                            {{-- <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
                                 <input class="form-control form-control-sm" list="units" name="unit" id="unit">
                                 <datalist id="units">
@@ -512,14 +514,14 @@
                                     <option value="pak">
                                     <option value="unit">
                                 </datalist>
-                            </div>
+                            </div> --}}
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="quantity" name="quantity" class="form-control form-control-sm" />
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="price" name="price" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
@@ -561,6 +563,34 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function(){
+        $(document).on('click','.editbtn',function(){
+            var add_id = $(this).val();
+            // alert(add_id);
+            $('#editPengadaanModal').modal('show');
+
+            $.ajax({
+                type : "GET",
+                url : "/pengadaan-barang/"+add_id,
+                success: function(response){
+                    $('#quantity').val(response.data.quantity)
+                    $('#category').val(response.data2.name)
+                    $('#item').val(response.data.name)
+                    $('#brand').val(response.data.brand)
+                    $('#price').val(response.data.price)
+                    $('#add').val(response.data.cause)
+                    $('#user').val(response.data3.name)
+                    
+                }
+
+
+            });
+        });
+    });
+
+ 
+</script>
 {{-- @push('scripts')
 <script type="text/javascript">
 $(document).ready(function () {
