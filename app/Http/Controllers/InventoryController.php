@@ -145,6 +145,7 @@ class InventoryController extends Controller
     public function editAkunPage()
     {
         return view('edit-akun');
+    }
 
     public function manajemenUserEditPage()
     {
