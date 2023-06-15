@@ -44,6 +44,7 @@
                                         <th>Merk</th>
                                         <th>Stok</th>
                                         <th>Kondisi</th>
+                                        <th>Edit</th>
                                 </thead>
                                 <tbody class="text-center">
                                     @foreach($data_items as $item)
@@ -57,6 +58,8 @@
                                             <div class="badge rounded-pill bg-success text-white">{{$item->condition}}</span></div>
                                             {{-- <mark class="bg-success">{{$item->condition}}</mark> --}}
                                         </td>
+                                        @canany (['operator', 'admin']) <td><a href="/edit-barang" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> @endcanany
                                     </tr>
                                     @endforeach
                                     {{-- <tr>

@@ -49,6 +49,7 @@
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
+                                        <th>Aksi</th>
                                         {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>

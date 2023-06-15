@@ -171,4 +171,9 @@ class InventoryController extends Controller
     {
         return view('edit-pengurangan');
     }
+
+    public function editBarangPage()
+    {
+        return view('edit-barang');
+    }
 }
