@@ -64,7 +64,7 @@
                                         <th>Status</th>
                                         <th>Note</th>
                                         <th>Aksi</th>
-                                        @endcan
+                                        {{-- @endcan --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
