@@ -49,7 +49,7 @@
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -74,7 +74,7 @@
                                                 </span>
                                                 <span class="text">Hapus</span>
                                             </a> --}}
-                                        </td>
+                                        </td> 
                                     </tr>
                                     @endforeach
                                     {{-- <tr>

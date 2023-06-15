@@ -3,7 +3,9 @@
 
 <head>
     <title>Sistem Inventori</title>
+
     @include ('template-dashboard.head')
+
 </head>
 
 <body id="page-top">
@@ -409,11 +411,8 @@
                                     <option value="rim">
                                     <option value="pak">
                                     <option value="unit">
-                                </datalist> --}}
-                                    {{-- @foreach ($data_itemUnits as $itemUnit)
-                                        <option value="{{$itemUnit->id}}" >{{$itemUnit->name}} </option>
-                                    @endforeach --}}
-                            {{-- </div> --}}
+                                </datalist>
+                            </div> --}}
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
                                 <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" />
@@ -476,8 +475,8 @@
         </div>
     </div>
     
-    <!-- Edit Data Pengadaan Barang Modal-->
-    <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Tambah Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -535,7 +534,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" class="form-control form-control-sm" />
+                                <input min="1" type="number" id="price" name="price" class="form-control form-control-sm" />
                             </div>
                         </div>
                         <div class="form-group row mb-lg-4">
@@ -644,6 +643,34 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function(){
+        $(document).on('click','.editbtn',function(){
+            var add_id = $(this).val();
+            // alert(add_id);
+            $('#editPengadaanModal').modal('show');
+
+            $.ajax({
+                type : "GET",
+                url : "/pengadaan-barang/"+add_id,
+                success: function(response){
+                    $('#quantity').val(response.data.quantity)
+                    $('#category').val(response.data2.name)
+                    $('#item').val(response.data.name)
+                    $('#brand').val(response.data.brand)
+                    $('#price').val(response.data.price)
+                    $('#add').val(response.data.cause)
+                    $('#user').val(response.data3.name)
+                    
+                }
+
+
+            });
+        });
+    });
+
+ 
+</script>
 {{-- @push('scripts')
 <script type="text/javascript">
 $(document).ready(function () {

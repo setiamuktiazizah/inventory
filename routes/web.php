@@ -61,15 +61,22 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/data-barang', [ItemController::class, 'index']);
 
+
     // Route::get('/login', [LoginController::class, 'showLoginForm']);
     // Route::post('/login', [LoginController::class, 'validateLogin']);
   
   
 //     Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 
+    Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
+    Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
+    Route::get('/pengadaan-barang/{addItem}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
+    Route::post('/pengadaan-barang/{addItem}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
     Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
     Route::get('/profil', [InventoryController::class, 'profilPage']);
+    Route::post('/profil', [UserController::class, 'update']);
+
 
     Route::get('/manajemen-user', [UserController::class, 'index']);
     Route::get('/manajemen-user/{id}/edit', 'UserController@update')->name('manajemen-user.update');
