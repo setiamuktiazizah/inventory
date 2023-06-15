@@ -45,8 +45,8 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                        <a href="/tambah-pengadaan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
-                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                        @can ('admin') <a href="/tambah-pengadaan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a> @endcan
                     </div>
                 </div>            
 
@@ -66,7 +66,9 @@
                                         <th>Harga</th>
                                         <th>Jenis Pengadaan</th>
                                         <th>Admin</th>
+                                        @can ('admin')
                                         <th>Aksi</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -81,8 +83,10 @@
                                         <td>{{$addItem->price}} </td>
                                         <td>{{$addItem->cause}} </td>
                                         <td>{{$addItem->creator->name}} </td>
+                                        @can ('admin')
                                         <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
+                                        @endcan 
                                     </tr>
                                     @endforeach
 
@@ -357,29 +361,8 @@
           </div>
         </div>
 
-    
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title font-weight-bold text-primary" id="exampleModalLabel" >Keluar?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Edit Data Pengadaan Barang Modal-->
-    <div class="modal fade" id="editPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Tambah Data Pengadaan Barang Modal-->
+    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -632,6 +615,30 @@
            </div>
        </div>
    </div>
+
+   <!-- Logout Modal-->
+   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h5 class="modal-title font-weight-bold text-primary" id="exampleModalLabel" >Keluar?</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">×</span>
+               </button>
+           </div>
+           <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
+           <div class="modal-footer">
+               <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+               <a class="btn btn-primary" onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">Keluar</a>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+           </div>
+       </div>
+   </div>
+</div>
 @include ('template-dashboard.script')
 </body>
 

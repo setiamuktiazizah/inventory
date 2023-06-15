@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-dashboard.head')
+    @include ('template-operator.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-dashboard.left-sidebar')
+        @include ('template-operator.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,29 +22,14 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-dashboard.navbar')
+                @include ('template-operator.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman Barang</h1>
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <div class="float-right d-none d-md-inline-block mr-4 dropdown">
-                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-download fa-md text-secondary-50"></i> Export
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#"><i class="fas fa-file-pdf fa-fw mr-2 text-gray-400"></i>PDF</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
-                            </div>
-                        </div>
-                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
-                            <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                    </div>
-                </div>  
+                <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman dan Pengembalian Barang</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -63,6 +48,7 @@
                                         <th>Note</th>
                                         <th>Surat</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                 </thead>
                                 <tbody class="text-center">
                                     <tr>
@@ -76,7 +62,14 @@
                                         <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-success text-white">Active</span></div></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td>
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Edit</span>
+                                            </a>
                                     </tr>
                                     <tr>
                                         <td>2</td>
@@ -89,7 +82,14 @@
                                         <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Late</span></div></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td>
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Edit</span>
+                                            </a>
                                     </tr>
                                     <tr>
                                         <td>3</td>
@@ -102,12 +102,21 @@
                                         <td>Untuk keperluan kelas</td>
                                         <td>pathfile</td>
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Late</span></div></td>
+                                        <td><div class="badge-pill badge-success">Done</span></div></td>
+                                        <td>
+                                        <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editPeminjamanPengembalianModal">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Edit</span>
+                                            </a>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -116,7 +125,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-dashboard.footer')
+            @include ('template-operator.footer')
             <!-- End of Footer -->
 
         </div>
@@ -247,48 +256,7 @@
         </div>
     </div>
 
-     <!-- Modal Periode -->
-     <div class="modal fade" id="periodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pilih Periode</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="user">
-                        <div class="form-group row justify-content-between mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Awal</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal Akhir</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary">Simpan</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-@include ('template-dashboard.script')
+@include ('template-operator.script')
 </body>
 
 </html>
