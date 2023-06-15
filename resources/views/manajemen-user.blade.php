@@ -29,12 +29,12 @@
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Manajemen User</h1>
-                    <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
+                    {{-- <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
                         <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data
-                    </a>
-                </div> --}}
+                    </a> --}}
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -62,7 +62,7 @@
                                         <td>{{$user->no_hp}} </td>
                                         <td>{{$user->no_credential}} </td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal" data-id="$user->id" id="editUser">
+                                            <a href="/manajemen-user-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>

@@ -91,7 +91,7 @@
 
                 <!-- CARD OPERATOR  -->
                         <!-- Card Penminjaman Barang -->
-                        @can('operator')
+                        @canany (['operator', 'admin']) 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="position-relative card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endcan
+                        @endcanany 
 
                 <!-- CARD USER -->
                         <!-- Card Pengajuan Peminjaman Barang -->
@@ -200,7 +200,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
