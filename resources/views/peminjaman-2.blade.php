@@ -62,8 +62,8 @@
                                                     <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
                                                     <input hidden type="text" id="id_item" name="id_item" value="{{ $item->id }}">
 
-                                                    <button name="submit" type="submit" class="btn btn-success mb-5">
-                                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Selanjutnya
+                                                    <button name="submit" type="submit" class="btn btn-info">
+                                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam
                                                     </button>
                                                     
                                                 </form>
