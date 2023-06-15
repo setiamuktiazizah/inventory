@@ -52,7 +52,7 @@
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
-                            <button name="submit" type="submit" class="btn btn-success mb-5">Selanjutnya</button>
+                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">Selanjutnya</button>
                             {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
                                  Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
                         </form>

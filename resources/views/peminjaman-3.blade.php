@@ -53,8 +53,8 @@
                             <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Catatan</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note"></textarea>
                         
-                            <button name="submit" type="submit" class="btn btn-success mb-5">
-                                Ajukan Peminjaman <i class="fas fa-arrow-right fa-md text-white-50"></i>
+                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">
+                                <i class="fas fa-plus fa-md text-white-50"></i>   Ajukan Peminjaman 
                             </button>
                         </form>
                         {{-- <a href="/peminjaman-user" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
