@@ -45,13 +45,8 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-<<<<<<< Updated upstream
                         @can ('admin') <a href="/tambah-pengadaan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a> @endcan
-=======
-                        <a href="/tambah-pengadaan" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
-                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
->>>>>>> Stashed changes
                     </div>
                 </div>            
 
@@ -88,15 +83,10 @@
                                         <td>{{$addItem->price}} </td>
                                         <td>{{$addItem->cause}} </td>
                                         <td>{{$addItem->creator->name}} </td>
-<<<<<<< Updated upstream
                                         @can ('admin')
                                         <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
                                         @endcan 
-=======
-                                        <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
->>>>>>> Stashed changes
                                     </tr>
                                     @endforeach
 
