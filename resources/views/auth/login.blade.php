@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,6 +115,7 @@
                                         <a class="small text-blue-100" href="/register">Belum punya akun? Daftar akun!</a>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

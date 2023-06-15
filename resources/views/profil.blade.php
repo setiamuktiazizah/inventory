@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-admin.head')
+    @include ('template-dashboard.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-admin.left-sidebar')
+        @include ('template-dashboard.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-admin.navbar')
+                @include ('template-dashboard.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -51,8 +51,9 @@
                                     </tr>
                                     <tr>
                                         <td>No. HP</td>
-                                        <td>{{ Auth::user()->no_hp }} <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"  data-toggle="modal" data-target="#editAkunModal">
-                                        <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
+                                        <td>{{ Auth::user()->no_hp }} 
+                                            <a href="/edit-akun" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -67,7 +68,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-admin.footer')
+            @include ('template-dashboard.footer')
             <!-- End of Footer -->
 
         </div>
@@ -95,13 +96,17 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Edit Akun Modal-->
+    {{-- <!-- Edit Akun Modal-->
     <div class="modal fade" id="editAkunModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -143,8 +148,8 @@
                 
             </div>
         </div>
-    </div>
-@include ('template-admin.script')
+    </div> --}}
+@include ('template-dashboard.script')
 </body>
 
 </html>
