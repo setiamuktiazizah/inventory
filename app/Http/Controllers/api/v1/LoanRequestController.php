@@ -4,8 +4,10 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\LoanRequest;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 class LoanRequestController extends Controller
 {
@@ -16,12 +18,26 @@ class LoanRequestController extends Controller
      */
     public function index()
     {
-        $loanRequests = LoanRequest::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record LoanRequest',
-            'data' => $loanRequests
-        ], 200);
+        //TODO: buat peminjam cuman nunjukin request yg dia buat
+        if(!Gate::allows(['user'])){
+
+
+            $loanRequests = LoanRequest::latest()->get();
+
+            return view('pengajuan-peminjaman-operator', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        } else if(!Gate::allows(['admin', 'operator'])){
+            $user_id = auth()->user()->id;
+            $loanRequests = LoanRequest::where('created_by', $user_id)->get();
+
+            return view('peminjaman-user', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        }
+        
+
+        return "error";
     }
 
     /**
@@ -29,9 +45,46 @@ class LoanRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createStep1()
     {
-        //
+        $categories = DB::table('categories')
+            ->join('super_categories', 'categories.id_super_category', '=', 'super_categories.id')
+            ->select("categories.*")
+            ->where('super_categories.is_loanable', true)
+            ->get();
+
+        // $users = DB::table('users')
+        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //     ->join('orders', 'users.id', '=', 'orders.user_id')
+        //     ->select('users.*', 'contacts.phone', 'orders.price')
+        //     ->get();
+        return view('peminjaman-1', [
+            'data_categories' => $categories
+        ]);
+    }
+
+    public function createStep2(Request $request)
+    {
+        $id_category = $request->id_category;
+        $available_items = Item::getAvailableItems($id_category);
+
+        //TODO: validation
+        return view('/peminjaman-2', [
+            'previous_request' => $request,
+            'available_items' => $available_items
+        ]);
+    }
+
+    public function createStep3(Request $request)
+    {
+        // $id_category = $request->id_category;
+        // $available_items = Item::getAvailableItems($id_category);
+
+        //TODO: validation
+        return view('/peminjaman-3', [
+            'previous_request' => $request,
+            // 'available_items' => $available_items
+        ]);
     }
 
     /**
@@ -46,17 +99,21 @@ class LoanRequestController extends Controller
             'loan_date' => 'required',
             'max_return_date' => 'required',
             // 'path_file_cdn' => 'required',
-            'status' => 'required',
-            // 'note' => 'required',
+            // 'status' => 'required',
+            'note' => 'required',
             'id_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
+        $validatedRequest['status'] = "pending";
+        $validatedRequest['created_by'] = auth()->user()->id;
+        // $validatedRequest['created_by'] = 1;
+
+        // return $validatedRequest;
+
         $loanRequest = LoanRequest::create($validatedRequest);
 
-        return response()->json([
-            'data' => $loanRequest
-        ]);
+        return redirect('/peminjaman-user');
     }
 
     /**
@@ -67,19 +124,7 @@ class LoanRequestController extends Controller
      */
     public function show(LoanRequest $loanRequest)
     {
-        if ($loanRequest) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Detail LoanRequest!',
-                'data'    => $loanRequest
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Data Tidak Ditemukan!',
-                'data'    => ''
-            ], 401);
-        }
+        return $loanRequest;
     }
 
     /**
@@ -95,7 +140,10 @@ class LoanRequestController extends Controller
         //     abort(403);
         // }
 
-        return "LoanRequest_edit";
+        // return $loanRequest;
+        return view('ubah-status', [
+            'data_loanRequest' => $loanRequest
+        ]);
     }
 
     /**
@@ -107,23 +155,22 @@ class LoanRequestController extends Controller
      */
     public function update(Request $request, LoanRequest $loanRequest)
     {
+        // return $request;
         $rules = [
-            'loan_date' => 'required',
-            'max_return_date' => 'required',
+            // 'loan_date' => 'required',
+            // 'max_return_date' => 'required',
             // 'path_file_cdn' => 'required',
             'status' => 'required',
             // 'note' => 'required',
-            'id_item' => 'required',
+            // 'id_item' => 'required',
         ];
-
+        
         $validatedRequest = $request->validate($rules);
 
         $updatedLoanRequest = LoanRequest::where('id', $loanRequest->id)
             ->update($validatedRequest);
 
-        return response()->json([
-            'data' =>  $updatedLoanRequest
-        ]);
+        return redirect("/pengajuan-peminjaman-operator");
     }
 
     /**

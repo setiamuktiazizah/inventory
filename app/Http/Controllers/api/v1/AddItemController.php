@@ -124,7 +124,9 @@ class AddItemController extends Controller
      * @param  \App\Models\AddItem  $addItem
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, AddItem $addItem)
+
+    public function edit(AddItem $addItem)
+
     {
         //TODO: nunggu view edit addItem
         // if(!Gate::allows(['admin'])){
@@ -132,7 +134,7 @@ class AddItemController extends Controller
         // }
         $category = Category::all();
         // $addItem = AddItem::all();
-        $addItem = AddItem::findOrFail($id);
+        // $addItem = AddItem::findOrFail($id);
         return view('pengadaan-barang', compact('addItem', 'category'));
     }
 

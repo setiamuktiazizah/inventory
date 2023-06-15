@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-peminjam.head')
+    @include ('template-dashboard.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-peminjam.left-sidebar')
+        @include ('template-dashboard.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,7 +22,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-peminjam.navbar')
+                @include ('template-dashboard.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -30,12 +30,14 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Peminjaman Barang</h1>
-                        <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahPeminjaman">
-                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Riwayat Peminjaman Barang Saya</h1>
+                        <a href="/peminjaman-1" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Ajukan Peminjaman</a>
                 </div>            
-
                 <!-- DataTales Example -->
+                @if( count($data_loanRequests) == 0)
+                    Anda belum pernah melakukan pengajuan peminjaman barang
+                @else
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -45,82 +47,43 @@
                                         <th>No.</th>
                                         <th>Barang</th>
                                         <th>Merk</th>
-                                        <th>Jumlah</th>
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
-                                        <th>Tgl Kembali</th>
-                                        <th>Note</th>
                                         <th>Surat</th>
                                         <th>Status</th>
+                                        <th>Note</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    <tr>
+                                    @foreach($data_loanRequests as $loanRequest)
+                                        <tr>
+                                            <td>{{ $loop->index +1 }}</td>
+                                            <td>{{ $loanRequest->item->add_item->name }}</td>
+                                            <td>{{ $loanRequest->item->add_item->brand }}</td>
+                                            <td>{{ $loanRequest->loan_date }}</td>
+                                            <td>{{ $loanRequest->max_return_date }}</td>
+                                            <td>{{ $loanRequest->pathfile }}</td>
 
-                                        <td>1</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td>  
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Proyektor</td>
-                                        <td>Epson</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Spidol</td>
-                                        <td>Snowman</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Speaker</td>
-                                        <td>Sony</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Laptop</td>
-                                        <td>Asus</td>
-                                        <td>1</td>
-                                        <td>25-05-2023</td>
-                                        <td>28-05-2023</td>
-                                        <td>27-05-2023</td>
-                                        <td>Kondisi baik</td>
-                                        <td>Path</td>
-                                        <td><div class="badge-pill badge-success">Done</span></div></td> 
-                                    </tr>
+                                            @if($loanRequest->status == "pending")
+                                                <td><div class="badge-pill badge-warning">Pending</span></div></td>
+                                            @elseif($loanRequest->status == "accepted")
+                                                <td><div class="badge-pill badge-success">Accepted</span></div></td>
+                                            @elseif($loanRequest->status == "rejected")
+                                                <td><div class="badge-pill badge-danger">Rejected</span></div></td>
+                                            @else
+                                                error
+                                            @endif
+
+                                            <td>{{ $loanRequest->note }}</td>   
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                @endif
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -128,7 +91,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-peminjam.footer')
+            @include ('template-dashboard.footer')
             <!-- End of Footer -->
 
         </div>
@@ -143,6 +106,7 @@
     </a>
     
     <!-- Logout Modal-->
+    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -156,7 +120,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/login">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
@@ -241,7 +209,7 @@
     </div>
 
     
-@include ('template-peminjam.script')
+@include ('template-dashboard.script')
 </body>
 
 </html>

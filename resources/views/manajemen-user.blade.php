@@ -3,7 +3,7 @@
 
 <head>
     <title>Sistem Inventori</title>
-    @include ('template-admin.head')
+    @include ('template-dashboard.head')
 </head>
 
 <body id="page-top">
@@ -12,7 +12,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include ('template-admin.left-sidebar')
+        @include ('template-dashboard.left-sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -22,19 +22,19 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include ('template-admin.navbar')
+                @include ('template-dashboard.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                 <!-- Page Heading -->
-                {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Manajemen User</h1>
-                    <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
+                    {{-- <a href="#" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md" data-toggle="modal" data-target="#tambahModal">
                         <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data
-                    </a>
-                </div> --}}
+                    </a> --}}
+                </div>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -49,7 +49,7 @@
                                         <th>Role</th>
                                         <th>No HP</th>
                                         <th>No Induk</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -62,7 +62,7 @@
                                         <td>{{$user->no_hp}} </td>
                                         <td>{{$user->no_credential}} </td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editModal" data-id="$user->id" id="editUser">
+                                            <a href="/manajemen-user-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -74,7 +74,7 @@
                                                 </span>
                                                 <span class="text">Hapus</span>
                                             </a> --}}
-                                        </td>
+                                        </td> 
                                     </tr>
                                     @endforeach
                                     {{-- <tr>
@@ -159,7 +159,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include ('template-admin.footer')
+            @include ('template-dashboard.footer')
             <!-- End of Footer -->
 
         </div>
@@ -187,7 +187,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
@@ -327,7 +331,7 @@
     </div>
 
     
-@include ('template-admin.script')
+@include ('template-dashboard.script')
 </body>
 
 </html>

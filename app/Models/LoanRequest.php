@@ -21,6 +21,7 @@ class LoanRequest extends Model
         'pathfile',
         'status',
         'note',
+        'created_by'
     ];
 
     public function item(): BelongsTo

@@ -31,13 +31,13 @@
 
                 <!-- CARD ALL USER TYPE-->
                         <!-- Card Barang -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            <a href="/data-barang">Barang</a></div>
+                                            <a href="/data-barang" class="stretched-link">Barang</a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -50,7 +50,7 @@
 
                 <!-- CARD ADMIN -->
                         <!-- Card Pengadaan Barang -->
-                        @can('admin')
+                        @canany (['operator', 'admin']) 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -67,10 +67,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endcan
 
-                        <!-- Card Pengurangan Barang -->
-                        @can('admin')
+                        <!-- Card Pengurangan Barang --> 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
@@ -87,28 +85,60 @@
                                 </div>
                             </div>
                         </div>
-                        @endcan
+                        @endcanany
 
                 <!-- CARD OPERATOR  -->
                         <!-- Card Penminjaman Barang -->
-                        @can('operator')
+                        @canany (['operator', 'admin']) 
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="position-relative card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="/peminjaman-pengembalian">Peminjaman Barang</a></div>
+                                            <a href="pengajuan-peminjaman-operator" class="stretched-link">Ajuan Peminjaman</a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endcan
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="/peminjaman-operator" class="stretched-link">Peminjaman</a></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-inbox fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="position-relative col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="/pengembalian-operator" class="stretched-link">Pengembalian</a></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sign-out-alt fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endcanany 
 
                 <!-- CARD USER -->
                         <!-- Card Pengajuan Peminjaman Barang -->
@@ -168,7 +198,11 @@
                 <div class="modal-body">Apakah Anda yakin ingin keluar?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                    <a class="btn btn-primary" href="/">Keluar</a>
+                    <a class="btn btn-primary" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">Keluar</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                 </div>
             </div>
         </div>
