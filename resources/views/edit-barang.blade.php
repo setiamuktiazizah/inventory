@@ -30,32 +30,40 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Pengajuan Peminjaman Barang</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Edit Kondisi Barang</h1>
                 </div>            
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form action="/peminjaman-2" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Kategori</label>
-                            <select class="custom-select" id="id_category" name="id_category">
-                                <option selected value="">Pilih</option>
-                                @foreach($data_categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>   
-                                @endforeach
-                            </select>
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pinjam</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" id="loan_date" name="loan_date" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                        <form class="user" id="userData" >
+                            <div class="form-group">
+                                <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
+                                <input type="text" class="form-control form-control-user"
+                                    id="name" name="name" readonly value="">
                             </div>
-                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">Selanjutnya</button>
-                            {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                                 Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
+                            <div class="form-group">
+                                <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
+                                <input type="text" class="form-control form-control-user"
+                                    id="brand" name="brand" readonly value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledTextInput" class="font-weight-bold text-primary">Stok</label>
+                                <input type="number" class="form-control form-control-user"
+                                    id="quantity" name="quantity" readonly value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kondisi</label>
+                                <select class="custom-select">
+                                    <option selected>Pilih</option>
+                                    <option value="1">Baik</option>
+                                    <option value="2">Kurang</option>
+                                </select>
+                            </div>
                         </form>
+                        <a href="/data-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                             Simpan</a>
+                            
                     </div>
                 </div>
                 </div>
@@ -95,9 +103,9 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
                     <a class="btn btn-primary" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Keluar</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

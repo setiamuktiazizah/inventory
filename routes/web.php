@@ -143,3 +143,5 @@ Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage'])
 Route::get('/tambah-pengurangan', [InventoryController::class, 'tambahPenguranganPage']);
 
 Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
+
+Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
