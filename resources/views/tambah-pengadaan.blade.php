@@ -35,41 +35,62 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-                    <div class="card-body">
+                  <form method="post" enctype="multipart/form-data" action="/pengadaan-barang">
+                  @csrf
+                  <div class="card-body">
                     <div class="row">
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kategori</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
+                            <select class="custom-select" name="id_category" id="id_category">
+                                {{-- <option selected>Pilih</option>
                                 <option value="1">Laptop</option>
                                 <option value="2">Bolpoin</option>
-                                <option value="3">Pensil</option>
+                                <option value="3">Pensil</option> --}}
+                                @foreach ($data_categories as $category)
+                                <option value="{{$category->id}}" >{{$category->name}} </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang</label>
-                        <input class="form-control" type="text" placeholder="Nama Barang">
+                        {{-- <input class="form-control" type="text" placeholder="Nama Barang"> --}}
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nama Barang">
+                        @error('name')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Merk</label>
-                        <input class="form-control" type="text" placeholder="Merk">
+                        {{-- <input class="form-control" type="text" placeholder="Merk"> --}}
+                        <input type="text" name="brand" class="form-control" id="brand" placeholder="Merk">
+                        @error('brand')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
                         </div>
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jumlah</label>
-                        <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" />
+                        {{-- <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" /> --}}
+                        <input min="1" type="number" name="quantity" class="form-control" id="quantity">
+                        @error('quantity')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Harga</label>
-                        <input min="1" type="number" id="price" class="form-control form-control-sm" name="price" />
+                        {{-- <input min="1" type="number" id="price" class="form-control form-control-sm" name="price" /> --}}
+                        <input min="1" type="number" name="price" class="form-control" id="price">
+                        @error('price')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
                         </div>
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
                             <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" />
+                                <input type="date" class="form-control form-control-md" name="date" id="date" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -79,21 +100,26 @@
                     <div class="row">
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jenis Pengadaan</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Barang Baru</option>
-                                <option value="2">Bolpoin</option>
+                            <select class="custom-select" name="cause" id="cause" >
+                                {{-- <option selected>Pilih</option> --}}
+                                <option value="Barang Baru">Barang Baru</option>
+                                <option value="Bolpoin">Bolpoin</option>
                             </select>
                         </div>
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Barcode</label>
-                        <input class="form-control" type="text" placeholder="Barcode">
+                        {{-- <input class="form-control" type="text" placeholder="Barcode"> --}}
+                        <input type="text" name="barcode" class="form-control" id="barcode" placeholder="Barcode">
+                        @error('barcode')
+                                <p class="invalid-feedback d-block">{{ $message }}</p>
+                        @enderror
                         </div>
                     </div>
-                        <a href="/pengadaan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                        Tambah Data</a>
-                            
-                    </div>
+                        {{-- <a href="/pengadaan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                        Tambah Data</a> --}}
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">Tambah Data</button>       
+                  </div>
+                  </form>
                 </div>
                 </div>
                 <!-- /.container-fluid -->

@@ -51,8 +51,14 @@ class AddItemController extends Controller
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
+        $user = User::all();
+        $category = Category::all();
+        $addItems = AddItem::latest()->get();
+        // $addItems = AddItem::all();
+        $item = Item::all();
+        $itemUnit = ItemUnit::all();
 
-        return "AddItem_create";
+        return view('tambah-pengadaan', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category, 'data_items' => $item, 'data_itemUnits' => $itemUnit]);
     }
 
     /**
@@ -80,7 +86,7 @@ class AddItemController extends Controller
             'price' => $request->price,
             'id_category' => $request->id_category,
             'barcode' => $request->barcode,
-            'cause' => $request->add,
+            'cause' => $request->cause,
             'created_by' => '1',
             'updated_by' => 'NULL',
             'created_at' => Carbon::now(),
