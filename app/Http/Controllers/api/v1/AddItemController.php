@@ -35,7 +35,7 @@ class AddItemController extends Controller
         //     'message' => 'List Record AddItem',
         //     'data' => $addItems
         // ], 200);
-        return view('pengadaan-barang', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category, 'data_items' => $item, 'data_itemUnits' => $itemUnit]);
+        return view('pengadaan-barang', ['addItems' => $addItems, 'users' => $user, 'categories' => $category, 'items' => $item, 'itemUnits' => $itemUnit]);
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
@@ -53,12 +53,12 @@ class AddItemController extends Controller
         // }
         $user = User::all();
         $category = Category::all();
-        $addItems = AddItem::latest()->get();
+        $addItem = AddItem::latest()->get();
         // $addItems = AddItem::all();
         $item = Item::all();
         $itemUnit = ItemUnit::all();
 
-        return view('tambah-pengadaan', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category, 'data_items' => $item, 'data_itemUnits' => $itemUnit]);
+        return view('tambah-pengadaan', ['addItems' => $addItem, 'users' => $user, 'categories' => $category, 'items' => $item, 'itemUnits' => $itemUnit]);
     }
 
     /**
@@ -138,10 +138,11 @@ class AddItemController extends Controller
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
-        $category = Category::all();
+        // $category = Category::all();
         // $addItem = AddItem::all();
         // $addItem = AddItem::findOrFail($id);
-        return view('pengadaan-barang', compact('addItem', 'category'));
+        $category = Category::all();
+        return view('edit-pengadaan', ['addItems' => $addItem, 'categories' => $category]);
     }
 
     /**
@@ -160,15 +161,24 @@ class AddItemController extends Controller
             'quantity' => 'required',
             'price' => 'required',
             'barcode' => 'required',
+            'id_category' => 'required',
+            'cause' => 'required'
         ]);
 
-        $validatedData['cause'] = $request->add;
-        $validatedData['created_by'] = $request->created_by;
-        $validatedData['updated_by'] = "1";
-        $validatedData['created_at'] = $request->created_at;
+        $validatedData['date'] = $request->date;
+        $validatedData['name'] = $request->name;
+        $validatedData['brand'] = $request->brand;
+        $validatedData['quantity'] = $request->quantity;
+        $validatedData['price'] = $request->price;
+        $validatedData['barcode'] = $request->barcode;
+        $validatedData['id_category'] = $request->id_category;
+        $validatedData['cause'] = $request->cause;
+        $validatedData['created_by'] = $addItem['created_by'];
+        $validatedData['updated_by'] = '1';
+        $validatedData['created_at'] = Carbon::now();
         $validatedData['updated_at'] = Carbon::now();
 
-        $addItem = AddItem::where('id', $addItem->id)
+        AddItem::where('id', $addItem->id)
             ->update($validatedData);
 
         return redirect('/pengadaan-barang');

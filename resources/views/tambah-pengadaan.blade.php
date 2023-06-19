@@ -103,7 +103,7 @@
                             <select class="custom-select" name="cause" id="cause" >
                                 {{-- <option selected>Pilih</option> --}}
                                 <option value="Barang Baru">Barang Baru</option>
-                                <option value="Bolpoin">Bolpoin</option>
+                                <option value="Tambah">Tambah</option>
                             </select>
                         </div>
                         <div class="col">

@@ -46,6 +46,8 @@ Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanP
 
 
 Route::get('/dashboard-peminjam', [InventoryController::class, 'dashboardPeminjamPage']);
+Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
+Route::get('/dashboard-operator', [InventoryController::class, 'dashboardOperatorPage']);
 
 Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 Route::get('/tambah-pengadaan', [AddItemController::class, 'create']);
@@ -72,8 +74,8 @@ Route::get('/data-barang', [ItemController::class, 'index']);
 
 Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
 Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
-Route::get('/pengadaan-barang/{addItem}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
-Route::post('/pengadaan-barang/{addItem}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
+Route::get('/pengadaan-barang/{addItems}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
+Route::post('/pengadaan-barang/{addItems}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
 Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
 Route::get('/profil', [InventoryController::class, 'profilPage']);
