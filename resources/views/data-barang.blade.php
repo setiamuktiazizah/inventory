@@ -44,7 +44,7 @@
                                         <th>Merk</th>
                                         <th>Stok</th>
                                         <th>Kondisi</th>
-                                        <th>Edit</th>
+                                        @canany (['operator', 'admin'])<th>Edit</th> @endcanany
                                 </thead>
                                 <tbody class="text-center">
                                     @foreach($data_items as $item)
