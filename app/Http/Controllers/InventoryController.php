@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Cookie;
 
+use App\Models\AddItem;
+
 class InventoryController extends Controller
 {
     public function index()
@@ -99,7 +101,11 @@ class InventoryController extends Controller
     }
 
     public function dashboardPage(){
-        return view('dashboard');
+        $jumlah_addItem = AddItem::latest()->get()->count();
+
+        return view('dashboard', [
+            'jumlah_addItem' => $jumlah_addItem
+        ]);
     }
 
     public function pengajuanPeminjamanPage()

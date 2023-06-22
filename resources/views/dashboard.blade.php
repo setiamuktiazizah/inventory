@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{{-- @dd($jumlah_addItem) --}}
 <head>
     <title>Sistem Inventori</title>
     @include ('template-dashboard.head')
@@ -58,7 +58,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <a href="/pengadaan-barang">Pengadaan Barang</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_addItem }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
