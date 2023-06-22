@@ -38,7 +38,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             <a href="/data-barang" class="stretched-link">Barang</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_item }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-pencil-ruler fa-2x text-gray-300"></i>
@@ -76,7 +76,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 <a href="/pengurangan-barang">Pengurangan Barang</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_reduceItem }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-minus-square fa-2x text-gray-300"></i>
@@ -97,7 +97,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <a href="pengajuan-peminjaman-operator" class="stretched-link">Ajuan Peminjaman</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_ajuan }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard fa-2x text-gray-300"></i>
@@ -113,7 +113,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <a href="/peminjaman-operator" class="stretched-link">Peminjaman</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_dipinjam }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-inbox fa-2x text-gray-300"></i>
@@ -129,7 +129,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <a href="/pengembalian-operator" class="stretched-link">Pengembalian</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $jumlah_kembali }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-sign-out-alt fa-2x text-gray-300"></i>
