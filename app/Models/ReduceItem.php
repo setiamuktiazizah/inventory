@@ -18,6 +18,9 @@ class ReduceItem extends Model
         'date',
         'quantity',
         'cause',
+        'created_by',
+        'updated_by',
+        'updated_at'
     ];
 
     public function item(): BelongsTo
