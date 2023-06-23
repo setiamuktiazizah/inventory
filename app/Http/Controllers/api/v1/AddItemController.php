@@ -58,7 +58,13 @@ class AddItemController extends Controller
         $item = Item::all();
         $itemUnit = ItemUnit::all();
 
-        return view('tambah-pengadaan', ['addItems' => $addItem, 'users' => $user, 'categories' => $category, 'items' => $item, 'itemUnits' => $itemUnit]);
+        return view('tambah-pengadaan', [
+            'addItems' => $addItem, 
+            'users' => $user, 
+            'data_categories' => $category, 
+            'items' => $item, 
+            'itemUnits' => $itemUnit
+        ]);
     }
 
     /**
