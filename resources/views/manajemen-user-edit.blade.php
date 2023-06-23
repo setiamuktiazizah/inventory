@@ -36,37 +36,40 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form class="user" id="userData" >
+                        <form class="user" id="userData" action="manajemen-user-edit" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" id="user_id" value="{{$data_user->id}}">
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="name" aria-describedby="emailHelp" name="name">
+                                    id="name" aria-describedby="emailHelp" name="name" value="{{$data_user->name}}">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Email</label>
                                 <input type="email" class="form-control form-control-user"
                                     id="email" name="email" aria-describedby="emailHelp"
-                                    readonly value="">
+                                    readonly value="{{$data_user->email}}">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Role</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="id_role" name="id_role" aria-describedby="emailHelp" readonly value="">
+                                    id="id_role" name="id_role" aria-describedby="emailHelp" readonly value="{{$data_user->id_role}}">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">No HP</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="no_hp" name="no_hp" aria-describedby="emailHelp" value=""
+                                    id="no_hp" name="no_hp" aria-describedby="emailHelp" value="{{$data_user->no_hp}}"
                                     readonly>
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">No Induk</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="no_credential" name="no_credential" value=""  readonly>
+                                    id="no_credential" name="no_credential" value="{{$data_user->no_credential}}"  readonly>
                             </div>
+                            <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                Simpan</a>
                         </form>
-                        <a href="/manajemen-user" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                             Simpan</a>
+                        
                             
                     </div>
                 </div>

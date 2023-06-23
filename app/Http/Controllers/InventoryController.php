@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Cookie;
@@ -87,7 +88,7 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
-  
+
     public function laporanPeminjamanPengembalianOperatorPage()
     {
         return view('laporan-peminjaman-pengembalian-operator');
@@ -98,7 +99,8 @@ class InventoryController extends Controller
         return view('peminjaman-user');
     }
 
-    public function dashboardPage(){
+    public function dashboardPage()
+    {
         return view('dashboard');
     }
 
@@ -147,11 +149,27 @@ class InventoryController extends Controller
         return view('edit-akun');
     }
 
+    public function editAkun(Request $request)
+    {
+        $this->validate($request, [
+            'no_hp' => 'required',
+        ]);
+
+        $email = Auth::user()->email;
+        $user = User::where('email', $email)->first();
+
+        if ($user != NULL) {
+            $user->update(['no_hp' => $request->no_hp]);
+        }
+
+        return redirect('/profil');
+    }
+
     public function manajemenUserEditPage()
     {
         return view('manajemen-user-edit');
     }
-    
+
     public function tambahPengadaanPage()
     {
         return view('tambah-pengadaan');

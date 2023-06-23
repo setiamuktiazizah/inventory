@@ -63,7 +63,7 @@
                                         <td>{{$user->no_hp}} </td>
                                         <td>{{$user->no_credential}} </td>
                                         <td>
-                                            <a href="/manajemen-user-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
+                                            <a href="/manajemen-user/{{$user->id}}" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
@@ -400,4 +400,5 @@ $('body').on('click', '#editModal', function (event) {
 
 }); 
 </script>
+
 @endpush 
