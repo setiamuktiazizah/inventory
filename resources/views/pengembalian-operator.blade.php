@@ -43,6 +43,8 @@
                         </div>
                         <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
                             <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
+                        @canany (['operator', 'admin'])  <a href="/tambah-pengembalian" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">
+                            <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a> @endcanany
                     </div>
                 </div>  
 
