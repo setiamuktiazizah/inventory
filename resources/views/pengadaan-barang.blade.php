@@ -72,7 +72,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data_addItems as $addItem)
+                                    @foreach($addItems as $addItem)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
                                         <td>{{$addItem->date}} </td>
@@ -84,7 +84,7 @@
                                         <td>{{$addItem->cause}} </td>
                                         <td>{{$addItem->creator->name}} </td>
                                         @can ('admin')
-                                        <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
+                                        <td><a href="{{url('/pengadaan-barang/'.$addItem->id)}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}" value="{{$addItem->id}}">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
                                         @endcan 
                                     </tr>
@@ -114,7 +114,7 @@
                                 <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
                                 <input class="form-control form-control-sm" list="categories" name="category" id="category">
                                 <datalist id="categories" value="{{$addItem->category->id}} ">
-                                    @foreach ($data_categories as $category)
+                                    @foreach ($categories as $category)
                                         <option value="{{$category->id}}" >{{$category->name}} </option>
                                     @endforeach
                                 </datalist>

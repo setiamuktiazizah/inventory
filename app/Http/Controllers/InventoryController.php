@@ -94,7 +94,7 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
-  
+
     public function laporanPeminjamanPengembalianOperatorPage()
     {
         return view('laporan-peminjaman-pengembalian-operator');
@@ -104,6 +104,7 @@ class InventoryController extends Controller
     {
         return view('peminjaman-user');
     }
+
 
     public function dashboardPage(){
         $jumlah_addItem = AddItem::latest()->get()->count();
@@ -121,7 +122,6 @@ class InventoryController extends Controller
             'jumlah_dipinjam' => $jumlah_dipinjam,
             'jumlah_kembali' => $jumlah_kembali
         ]);
-
     }
 
     public function pengajuanPeminjamanPage()
@@ -173,7 +173,7 @@ class InventoryController extends Controller
     {
         return view('manajemen-user-edit');
     }
-    
+
     public function tambahPengadaanPage()
     {
         return view('tambah-pengadaan');
@@ -197,5 +197,10 @@ class InventoryController extends Controller
     public function editBarangPage()
     {
         return view('edit-barang');
+    }
+
+    public function tambahPengembalianPage()
+    {
+        return view('tambah-pengembalian');
     }
 }

@@ -71,8 +71,8 @@
                                         <td>{{$reduceItem->item->add_item->name}} </td>
                                         <td>{{$reduceItem->quantity}} </td>
                                         <td>{{$reduceItem->cause}} </td>
-                                        <td><a href="/edit-pengurangan/{{ $reduceItem->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                        @can('admin') <td><a href="/edit-pengurangan/{{ $reduceItem->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> @endcan
                                     </tr>
                                     @endforeach  
                                 </tbody>
