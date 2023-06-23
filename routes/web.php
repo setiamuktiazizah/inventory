@@ -148,3 +148,5 @@ Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPag
 Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
 
 Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
