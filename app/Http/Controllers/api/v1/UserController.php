@@ -93,11 +93,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return response()->json([
-            'data' => $user
-        ]);
+        $user = User::findOrFail($id);
+        return view('manajemen-user-edit', ['data_user' => $user]);
     }
 
     /**
@@ -110,15 +107,19 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        $email = Auth::user()->email;
-        $user = User::where('email', $email)->first();
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $id = $request->user_id;
+        $user = User::where('id', $id)->first();
 
         if ($user != NULL) {
-            $user->update(['no_hp' => $request->no_hp]);
+            $user->update(['name' => $request->name]);
         }
 
 
-        return redirect('/profil');
+        return redirect('/manajemen-user');
     }
 
     // public function update(Request $request, User $user)

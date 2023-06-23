@@ -34,28 +34,29 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form>
+                        <form action="edit-akun" method="POST">
+                            @csrf
                             <fieldset disabled>
                               <div class="form-row">
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Nomor Induk</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="000">
+                                    <input type="text" id="disabledTextInput" class="form-control" value="{{Auth::user()->no_credential}}">
                                 </div>
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="operator">
+                                    <input type="text" id="disabledTextInput" class="form-control" value="{{Auth::user()->name}}">
                                 </div>
                                 <div class="form-group col-6 col-md-4">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Email</label>
-                                    <input type="text" id="disabledTextInput" class="form-control" placeholder="operator@gmail.com">
+                                    <input type="text" id="disabledTextInput" class="form-control" value="{{Auth::user()->email}}">
                                 </div>
                               </div>
                             </fieldset>
                                 <div class="form-group mt-4">
                                     <label for="inputNomor" class="font-weight-bold text-primary">No. Hp</label>
-                                    <input type="text" id="inputNomor" class="form-control" placeholder="000">
+                                    <input type="text" id="no_hp" name="no_hp" class="form-control" value="{{Auth::user()->no_hp}}">
                                 </div>
-                                <a href="/profil" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
                                     Simpan <i class="fas text-white-50"></i></a></form>
                               {{-- <div class="form-row justify-content-between">
                                 <div class="form-group col-6 col-md-4 mt-4">
