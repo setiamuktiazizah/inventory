@@ -139,9 +139,10 @@ Route::get('/tambah-pengadaan', [InventoryController::class, 'tambahPengadaanPag
 
 Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
 
-Route::get('/tambah-pengurangan', [InventoryController::class, 'tambahPenguranganPage']);
-
-Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
+Route::get('/tambah-pengurangan', [ReduceItemController::class, 'create']);
+Route::post('/simpan-pengurangan', [ReduceItemController::class, 'store']);
+Route::get('/edit-pengurangan/{reduceItem}', [ReduceItemController::class, 'edit']);
+Route::put('/update-pengurangan/{reduceItem}', [ReduceItemController::class, 'update']);
 
 Route::get('/edit-barang/{item}', [ItemController::class, 'edit']);
 Route::put('/update-barang/{item}', [ItemController::class, 'update']);
