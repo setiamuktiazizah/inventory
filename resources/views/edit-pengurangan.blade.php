@@ -34,63 +34,57 @@
                 </div>            
 
                 <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kategori</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Laptop</option>
-                                <option value="2">Bolpoin</option>
-                                <option value="3">Pensil</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang</label>
-                        <input class="form-control" type="text" placeholder="Nama Barang">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Merk</label>
-                        <input class="form-control" type="text" placeholder="Merk">
-                        </div>
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jumlah</label>
-                        <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" disabled />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+
+                <form action="/update-pengurangan/{{ $reduceItem->id }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang yang akan dikurangi</label>
+                                <select class="custom-select" name="id_item">
+                                    <option selected readonly>{{ $reduceItem->item->add_item->name }}</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Jumlah</label>
+                                <input class="form-control" type="number" readonly value="{{ $reduceItem->quantity }}">
                             </div>
                         </div>
-                        <div class="col">
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Barcode</label>
-                            <input class="form-control" type="text" placeholder="Barcode">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jenis Pengurangan</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Hilang</option>
-                                <option value="2">Rusak</option>
-                            </select>
-                        </div>
-                    </div>
-                        <a href="/pengurangan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                        Simpan</a>
+                        <div class="row">
+                            <div class="col">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
+                                    <div class="input-group date" id="datetimepicker1">
+                                        <input type="date" class="form-control form-control-md" readonly value="{{ $reduceItem->date }}"/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            <div class='col mu-3'>
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Alasan</label>
+                                <select class="custom-select" name="cause">
+                                    <option {{ $reduceItem->cause == "Penggunaan" ? 'selected' : '' }}  value="Penggunaan">Penggunaan</option>
+                                    <option {{ $reduceItem->cause == "Rusak" ? 'selected' : '' }} value="Rusak">Rusak</option>
+                                    <option {{ $reduceItem->cause == "Hilang" ? 'selected' : '' }} value="Hilang">Hilang</option>
+                                    <option {{ $reduceItem->cause == "Penggantian Pemilik" ? 'selected' : '' }} value="Penggantian Pemilik">Penggantian Pemilik</option>
+                                </select>
+                            </div>
+                            </div>
                             
+                        </div>
+                        
+                        <button type="submit" class="btn btn-info">
+                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Edit
+                        </button>
+                                
+                        </div>
                     </div>
-                </div>
+                    </div>
+                </form>
+
                 </div>
                 <!-- /.container-fluid -->
 

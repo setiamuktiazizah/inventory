@@ -36,33 +36,40 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form class="user" id="userData" >
+                        <form class="user" id="userData" method="post" enctype="multipart/form-data" action='/update-barang/{{ $item->id }}'>
+                            @csrf
+                            @method('put')
+
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="name" name="name" readonly value="">
+                                    id="name" readonly value="">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="brand" name="brand" readonly value="">
+                                    id="brand"  readonly value="">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Stok</label>
                                 <input type="number" class="form-control form-control-user"
-                                    id="quantity" name="quantity" readonly value="">
+                                    id="quantity"  readonly value="">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kondisi</label>
-                                <select class="custom-select">
-                                    <option selected>Pilih</option>
-                                    <option value="1">Baik</option>
-                                    <option value="2">Kurang</option>
+                                <select class="custom-select" name="condition">
+                                    {{-- <option selected>Pilih</option> --}}
+                                    <option {{ $item->condition == "Baik" ? 'selected' : '' }} value="Baik">Baik</option>
+                                    <option {{ $item->condition == "Rusak" ? 'selected' : '' }} value="Rusak">Rusak</option>
                                 </select>
                             </div>
+
+                            <button name="submit" type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                Simpan
+                            </button>
                         </form>
-                        <a href="/data-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                             Simpan</a>
+                        {{-- <a href="/data-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                             Simpan</a> --}}
                             
                     </div>
                 </div>
