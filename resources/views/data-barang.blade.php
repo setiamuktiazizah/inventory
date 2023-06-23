@@ -44,21 +44,25 @@
                                         <th>Merk</th>
                                         <th>Stok</th>
                                         <th>Kondisi</th>
-                                        <th>Edit</th>
+                                        @canany (['operator', 'admin'])<th>Edit</th> @endcanany
                                 </thead>
                                 <tbody class="text-center">
                                     @foreach($data_items as $item)
                                     <tr>
-                                        <td>{{$loop->index}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$item->add_item->barcode}}</td>
                                         <td>{{$item->add_item->name}}</td>
                                         <td>{{$item->add_item->brand}}</td>
                                         <td>{{$item->quantity}}</td>
                                         <td>
-                                            <div class="badge rounded-pill bg-success text-white">{{$item->condition}}</span></div>
+                                            @if($item->condition == "Baik")
+                                                <div class="badge rounded-pill bg-success text-white">{{$item->condition}}</span></div>
+                                            @else
+                                                <div class="badge rounded-pill bg-danger text-white">{{$item->condition}}</span></div>
+                                            @endif
                                             {{-- <mark class="bg-success">{{$item->condition}}</mark> --}}
                                         </td>
-                                        @canany (['operator', 'admin']) <td><a href="/edit-barang" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                        @canany (['operator', 'admin']) <td><a href="/edit-barang/{{ $item->id }}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> @endcanany
                                     </tr>
                                     @endforeach

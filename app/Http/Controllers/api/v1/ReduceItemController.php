@@ -11,6 +11,9 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 class ReduceItemController extends Controller
 {
     /**
@@ -51,7 +54,11 @@ class ReduceItemController extends Controller
         //     abort(403);
         // }
 
-        return "ReduceItem_create";
+        $items = Item::where('is_empty', false)->get();
+
+        return view("tambah-pengurangan", [
+            'data_items' => $items
+        ]);
     }
 
     /**
@@ -64,23 +71,20 @@ class ReduceItemController extends Controller
     {
         $rules = [
             'date' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
+            'id_item' => 'required',
             'quantity' => 'required',
-            'price' => 'required',
             'cause' => 'required',
-            'id_category' => 'required',
-            'created_by' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
-        // $validatedRequest['created_by'] = auth()::user()->id;
+        $validatedRequest['created_by'] = auth()->user()->id;
 
-        $reduceItem = ReduceItem::create($validatedRequest);
+        // return $validatedRequest;
+        $reduceItem = ReduceItem::create(
+            $validatedRequest
+        );
 
-        return response()->json([
-            'data' => $reduceItem
-        ]);
+        return redirect('pengurangan-barang');
     }
 
     /**
@@ -123,7 +127,9 @@ class ReduceItemController extends Controller
         //     abort(403);
         // }
 
-        return "ReduceItem_edit";
+        return view('edit-pengurangan', [
+            'reduceItem' => $reduceItem
+        ]);
     }
 
     /**
@@ -136,20 +142,17 @@ class ReduceItemController extends Controller
     public function update(Request $request, ReduceItem $reduceItem)
     {
         $rules = [
-            'date' => 'required',
-            'quantity' => 'required',
             'cause' => 'required',
-            'id_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
+        $validatedRequest['updated_by'] = auth()->user()->id;
+        $validatedRequest['updated_at'] = Carbon::now();
 
-        $updatedReduceItem = ReduceItem::where('id', $reduceItem->id)
+        $reduceItem = ReduceItem::where('id', $reduceItem->id)
             ->update($validatedRequest);
 
-        return response()->json([
-            'data' =>  $updatedReduceItem
-        ]);
+        return redirect('pengurangan-barang');
     }
 
     /**

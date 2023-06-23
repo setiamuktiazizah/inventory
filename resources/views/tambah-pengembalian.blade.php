@@ -30,46 +30,38 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Edit Kondisi Barang</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Tambah Pengembalian Barang</h1>
                 </div>            
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form class="user" id="userData" method="post" enctype="multipart/form-data" action='/update-barang/{{ $item->id }}'>
-                            @csrf
-                            @method('put')
-
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="name" readonly value="">
+                    <form class="user" id="userData" >
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Nama Barang</label>
+                            <select class="custom-select">
+                                <option selected>Pilih</option>
+                                <option value="1">Laptop</option>
+                                <option value="2">Proyektor</option>
+                                <option value="3">Speaker</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
+                            <div class="input-group date" id="datetimepicker1">
+                                <input type="date" class="form-control form-control-md" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="brand"  readonly value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Stok</label>
-                                <input type="number" class="form-control form-control-user"
-                                    id="quantity"  readonly value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kondisi</label>
-                                <select class="custom-select" name="condition">
-                                    {{-- <option selected>Pilih</option> --}}
-                                    <option {{ $item->condition == "Baik" ? 'selected' : '' }} value="Baik">Baik</option>
-                                    <option {{ $item->condition == "Rusak" ? 'selected' : '' }} value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-
-                            <button name="submit" type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                                Simpan
-                            </button>
-                        </form>
-                        {{-- <a href="/data-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                             Simpan</a> --}}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Note</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note">Dipinjam untuk keperluan himpunan mahasiswa</textarea>
+                    </div>
+                    </form>
+                        <a href="/pengembalian-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                        Tambah Data</a>
                             
                     </div>
                 </div>
