@@ -140,7 +140,7 @@ Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage'
     Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
 
     Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
-});
+// });
 
 Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
 
