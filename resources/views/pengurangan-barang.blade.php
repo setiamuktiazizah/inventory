@@ -71,9 +71,8 @@
                                         <td>{{$reduceItem->item->name}} </td>
                                         <td>{{$reduceItem->quantity}} </td>
                                         <td>{{$reduceItem->cause}} </td>
-                                        <td>{{$reduceItem->quantity}} </td>
-                                        <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-toggle="modal" data-target="#editPengadaanModal">
-                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td>  
+                                        @can ('admin')<td><a href="/edit-pengurangan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
+                                            <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> @endcan 
                                     </tr>
                                     @endforeach  
                                 </tbody>

@@ -122,7 +122,7 @@ class InventoryController extends Controller
             'jumlah_dipinjam' => $jumlah_dipinjam,
             'jumlah_kembali' => $jumlah_kembali
         ]);
-
+    }
 
     public function pengajuanPeminjamanPage()
     {
@@ -197,5 +197,10 @@ class InventoryController extends Controller
     public function editBarangPage()
     {
         return view('edit-barang');
+    }
+
+    public function tambahPengembalianPage()
+    {
+        return view('tambah-pengembalian');
     }
 }
