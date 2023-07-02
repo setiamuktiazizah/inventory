@@ -84,8 +84,10 @@ Route::put('/update-pengurangan/{reduceItem}', [ReduceItemController::class, 'up
 
 Route::get('/peminjaman-user', [LoanRequestController::class, 'index']);
 Route::get('/pengajuan-peminjaman-operator', [LoanRequestController::class, 'index']);
+
 Route::get('/ubah-status/{loanRequest}', [LoanRequestController::class, 'edit']);
 Route::put('/ubah-status-update/{loanRequest}', [LoanRequestController::class, 'update']);
+
 Route::get('/peminjaman-1', [LoanRequestController::class, 'createStep1']);
 Route::post('/peminjaman-2', [LoanRequestController::class, 'createStep2']);
 Route::post('/peminjaman-2-remove', [LoanRequestController::class, 'createStep2Remove']);

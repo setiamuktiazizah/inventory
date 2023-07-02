@@ -102,8 +102,10 @@
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jenis Pengadaan</label>
                             <select class="custom-select" name="cause" id="cause" >
                                 {{-- <option selected>Pilih</option> --}}
-                                <option value="Barang Baru">Barang Baru</option>
                                 <option value="Tambah">Tambah</option>
+                                <option value="Ganti Kepemilikan">Ganti Kepemilikan</option>
+                                <option value="Restock">Restock</option>
+                                <option value="Penggantian">Penggantian</option>
                             </select>
                         </div>
                         <div class="col">

@@ -41,14 +41,15 @@
                       <div class="row">
                         <div class="col">
                           <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kategori</label>
-                            <select class="custom-select" name="id_category" id="id_category">
+                            {{-- <select class="custom-select" name="id_category" id="id_category">
                                 <?php $selectedvalue=$addItems['id_category'] ?>
                                 @foreach ($categories as $category)
                                 <option value="{{$category['id']}}"  {{ $selectedvalue == $category['id'] ? 'selected="selected"' : '' }}> 
                                 {{$category['name']}}
                                 </option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <input readonly class="form-control" type="text" value="{{ old('category', $addItems->category->name)}}">
                         </div>
                         <div class="col">
                           <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang</label>
@@ -68,10 +69,10 @@
                         </div>
                         <div class="col">
                           <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jumlah</label>
-                          <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" value="{{ old('quantity', $addItems->quantity)}}"/>
-                          @error('quantity')
+                          <input readonly min="1" type="number" class="form-control form-control-sm" value="{{ old('quantity', $addItems->quantity)}}"/>
+                          {{-- @error('quantity')
                           <p class="invalid-feedback d-block">{{ $message }}</p>
-                          @enderror
+                          @enderror --}}
                         </div>
                       </div>
                       <div class="row">
@@ -97,8 +98,10 @@
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jenis Pengadaan</label>
                             <select class="custom-select" name="cause" id="cause">
                                 <?php $selectedValue=$addItems['cause']?>
-                                <option value="Barang Baru"<?php if($selectedValue == 'Barang Baru') { ?> selected="selected"<?php } ?>>Barang Baru</option>
                                 <option value="Tambah"<?php if($selectedValue == 'Tambah') { ?> selected="selected"<?php } ?>>Tambah</option>
+                                <option value="Ganti Kepemilikan"<?php if($selectedValue == 'Ganti Kepemilikan') { ?> selected="selected"<?php } ?>>Ganti Kepemilikan</option>
+                                <option value="Restock"<?php if($selectedValue == 'Restock') { ?> selected="selected"<?php } ?>>Restock</option>
+                                <option value="Penggantian"<?php if($selectedValue == 'Penggantian') { ?> selected="selected"<?php } ?>>Penggantian</option>
                             </select>
                         </div>
                         <div class="col">
