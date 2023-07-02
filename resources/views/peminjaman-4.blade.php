@@ -30,27 +30,37 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Pengajuan Peminjaman Barang</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Detail Peminjaman</h1>
                 </div>            
 
+                {{-- @dd($previous_request) --}}
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form action="/peminjaman-2" method="post" enctype="multipart/form-data">
+                        <form action="/peminjaman-end" method="post" enctype="multipart/form-data">
                             @csrf
-                            <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="">
-
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pinjam</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" id="loan_date" name="loan_date" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">Selanjutnya</button>
-                            {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                                 Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
+                            {{-- <input hidden type="text" id="id_category" name="id_category" value="{{ $previous_request->id_category }}"> --}}
+                            <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
+                            {{-- <input hidden type="text" id="id_item" name="id_item" value="{{ $previous_request->id_item }}"> --}}
+                            <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="{{ $previous_request->id_items_string_array }}">
+    
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Maksimal Tanggal Kembali</label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-md" id="max_return_date" name="max_return_date"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Catatan</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note"></textarea>
+                        
+                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">
+                                <i class="fas fa-plus fa-md text-white-50"></i> Ajukan Peminjaman 
+                            </button>
                         </form>
+                        {{-- <a href="/peminjaman-user" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                             Ajukan Peminjaman    <i class="fas fa-arrow-right fa-md text-white-50"></i></a>
+                             --}}
                     </div>
                 </div>
                 </div>

@@ -88,7 +88,10 @@ Route::get('/ubah-status/{loanRequest}', [LoanRequestController::class, 'edit'])
 Route::put('/ubah-status-update/{loanRequest}', [LoanRequestController::class, 'update']);
 Route::get('/peminjaman-1', [LoanRequestController::class, 'createStep1']);
 Route::post('/peminjaman-2', [LoanRequestController::class, 'createStep2']);
+Route::post('/peminjaman-2-remove', [LoanRequestController::class, 'createStep2Remove']);
 Route::post('/peminjaman-3', [LoanRequestController::class, 'createStep3']);
+Route::post('/peminjaman-3-add', [LoanRequestController::class, 'createStep3Add']);
+Route::post('/peminjaman-4', [LoanRequestController::class, 'createStep4']);
 Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
 
@@ -142,9 +145,9 @@ Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanP
 
 Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);
 
-Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+// Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
-    Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
+//     Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
 
     

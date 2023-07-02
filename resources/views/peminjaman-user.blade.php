@@ -46,7 +46,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Barang</th>
-                                        <th>Merk</th>
+                                        {{-- <th>Merk</th> --}}
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
                                         <th>Surat</th>
@@ -59,8 +59,13 @@
                                     @foreach($data_loanRequests as $loanRequest)
                                         <tr>
                                             <td>{{ $loop->index +1 }}</td>
-                                            <td>{{ $loanRequest->item->add_item->name }}</td>
-                                            <td>{{ $loanRequest->item->add_item->brand }}</td>
+                                            {{-- <td>{{ $loanRequest->item->add_item->name }}</td> --}}
+                                            {{-- <td>{{ $loanRequest->item->add_item->brand }}</td> --}}
+                                            <td>
+                                                @foreach($loanRequest->loan_objects as $loanObject)
+                                                    <p>{{ $loanObject->item->add_item->name }}</p>
+                                                @endforeach
+                                            </td>
                                             <td>{{ $loanRequest->loan_date }}</td>
                                             <td>{{ $loanRequest->max_return_date }}</td>
                                             <td>{{ $loanRequest->pathfile }}</td>
@@ -81,7 +86,7 @@
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
-                                                    <span class="text">Edit</span>
+                                                    <span class="text">Lengkapi</span>
                                                 </a>
                                             </td> 
                                         </tr>
