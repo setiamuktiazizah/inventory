@@ -148,7 +148,8 @@ class AddItemController extends Controller
         // $addItem = AddItem::all();
         // $addItem = AddItem::findOrFail($id);
         $category = Category::all();
-        return view('edit-pengadaan', ['addItems' => $addItem, 'categories' => $category]);
+        // return view('edit-pengadaan', ['addItems' => $addItem, 'categories' => $category]);
+        return view('edit-pengadaan', ['addItems' => $addItem]);
     }
 
     /**
@@ -161,23 +162,23 @@ class AddItemController extends Controller
     public function update(Request $request, AddItem $addItem)
     {
         $validatedData = $request->validate([
-            'date' => 'required',
+            // 'date' => 'required',
             'name' => 'required',
             'brand' => 'required',
-            'quantity' => 'required',
+            // 'quantity' => 'required',
             'price' => 'required',
             'barcode' => 'required',
-            'id_category' => 'required',
+            // 'id_category' => 'required',
             'cause' => 'required'
         ]);
 
-        $validatedData['date'] = $request->date;
+        // $validatedData['date'] = $request->date;
         $validatedData['name'] = $request->name;
         $validatedData['brand'] = $request->brand;
-        $validatedData['quantity'] = $request->quantity;
+        // $validatedData['quantity'] = $request->quantity;
         $validatedData['price'] = $request->price;
         $validatedData['barcode'] = $request->barcode;
-        $validatedData['id_category'] = $request->id_category;
+        // $validatedData['id_category'] = $request->id_category;
         $validatedData['cause'] = $request->cause;
         $validatedData['created_by'] = $addItem['created_by'];
         $validatedData['updated_by'] = '1';

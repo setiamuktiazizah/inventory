@@ -36,14 +36,14 @@
                     <div class="card-body">
                             <fieldset disabled>
                               <div class="form-row justify-content-between mt-4">
-                                <div class="form-group col">
+                                {{-- <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Barang</label>
                                     <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->item->add_item->name }}">
                                 </div>
                                 <div class="form-group col">
                                     <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
                                     <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ $data_loanRequest->item->add_item->brand }}">
-                                </div>
+                                </div> --}}
                               </div>
                               <div class="form-row justify-content-between mt-4">
                                 <div class="form-group col">
