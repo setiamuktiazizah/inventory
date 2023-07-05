@@ -95,13 +95,10 @@ Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
 // ========== LOAN ITEM ==============
 
-Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+Route::get('/peminjaman-operator', [LoanRequestController::class, 'index']);
 
 
 // ========== RETURN ITEM ==============
 
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
-
-
-
