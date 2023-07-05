@@ -36,32 +36,34 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                    <form class="user" id="userData" >
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Nama Barang</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Laptop</option>
-                                <option value="2">Proyektor</option>
-                                <option value="3">Speaker</option>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
-                            <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Note</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note">Dipinjam untuk keperluan himpunan mahasiswa</textarea>
-                    </div>
+                    <form method="post" enctype="multipart/form-data" action="/tambah-pengembalian">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Peminjaman yang akan dikembalikan</label>
+                                <select class="custom-select" name="id_loan_item">
+                                    <option selected>Pilih</option>
+                                    @foreach($data_unreturnedLoanItems as $unreturnedLoanItem)
+                                        <option value="{{ $unreturnedLoanItem->id }}">{{ $unreturnedLoanItem->loan_request->note }}</option>
+                                        
+                                    @endforeach
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pengembalian</label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-md" name="return_date"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Note</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note">Dipinjam untuk keperluan himpunan mahasiswa</textarea>
+                        </div>
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 mb-3 float-right">Tambah Data</button>       
+                  {{-- </div> --}}
                     </form>
-                        <a href="/pengembalian-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                        Tambah Data</a>
                     </div>
                 </div>
                 </div>

@@ -16,6 +16,8 @@ class ReturnItem extends Model
         'id_loan_item',
         'return_date',
         'note',
+        'created_by',
+        'created_at',
     ];
 
     public function loan_item(): BelongsTo

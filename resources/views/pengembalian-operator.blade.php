@@ -47,7 +47,6 @@
                             <i class="fas fa-plus fa-md text-white-50"></i> Tambah Data</a> @endcanany
                     </div>
                 </div>  
-
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
@@ -56,56 +55,19 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Barang</th>
-                                        <th>Merk</th>
-                                        <th>Jumlah</th>
-                                        <th>Tgl Pinjam</th>
-                                        <th>Maks Tgl Kembali</th>
+                                        <th>Peminjaman</th>
                                         <th>Tgl Kembali</th>
                                         <th>Note</th>
-                                        <th>Surat</th>
-                                        <th>Status</th>
                                 </thead>
                                 <tbody class="text-center">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>26/03/2023</td>
-                                        <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
-                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-success text-white">Done</div></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>26/03/2023</td>
-                                        <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
-                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Done Late</span></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>26/03/2023</td>
-                                        <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
-                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Done Late</span></div></td>
-                                    </tr>
+                                    @foreach($data_returnItems as $returnItem)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $returnItem->loan_item->loan_request->note }}</td>
+                                            <td>{{ $returnItem->return_date }}</td>
+                                            <td>{{ $returnItem->note }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\api\v1\ItemController;
 use App\Http\Controllers\api\v1\AddItemController;
 use App\Http\Controllers\api\v1\ReduceItemController;
 use App\Http\Controllers\api\v1\LoanRequestController;
+use App\Http\Controllers\api\v1\ReturnItemController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
@@ -92,6 +93,8 @@ Route::post('/peminjaman-3-add', [LoanRequestController::class, 'createStep3Add'
 Route::post('/peminjaman-4', [LoanRequestController::class, 'createStep4']);
 Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
+Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
+
 
 // ========== LOAN ITEM ==============
 
@@ -100,8 +103,9 @@ Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOpera
 
 // ========== RETURN ITEM ==============
 
-Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
-Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
+Route::get('/pengembalian-operator', [ReturnItemController::class, 'index']);
+Route::get('/tambah-pengembalian', [ReturnItemController::class, 'create']);
+Route::post('/tambah-pengembalian', [ReturnItemController::class, 'store']);
 
 
 
