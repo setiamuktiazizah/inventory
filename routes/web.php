@@ -29,24 +29,26 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('additem', [
-
-
-    Controller::class, 'index'
-]);
-
-
-
 // ========== GENERAL ==============
 
 Route::get('/', [InventoryController::class, 'index']);
 Route::get('/dashboard', [InventoryController::class, 'dashboardPage']);
 
 
-// ========== AUTHENTICATION ==============
+// ========== AUTHENTICATION & USER ==============
 // includes /register, /login
 
 Auth::routes();
+
+Route::get('/profil', [InventoryController::class, 'profilPage']);
+Route::post('/profil', [UserController::class, 'update']);
+
+Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
+Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
+
+Route::get('/manajemen-user', [UserController::class, 'index']);
+Route::get('/manajemen-user/{id}', [UserController::class, 'edit']);
+Route::post('/manajemen-user/{id}', [UserController::class, 'update']);
 
 
 // ========== ITEM ==============
@@ -63,12 +65,6 @@ Route::get('/tambah-pengadaan', [AddItemController::class, 'create']);
 Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
 Route::get('/pengadaan-barang/{addItem}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
 Route::post('/pengadaan-barang/{addItem}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
-
-// Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
-
-// Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
-// Route::get('/pengadaan-barang/{addItems}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
-// Route::post('/pengadaan-barang/{addItems}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
 
 
 // ========== REDUCE ITEM ==============
@@ -99,106 +95,13 @@ Route::post('/peminjaman-end', [LoanRequestController::class, 'store']);
 
 // ========== LOAN ITEM ==============
 
+Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
 
 
 // ========== RETURN ITEM ==============
 
-
-
-
-Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
-
-Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
-
-
-// Route::get('/dashboard-peminjam', [InventoryController::class, 'dashboardPeminjamPage']);
-// Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
-// Route::get('/dashboard-operator', [InventoryController::class, 'dashboardOperatorPage']);
-
-
-
-
-
-Route::get('/peminjaman-pengembalian', [InventoryController::class, 'peminjamanPengembalianPage']);
-
-
-
-// Route::get('/login', [LoginController::class, 'showLoginForm']);
-// Route::post('/login', [LoginController::class, 'validateLogin']);
-
-
-
-
-
-
-Route::get('/profil', [InventoryController::class, 'profilPage']);
-Route::post('/profil', [UserController::class, 'update']);
-
-
-Route::get('/manajemen-user', [UserController::class, 'index']);
-Route::get('/manajemen-user/{id}', [UserController::class, 'edit']);
-Route::post('/manajemen-user/{id}', [UserController::class, 'update']);
-
-
-
-Route::get('/laporan-pengadaan-barang', [InventoryController::class, 'laporanPengadaanPage']);
-
-Route::get('/laporan-pengurangan-barang', [InventoryController::class, 'laporanPenguranganPage']);
-
-Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::class, 'laporanPeminjamanPengembalianOperatorPage']);
-
-// Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
-
-//     Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
-
-
-
-
-// Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
-
-
-
-
-
-Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
-
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
-
-
-
-Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
-// Route::get('/page', [PageController::class, 'index'])->name('page-name');
-
-
-
-Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
-
-Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
-
-Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
-Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
-
-
-Route::get('/manajemen-user-edit', [InventoryController::class, 'manajemenUserEditPage']);
-
-// Route::get('/tambah-pengadaan', [InventoryController::class, 'tambahPengadaanPage']);
-
-Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
-
-// Route::get('/tambah-pengurangan', [InventoryController::class, 'tambahPenguranganPage']);
-
-Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
-
-Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
-
-// });
-
-
-Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
-
-
-
-
-
-
 Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
+
+
+
