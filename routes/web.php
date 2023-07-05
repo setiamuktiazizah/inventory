@@ -135,9 +135,9 @@ Route::get('/profil', [InventoryController::class, 'profilPage']);
 Route::post('/profil', [UserController::class, 'update']);
 
 
-    Route::get('/manajemen-user', [UserController::class, 'index']);
-    Route::get('/manajemen-user/{id}', [UserController::class, 'edit']);
-    Route::post('/manajemen-user/{id}', [UserController::class, 'update']);
+Route::get('/manajemen-user', [UserController::class, 'index']);
+Route::get('/manajemen-user/{id}', [UserController::class, 'edit']);
+Route::post('/manajemen-user/{id}', [UserController::class, 'update']);
 
 
 
@@ -152,44 +152,44 @@ Route::get('/laporan-peminjaman-pengembalian-operator', [InventoryController::cl
 //     Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
 
-    
 
-    // Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
-    
-
-    
-
-    Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
-
-    Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
+// Route::get('/peminjaman-user', [InventoryController::class, 'peminjamanUserPage']);
 
 
 
-    Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
-    // Route::get('/page', [PageController::class, 'index'])->name('page-name');
+
+
+Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+
+Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 
 
 
-    Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
-
-    Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
-
-    Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
-    Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
+Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+// Route::get('/page', [PageController::class, 'index'])->name('page-name');
 
 
-    Route::get('/manajemen-user-edit', [InventoryController::class, 'manajemenUserEditPage']);
 
-    // Route::get('/tambah-pengadaan', [InventoryController::class, 'tambahPengadaanPage']);
+Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
 
-    Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
+Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 
-    Route::get('/tambah-pengurangan', [InventoryController::class, 'tambahPenguranganPage']);
+Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
+Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
 
-    Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
 
-    Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
+Route::get('/manajemen-user-edit', [InventoryController::class, 'manajemenUserEditPage']);
+
+// Route::get('/tambah-pengadaan', [InventoryController::class, 'tambahPengadaanPage']);
+
+Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage']);
+
+// Route::get('/tambah-pengurangan', [InventoryController::class, 'tambahPenguranganPage']);
+
+Route::get('/edit-pengurangan', [InventoryController::class, 'editPenguranganPage']);
+
+Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
 
 // });
 
@@ -202,4 +202,3 @@ Route::get('/edit-pengadaan', [InventoryController::class, 'editPengadaanPage'])
 
 
 Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
-

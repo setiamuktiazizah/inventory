@@ -56,8 +56,8 @@ class ReduceItemController extends Controller
 
         $items = Item::where('is_empty', false)->get();
 
-        return view("tambah-pengurangan", [
-            'data_items' => $items
+        return view('tambah-pengurangan', [
+            'data_items' => $items,
         ]);
     }
 
