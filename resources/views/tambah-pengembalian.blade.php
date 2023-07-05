@@ -62,7 +62,6 @@
                     </form>
                         <a href="/pengembalian-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
                         Tambah Data</a>
-                            
                     </div>
                 </div>
                 </div>

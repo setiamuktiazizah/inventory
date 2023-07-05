@@ -220,4 +220,5 @@ class InventoryController extends Controller
     {
         return view('tambah-pengembalian');
     }
+
 }
