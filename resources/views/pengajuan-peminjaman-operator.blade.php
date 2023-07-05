@@ -55,7 +55,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Barang</th>
-                                        <th>Merk</th>
+                                        {{-- <th>Merk</th> --}}
                                         {{-- <th>Jumlah</th> --}}
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
@@ -72,8 +72,13 @@
                                     @foreach($data_loanRequests as $loanRequest)
                                         <tr>
                                             <td>{{ $loop->index }}</td>
-                                            <td>{{ $loanRequest->item->add_item->name }}</td>
-                                            <td>{{ $loanRequest->item->add_item->brand }}</td>
+                                            {{-- <td>{{ $loanRequest->item->add_item->name }}</td> --}}
+                                            {{-- <td>{{ $loanRequest->item->add_item->brand }}</td> --}}
+                                            <td>
+                                                @foreach($loanRequest->loan_objects as $loanObject)
+                                                    <p>{{ $loanObject->item->add_item->name }}</p>
+                                                @endforeach
+                                            </td>
                                             <td>{{ $loanRequest->loan_date }}</td>
                                             <td>{{ $loanRequest->max_return_date }}</td>
                                             <td>{{ $loanRequest->pathfile }}</td>

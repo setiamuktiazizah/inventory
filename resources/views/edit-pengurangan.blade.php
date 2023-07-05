@@ -43,10 +43,8 @@
                         <div class="card-body">
                         <div class="row">
                             <div class="col">
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang yang akan dikurangi</label>
-                                <select class="custom-select" name="id_item">
-                                    <option selected readonly>{{ $reduceItem->item->add_item->name }}</option>
-                                </select>
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang yang akan dikurangi</label>
+                                <input class="form-control" type="text" readonly value="{{ $reduceItem->item->add_item->name }}">
                             </div>
                             <div class="col">
                                 <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Jumlah</label>

@@ -43,17 +43,17 @@
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="name" readonly value="">
+                                    id="name" readonly value="{{ $item->add_item->name }}">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Merk</label>
                                 <input type="text" class="form-control form-control-user"
-                                    id="brand"  readonly value="">
+                                    id="brand"  readonly value="{{ $item->add_item->brand }}">
                             </div>
                             <div class="form-group">
                                 <label for="disabledTextInput" class="font-weight-bold text-primary">Stok</label>
                                 <input type="number" class="form-control form-control-user"
-                                    id="quantity"  readonly value="">
+                                    id="quantity"  readonly value="{{ $item->quantity }}">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kondisi</label>
