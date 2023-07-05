@@ -103,14 +103,5 @@ Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOpera
 Route::get('/pengembalian-operator', [InventoryController::class, 'pengembalianOperatorPage']);
 Route::get('/tambah-pengembalian', [InventoryController::class, 'tambahPengembalianPage']);
 
-    
-
-
-
-
-
-
-
-
 
 

@@ -36,7 +36,6 @@
                 <!-- DataTales Example -->
                 <form action="/simpan-pengurangan" method="post" enctype="multipart/form-data">
                     @csrf
-
                     <div class="card shadow mb-4">
                         <div class="card-body">
                         <div class="row">
@@ -63,9 +62,9 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
-                                </div>
-                            <div class='col mu-3'>
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Alasan</label>
+                            </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Alasan</label>
                                 <select class="custom-select" name="cause">
                                     <option selected>Pilih</option>
                                     <option value="Penggunaan">Penggunaan</option>
@@ -74,19 +73,14 @@
                                     <option value="Penggantian Pemilik">Penggantian Pemilik</option>
                                 </select>
                             </div>
-                            </div>
-                            
                         </div>
-                        
-                        <button type="submit" class="btn btn-info">
-                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Tambah
-                        </button>
-                                
-                        </div>
+                            <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                Tambah Data
+                            </button>
                     </div>
                     </div>
                 </form>
-                
+        </div>
                 <!-- /.container-fluid -->
 
             </div>
