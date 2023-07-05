@@ -113,9 +113,9 @@
                         </div>
                       </div>
                         {{-- <a href="/pengadaan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                        Simpan</a> --}}   
+                        Simpan</a> --}}
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 mb-3 float-right">Simpan</button>   
                     </div>
-                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">Simpan</button>
                     </form>
                 </div>
             </div>

@@ -60,9 +60,9 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
-                            </div>
-                            <div class='col mu-3 mt-4'>
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Alasan</label>
+                                </div>
+                            <div class="col">
+                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Alasan</label>
                                 <select class="custom-select" name="cause">
                                     <option {{ $reduceItem->cause == "Penggunaan" ? 'selected' : '' }}  value="Penggunaan">Penggunaan</option>
                                     <option {{ $reduceItem->cause == "Rusak" ? 'selected' : '' }} value="Rusak">Rusak</option>
@@ -70,21 +70,15 @@
                                     <option {{ $reduceItem->cause == "Penggantian Pemilik" ? 'selected' : '' }} value="Penggantian Pemilik">Penggantian Pemilik</option>
                                 </select>
                             </div>
-                            </div>
-                            
                         </div>
-                        
-                        <button type="submit" class="btn btn-info">
-                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Edit
-                        </button>
-                                
-                        </div>
-                    </div>
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 mb-3 float-right">
+                        Simpan
+                        </button>                
                     </div>
                 </form>
-
-                </div>
-                <!-- /.container-fluid -->
+            </div>
+            </div>
+            <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
