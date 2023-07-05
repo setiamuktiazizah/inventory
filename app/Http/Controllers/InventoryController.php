@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Cookie;
+
+use App\Models\AddItem;
+use App\Models\ReduceItem;
+use App\Models\Item;
+use App\Models\LoanRequest;
+use App\Models\LoanItem;
+use App\Models\ReturnItem;
 
 class InventoryController extends Controller
 {
@@ -87,7 +95,7 @@ class InventoryController extends Controller
     {
         return view('laporan-pengurangan-barang');
     }
-  
+
     public function laporanPeminjamanPengembalianOperatorPage()
     {
         return view('laporan-peminjaman-pengembalian-operator');
@@ -98,8 +106,23 @@ class InventoryController extends Controller
         return view('peminjaman-user');
     }
 
+
     public function dashboardPage(){
-        return view('dashboard');
+        $jumlah_addItem = AddItem::latest()->get()->count();
+        $jumlah_reduceItem = ReduceItem::latest()->get()->count();
+        $jumlah_item = Item::latest()->get()->count();
+        $jumlah_ajuan = LoanRequest::latest()->get()->count();
+        $jumlah_dipinjam = LoanItem::latest()->get()->count();
+        $jumlah_kembali = ReturnItem::latest()->get()->count();
+
+        return view('dashboard', [
+            'jumlah_addItem' => $jumlah_addItem,
+            'jumlah_reduceItem' => $jumlah_reduceItem,
+            'jumlah_item' => $jumlah_item,
+            'jumlah_ajuan' => $jumlah_ajuan,
+            'jumlah_dipinjam' => $jumlah_dipinjam,
+            'jumlah_kembali' => $jumlah_kembali
+        ]);
     }
 
     public function pengajuanPeminjamanPage()
@@ -147,11 +170,27 @@ class InventoryController extends Controller
         return view('edit-akun');
     }
 
+    public function editAkun(Request $request)
+    {
+        $this->validate($request, [
+            'no_hp' => 'required',
+        ]);
+
+        $email = Auth::user()->email;
+        $user = User::where('email', $email)->first();
+
+        if ($user != NULL) {
+            $user->update(['no_hp' => $request->no_hp]);
+        }
+
+        return redirect('/profil');
+    }
+
     public function manajemenUserEditPage()
     {
         return view('manajemen-user-edit');
     }
-    
+
     public function tambahPengadaanPage()
     {
         return view('tambah-pengadaan');
@@ -176,4 +215,10 @@ class InventoryController extends Controller
     {
         return view('edit-barang');
     }
+
+    public function tambahPengembalianPage()
+    {
+        return view('tambah-pengembalian');
+    }
+
 }

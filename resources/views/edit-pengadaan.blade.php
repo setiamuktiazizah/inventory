@@ -35,67 +35,90 @@
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
+                    <form method="post" enctype="multipart/form-data" action="{{ url('/pengadaan-barang/' . $addItems->id . '/store')}}" autocomplete="off">
+                    @csrf
                     <div class="card-body">
-                    <div class="row">
+                      <div class="row">
                         <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kategori</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Laptop</option>
-                                <option value="2">Bolpoin</option>
-                                <option value="3">Pensil</option>
-                            </select>
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Kategori</label>
+                            {{-- <select class="custom-select" name="id_category" id="id_category">
+                                <?php $selectedvalue=$addItems['id_category'] ?>
+                                @foreach ($categories as $category)
+                                <option value="{{$category['id']}}"  {{ $selectedvalue == $category['id'] ? 'selected="selected"' : '' }}> 
+                                {{$category['name']}}
+                                </option>
+                                @endforeach
+                            </select> --}}
+                            <input readonly class="form-control" type="text" value="{{ old('category', $addItems->category->name)}}">
                         </div>
                         <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang</label>
-                        <input class="form-control" type="text" placeholder="Nama Barang">
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang</label>
+                          <input class="form-control" type="text" placeholder="Nama Barang" value="{{ old('name', $addItems->name)}}" name="name" id="name">
+                          @error('name')
+                          <p class="invalid-feedback d-block">{{ $message }}</p>
+                          @enderror
                         </div>
-                    </div>
-                    <div class="row">
+                      </div>
+                      <div class="row">
                         <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Merk</label>
-                        <input class="form-control" type="text" placeholder="Merk">
-                        </div>
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jumlah</label>
-                        <input min="1" type="number" id="quantity" class="form-control form-control-sm" name="quantity" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Harga</label>
-                        <input min="1" type="number" id="price" class="form-control form-control-sm" name="price" />
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Merk</label>
+                          <input class="form-control" type="text" placeholder="Merk" value="{{ old('brand', $addItems->brand)}}" name="brand" id="brand">
+                          @error('brand')
+                          <p class="invalid-feedback d-block">{{ $message }}</p>
+                          @enderror
                         </div>
                         <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jumlah</label>
+                          <input readonly min="1" type="number" class="form-control form-control-sm" value="{{ old('quantity', $addItems->quantity)}}"/>
+                          {{-- @error('quantity')
+                          <p class="invalid-feedback d-block">{{ $message }}</p>
+                          @enderror --}}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Harga</label>
+                          <input min="1" type="number" id="price" class="form-control form-control-sm" name="price" value="{{ old('price', $addItems->price)}}"/>
+                          @error('price')
+                          <p class="invalid-feedback d-block">{{ $message }}</p>
+                          @enderror
+                        </div>
+                        <div class="col">
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
                             <div class="input-group date" id="datetimepicker1">
-                                <input type="date" class="form-control form-control-md" disabled />
+                                <input type="date" class="form-control form-control-md" readonly value="{{ old('date', $addItems->date)}}" id="date" name="date" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                      </div>
+                      <div class="row">
                         <div class="col">
                         <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Jenis Pengadaan</label>
-                            <select class="custom-select">
-                                <option selected>Pilih</option>
-                                <option value="1">Barang Baru</option>
-                                <option value="2">Bolpoin</option>
+                            <select class="custom-select" name="cause" id="cause">
+                                <?php $selectedValue=$addItems['cause']?>
+                                <option value="Tambah"<?php if($selectedValue == 'Tambah') { ?> selected="selected"<?php } ?>>Tambah</option>
+                                <option value="Ganti Kepemilikan"<?php if($selectedValue == 'Ganti Kepemilikan') { ?> selected="selected"<?php } ?>>Ganti Kepemilikan</option>
+                                <option value="Restock"<?php if($selectedValue == 'Restock') { ?> selected="selected"<?php } ?>>Restock</option>
+                                <option value="Penggantian"<?php if($selectedValue == 'Penggantian') { ?> selected="selected"<?php } ?>>Penggantian</option>
                             </select>
                         </div>
                         <div class="col">
-                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Barcode</label>
-                        <input class="form-control" type="text" placeholder="Barcode">
+                          <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Barcode</label>
+                          <input class="form-control" type="text" placeholder="Barcode" value="{{ old('barcode', $addItems->barcode)}}" name="barcode" id="barcode">
+                          @error('barcode')
+                          <p class="invalid-feedback d-block">{{ $message }}</p>
+                          @enderror
                         </div>
+                      </div>
+                        {{-- <a href="/pengadaan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                        Simpan</a> --}}
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 mb-3 float-right">Simpan</button>   
                     </div>
-                        <a href="/pengadaan-barang" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                        Simpan</a>
-                            
-                    </div>
+                    </form>
                 </div>
-                </div>
+            </div>
                 <!-- /.container-fluid -->
 
             </div>

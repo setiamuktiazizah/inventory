@@ -30,47 +30,38 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Edit Manajemen User</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Tambah Pengembalian Barang</h1>
                 </div>            
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form class="user" id="userData" action="manajemen-user-edit" method="POST">
-                            @csrf
-                            <input type="hidden" name="user_id" id="user_id" value="{{$data_user->id}}">
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Nama</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="name" aria-describedby="emailHelp" name="name" value="{{$data_user->name}}">
+                    <form class="user" id="userData" >
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Nama Barang</label>
+                            <select class="custom-select">
+                                <option selected>Pilih</option>
+                                <option value="1">Laptop</option>
+                                <option value="2">Proyektor</option>
+                                <option value="3">Speaker</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
+                            <div class="input-group date" id="datetimepicker1">
+                                <input type="date" class="form-control form-control-md" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Email</label>
-                                <input type="email" class="form-control form-control-user"
-                                    id="email" name="email" aria-describedby="emailHelp"
-                                    readonly value="{{$data_user->email}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">Role</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="id_role" name="id_role" aria-describedby="emailHelp" readonly value="{{$data_user->id_role}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">No HP</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="no_hp" name="no_hp" aria-describedby="emailHelp" value="{{$data_user->no_hp}}"
-                                    readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="disabledTextInput" class="font-weight-bold text-primary">No Induk</label>
-                                <input type="text" class="form-control form-control-user"
-                                    id="no_credential" name="no_credential" value="{{$data_user->no_credential}}"  readonly>
-                            </div>
-                            <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                                Simpan</a>
-                        </form>
-                        
-                            
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Note</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note">Dipinjam untuk keperluan himpunan mahasiswa</textarea>
+                    </div>
+                    </form>
+                        <a href="/pengembalian-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                        Tambah Data</a>
                     </div>
                 </div>
                 </div>

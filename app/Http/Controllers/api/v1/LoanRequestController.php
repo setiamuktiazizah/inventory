@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
+use Carbon\Carbon;
+
 class LoanRequestController extends Controller
 {
     /**
@@ -47,6 +49,11 @@ class LoanRequestController extends Controller
      */
     public function createStep1()
     {
+        return view('peminjaman-1');
+    }
+
+    public function createStep2(Request $request)
+    {
         $categories = DB::table('categories')
             ->join('super_categories', 'categories.id_super_category', '=', 'super_categories.id')
             ->select("categories.*")
@@ -58,33 +65,79 @@ class LoanRequestController extends Controller
         //     ->join('orders', 'users.id', '=', 'orders.user_id')
         //     ->select('users.*', 'contacts.phone', 'orders.price')
         //     ->get();
-        return view('peminjaman-1', [
-            'data_categories' => $categories
+        // return $request;
+        $queried_id_items = $this->stringArrayToArray($request->id_items_string_array);
+        $queried_items = Item::all()->whereIn('id', $queried_id_items);
+
+        return view('peminjaman-2', [
+            'data_categories' => $categories,
+            'previous_request' => $request,
+            // 'queried_id_items' => $queried_id_items,
+            'queried_items' => $queried_items,
         ]);
     }
 
-    public function createStep2(Request $request)
+    public function createStep2Remove(Request $request)
     {
-        $id_category = $request->id_category;
-        $available_items = Item::getAvailableItems($id_category);
+        $array = $request->id_items_string_array;
+        $id = $request->id_item_to_be_removed;
+        $request->id_items_string_array = $this->removeElementFromStringArray($array, $id);
 
-        //TODO: validation
-        return view('/peminjaman-2', [
-            'previous_request' => $request,
-            'available_items' => $available_items
-        ]);
+        return $this->createStep2($request);
     }
 
     public function createStep3(Request $request)
+    {
+        $id_category = $request->id_category;
+        $available_items = Item::getAvailableItems($id_category);
+        $queried_id_items = $this->stringArrayToArray($request->id_items_string_array);
+
+        $queried_items = Item::all()->whereIn('id', $queried_id_items);
+
+        //TODO: validation
+        return view('/peminjaman-3', [
+            'previous_request' => $request,
+            'available_items' => $available_items,
+            // 'queried_id_items' => $queried_id_items,
+            'queried_items' => $queried_items,
+        ]);
+    }
+    
+    public function createStep3Add(Request $request)
+    {
+        // array_push($request->id_items, $request->id_item);
+        $request->id_items_string_array = $request->id_items_string_array . "," . $request->id_item;
+
+        return $this->createStep2($request);
+        // return $request;
+    }
+
+    public function createStep4(Request $request)
     {
         // $id_category = $request->id_category;
         // $available_items = Item::getAvailableItems($id_category);
 
         //TODO: validation
-        return view('/peminjaman-3', [
+        return view('/peminjaman-4', [
             'previous_request' => $request,
             // 'available_items' => $available_items
         ]);
+    }
+
+    private function stringArrayToArray($string_array)
+    {
+        if(empty($string_array)){
+            return [];
+        }
+
+        $string_array = substr($string_array, 1); // remove comma at the first index
+        $array = explode(",", $string_array);
+        return $array;
+    }
+
+    private function removeElementFromStringArray($string_array, $id)
+    {
+        return str_replace("," . $id, "", $string_array);
     }
 
     /**
@@ -101,17 +154,29 @@ class LoanRequestController extends Controller
             // 'path_file_cdn' => 'required',
             // 'status' => 'required',
             'note' => 'required',
-            'id_item' => 'required',
+            // 'id_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
         $validatedRequest['status'] = "pending";
         $validatedRequest['created_by'] = auth()->user()->id;
+        $validatedRequest['id_items'] = $this->stringArrayToArray($request->id_items_string_array);
         // $validatedRequest['created_by'] = 1;
 
         // return $validatedRequest;
 
-        $loanRequest = LoanRequest::create($validatedRequest);
+        // $loanRequest = LoanRequest::create($validatedRequest);
+        $loanRequest = LoanRequest::customCreateNonSeeder(
+            $validatedRequest['id_items'],
+            $validatedRequest['loan_date'],
+            $validatedRequest['max_return_date'],
+            null, //path cdn
+            $validatedRequest['status'],
+            $validatedRequest['note'],
+            $validatedRequest['created_by'],
+            Carbon::now(), // created_at
+
+        );
 
         return redirect('/peminjaman-user');
     }
