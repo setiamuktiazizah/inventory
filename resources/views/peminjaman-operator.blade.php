@@ -55,8 +55,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Barang</th>
-                                        <th>Merk</th>
-                                        <th>Jumlah</th>
+                                        {{-- <th>Merk</th> --}}
+                                        {{-- <th>Jumlah</th> --}}
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
                                         <th>Tgl Kembali</th>
@@ -65,45 +65,46 @@
                                         <th>Status</th>
                                 </thead>
                                 <tbody class="text-center">
+                                    @foreach($data_loanRequests as $loanRequest)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
+                                        <td>{{$loop->iteration}} </td>
+                                        <td>
+                                            @foreach($loanRequest->loan_objects as $loanObject)
+                                                <p>{{ $loanObject->item->add_item->name }}</p>
+                                            @endforeach
+                                        </td>
+                                        <td>{{ $loanRequest->loan_date }}</td>
+                                        <td>{{ $loanRequest->max_return_date }}</td>
+                                        {{-- <td>23/03/2023</td>
                                         <td>26/03/2023</td>
                                         <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
+                                        <td>Untuk keperluan kelas</td> --}}
+                                        <td>{{ $loanRequest->pathfile }}</td>
+
+                                            @if($loanRequest->status == "pending")
+                                                <td><div class="badge-pill badge-warning">Pending</span></div></td>
+                                            @elseif($loanRequest->status == "accepted")
+                                                <td><div class="badge-pill badge-success">Accepted</span></div></td>
+                                            @elseif($loanRequest->status == "rejected")
+                                                <td><div class="badge-pill badge-danger">Rejected</span></div></td>
+                                            @else
+                                                error
+                                            @endif
+
+                                            <td>{{ $loanRequest->note }}</td>   
+                                        {{-- <td>pathfile</td> --}}
                                         <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-success text-white">Active</span></div></td>
+                                        {{-- <td><div class="badge rounded-pill bg-success text-white">Active</span></div></td> --}}
+                                        <td>
+                                            <a href="/peminjaman-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Lengkapi</span>
+                                            </a>
+                                        </td> 
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>26/03/2023</td>
-                                        <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
-                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Late</span></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Laptop</td>
-                                        <td>ASUS</td>
-                                        <td>1</td>
-                                        <td>23/03/2023</td>
-                                        <td>26/03/2023</td>
-                                        <td>25/03/2023</td>
-                                        <td>Untuk keperluan kelas</td>
-                                        <td>pathfile</td>
-                                        <!-- <td><mark class="bg-gradient-success">Done</span></mark></td> -->
-                                        <td><div class="badge rounded-pill bg-danger text-white">Late</span></div></td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
