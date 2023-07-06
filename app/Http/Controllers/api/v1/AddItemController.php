@@ -59,10 +59,10 @@ class AddItemController extends Controller
         $itemUnit = ItemUnit::all();
 
         return view('tambah-pengadaan', [
-            'addItems' => $addItem, 
-            'users' => $user, 
-            'data_categories' => $category, 
-            'items' => $item, 
+            'addItems' => $addItem,
+            'users' => $user,
+            'data_categories' => $category,
+            'items' => $item,
             'itemUnits' => $itemUnit
         ]);
     }
@@ -93,7 +93,7 @@ class AddItemController extends Controller
             'id_category' => $request->id_category,
             'barcode' => $request->barcode,
             'cause' => $request->cause,
-            'created_by' => '1',
+            'created_by' => auth()->user()->id,
             'updated_by' => 'NULL',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -181,7 +181,7 @@ class AddItemController extends Controller
         // $validatedData['id_category'] = $request->id_category;
         $validatedData['cause'] = $request->cause;
         $validatedData['created_by'] = $addItem['created_by'];
-        $validatedData['updated_by'] = '1';
+        $validatedData['updated_by'] = auth()->user()->id;
         $validatedData['created_at'] = Carbon::now();
         $validatedData['updated_at'] = Carbon::now();
 
