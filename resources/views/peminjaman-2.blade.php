@@ -106,6 +106,7 @@
                             <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="{{ $previous_request->id_items_string_array }}">
                             <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
 
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Tambah Barang yang akan Dipinjam</label><br>
                             <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Kategori</label>
                             <select class="custom-select" id="id_category" name="id_category">
                                 <option selected value="">Pilih</option>
