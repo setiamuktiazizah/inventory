@@ -82,7 +82,8 @@
 
                                             <td>{{ $loanRequest->note }}</td>   
                                             <td>
-                                                <a href="/peminjaman-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
+                                                {{-- <a href="/peminjaman-edit" class="btn btn-info btn-sm" data-id="$user->id" id="editUser"> --}}
+                                                <a href="#" class="btn btn-info btn-sm" data-id="$user->id" id="editUser">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-edit"></i>
                                                     </span>
