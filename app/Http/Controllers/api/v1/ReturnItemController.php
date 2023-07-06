@@ -21,11 +21,12 @@ class ReturnItemController extends Controller
         // }
 
         $returnItems = ReturnItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record ReturnItem',
-            'data' => $returnItems
-        ], 200);
+        // return response([
+        //     'success' => true,
+        //     'message' => 'List Record ReturnItem',
+        //     'data' => $returnItems
+        // ], 200);
+
     }
 
     /**

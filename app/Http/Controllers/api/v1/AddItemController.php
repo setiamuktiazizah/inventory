@@ -84,7 +84,7 @@ class AddItemController extends Controller
             'barcode' => 'required',
         ]);
 
-        AddItem::create([
+        $x = AddItem::create([
             'date' => $request->date,
             'name' => $request->name,
             'brand' => $request->brand,
@@ -97,6 +97,16 @@ class AddItemController extends Controller
             'updated_by' => 'NULL',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+        ]);
+
+        $x->item()->create([
+            'quantity' => $request->quantity,
+            'condition' => 'Baik',
+            'created_by' => auth()->user()->id,
+            'updated_by' => 'NULL',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'is_empty' => '0',
         ]);
 
         return redirect('/pengadaan-barang');
