@@ -43,6 +43,8 @@ Auth::routes();
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 Route::post('/profil', [UserController::class, 'update']);
 
+Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
+
 Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
 Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
 

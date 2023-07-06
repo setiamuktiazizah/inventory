@@ -35,6 +35,11 @@ class InventoryController extends Controller
         return view('login');
     }
 
+    public function resetPasswordPage()
+    {
+        return view('reset-password');
+    }
+
     public function dashboardOperatorPage()
     {
         return view('dashboard-operator');
@@ -81,10 +86,10 @@ class InventoryController extends Controller
         return view('manajemen-user');
     }
 
-    public function resetPasswordPage()
-    {
-        return view('reset-password');
-    }
+    // public function resetPasswordPage()
+    // {
+    //     return view('reset-password');
+    // }
 
     public function laporanPengadaanPage()
     {
