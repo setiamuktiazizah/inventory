@@ -9,9 +9,7 @@
     <title>Login</title>
     <!-- Custom fonts for this template-->
     <link href="template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/template/css/sb-admin-2.css" rel="stylesheet">
@@ -31,7 +29,7 @@
                                         <h1 class="h4 subhead text-blue-100 mb-3 mt-5">Atur Ulang Kata Sandi</h1>
                                     </div>
                                     <div class="text-left">
-                                        <h1 class="small text-gray-700 mb-4 px-6">Masukkan alamat email Anda dan kami akan 
+                                        <h1 class="small text-center mb-4 px-6">Masukkan alamat email Anda dan kami akan 
                                             mengirimkan link untuk mengatur ulang kata sandi Anda!</h1>
                                     </div>
                                     <form class="user px-6 mb-5">
@@ -41,8 +39,20 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Masukkan email" required>
                                         </div>
+                                        <div class="form-group">
+                                            <h6 class="h6 text-blue-100 mb-1">Password</h6>
+                                            <input type="Password" class="form-control form-control-user"
+                                                id="exampleInputPassword" aria-describedby="passwordNew"
+                                                placeholder="Masukkan password baru" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <h6 class="h6 text-blue-100 mb-1">Konfirmasi Password</h6>
+                                            <input type="Password" class="form-control form-control-user"
+                                                id="exampleInputPass" aria-describedby="passwordConfirm"
+                                                placeholder="Konfirmasi password baru" required>
+                                        </div>
                                         <a href="/login" class="btn btn-login btn-user btn-block">
-                                            Kirim
+                                            Atur Ulang Kata Sandi
                                         </a>
                                     </form>
                                 </div>
