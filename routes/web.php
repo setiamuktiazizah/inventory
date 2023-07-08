@@ -44,6 +44,8 @@ Auth::routes();
 Route::get('/profil', [InventoryController::class, 'profilPage']);
 Route::post('/profil', [UserController::class, 'update']);
 
+Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
+
 Route::get('/edit-akun', [InventoryController::class, 'editAkunPage']);
 Route::post('/edit-akun', [InventoryController::class, 'editAkun']);
 
@@ -80,7 +82,7 @@ Route::put('/update-pengurangan/{reduceItem}', [ReduceItemController::class, 'up
 // ========== LOAN REQUEST ==============
 
 Route::get('/peminjaman-user', [LoanRequestController::class, 'index']);
-Route::get('/pengajuan-peminjaman-operator', [LoanRequestController::class, 'index']);
+Route::get('/pengajuan-peminjaman-operator', [LoanRequestController::class, 'view']);
 
 Route::get('/ubah-status/{loanRequest}', [LoanRequestController::class, 'edit']);
 Route::put('/ubah-status-update/{loanRequest}', [LoanRequestController::class, 'update']);
@@ -98,7 +100,7 @@ Route::get('/peminjaman-edit', [InventoryController::class, 'peminjamanEdit']);
 
 // ========== LOAN ITEM ==============
 
-Route::get('/peminjaman-operator', [InventoryController::class, 'peminjamanOperatorPage']);
+Route::get('/peminjaman-operator', [LoanRequestController::class, 'index']);
 
 
 // ========== RETURN ITEM ==============

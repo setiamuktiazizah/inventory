@@ -21,15 +21,15 @@ class LoanRequestController extends Controller
     public function index()
     {
         //TODO: buat peminjam cuman nunjukin request yg dia buat
-        if(!Gate::allows(['user'])){
+        if (!Gate::allows(['user'])) {
 
 
-            $loanRequests = LoanRequest::latest()->get();
+            $loanRequests = LoanRequest::where('status', 'accepted')->get();
 
             return view('pengajuan-peminjaman-operator', [
                 'data_loanRequests' => $loanRequests
             ]);
-        } else if(!Gate::allows(['admin', 'operator'])){
+        } else if (!Gate::allows(['admin', 'operator'])) {
             $user_id = auth()->user()->id;
             $loanRequests = LoanRequest::where('created_by', $user_id)->get();
 
@@ -37,7 +37,31 @@ class LoanRequestController extends Controller
                 'data_loanRequests' => $loanRequests
             ]);
         }
-        
+
+
+        return "error";
+    }
+
+    public function view()
+    {
+        //TODO: buat peminjam cuman nunjukin request yg dia buat
+        if (!Gate::allows(['user'])) {
+
+
+            $loanRequests = LoanRequest::latest()->get();
+
+            return view('pengajuan-peminjaman-operator', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        } else if (!Gate::allows(['admin', 'operator'])) {
+            $user_id = auth()->user()->id;
+            $loanRequests = LoanRequest::where('created_by', $user_id)->get();
+
+            return view('peminjaman-user', [
+                'data_loanRequests' => $loanRequests
+            ]);
+        }
+
 
         return "error";
     }
@@ -102,7 +126,7 @@ class LoanRequestController extends Controller
             'queried_items' => $queried_items,
         ]);
     }
-    
+
     public function createStep3Add(Request $request)
     {
         // array_push($request->id_items, $request->id_item);
@@ -126,7 +150,7 @@ class LoanRequestController extends Controller
 
     private function stringArrayToArray($string_array)
     {
-        if(empty($string_array)){
+        if (empty($string_array)) {
             return [];
         }
 
@@ -229,7 +253,7 @@ class LoanRequestController extends Controller
             // 'note' => 'required',
             // 'id_item' => 'required',
         ];
-        
+
         $validatedRequest = $request->validate($rules);
 
         $updatedLoanRequest = LoanRequest::where('id', $loanRequest->id)
