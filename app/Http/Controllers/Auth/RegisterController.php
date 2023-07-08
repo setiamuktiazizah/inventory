@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
+use Carbon\Carbon;
+
 class RegisterController extends Controller
 {
     /*
@@ -74,7 +76,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'no_hp'     => $data['no_hp'],
             'no_credential'  => $data['no_credential'],
-            'id_role'     => 4
+            'id_role'     => 4,
+            'created_by' => 1,
+            'created_at' => Carbon::now()
         ]);
     }
 
