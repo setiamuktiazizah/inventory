@@ -56,6 +56,9 @@ class Item extends Model
             'quantity' => $quantity,
             'condition' => $condition,
             'is_empty' => $is_empty,
+
+            'created_at' => '2023-05-05 02:57:03',
+            'created_by' => 1,
         ]);
     }
 
