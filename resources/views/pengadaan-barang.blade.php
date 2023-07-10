@@ -72,7 +72,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
-                                    @foreach($data_addItems as $addItem)
+                                    @foreach($addItems as $addItem)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
                                         <td>{{$addItem->date}} </td>
@@ -84,7 +84,7 @@
                                         <td>{{$addItem->cause}} </td>
                                         <td>{{$addItem->creator->name}} </td>
                                         @can ('admin')
-                                        <td><a href="/edit-pengadaan" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}">
+                                        <td><a href="{{url('/pengadaan-barang/'.$addItem->id)}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm" data-id="{{ $addItem->id }}" value="{{$addItem->id}}">
                                             <i class="fas fa-edit fa-sm text-white-50"></i> Edit</a></td> 
                                         @endcan 
                                     </tr>
@@ -92,106 +92,6 @@
 
                                     
                         
-    
-    <!-- Tambah Data Pengadaan Barang Modal-->
-    <div class="modal fade" id="tambahPengadaanModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data Pengadaan Barang</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data" action="{{url('/pengadaan-barang/'.$addItem->id.'/store')}}" class="user">
-                        @csrf
-                        @method('put')
-                        <input type="hidden" name="id" value="id">
-                        <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Kategori</h6>
-                                <input class="form-control form-control-sm" list="categories" name="category" id="category">
-                                <datalist id="categories" value="{{$addItem->category->id}} ">
-                                    @foreach ($data_categories as $category)
-                                        <option value="{{$category->id}}" >{{$category->name}} </option>
-                                    @endforeach
-                                </datalist>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Barang</h6>
-                                <input type="text" name="name" class="form-control" value="{{ old('name', $addItem->name)}}" id="name">
-                                @error('name')
-                                    <p class="invalid-feedback d-block">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Merk</h6>
-                                <input class="form-control form-control-sm" list="brands" name="brand" id="brand">
-                                <datalist id="brands">
-                                    <option value="ASUS">
-                                    <option value="Snowman">
-                                    <option value="Olaf">
-                                </datalist>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-lg-4">
-                            {{-- <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Satuan</h6>
-                                <input class="form-control form-control-sm" list="units" name="unit" id="unit">
-                                <datalist id="units">
-                                    <option value="rim">
-                                    <option value="pak">
-                                    <option value="unit">
-                                </datalist>
-                            </div> --}}
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jumlah</h6>
-                                <input min="1" type="number" id="quantity" class="form-control form-control-sm" value="{{ old('quantity', $addItem->quantity)}}" />
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Harga</h6>
-                                <input min="1" type="number" id="price" name="price" class="form-control form-control-sm" />
-                            </div>
-                        </div>
-                        <div class="form-group row mb-lg-4">
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Tanggal</h6>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="date" class="form-control form-control-sm" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <h6 class="h6 text-blue-100 mb-1">Jenis Pengadaan</h6>
-                                <input class="form-control form-control-sm" list="adds" name="add" id="add">
-                                <datalist id="adds">
-                                    <option value="Barang Baru">
-                                    <option value="Transfer">
-                                </datalist>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <h6 class="h6 text-blue-100 mb-1">Admin</h6>
-                            <input class="form-control form-control-sm" list="users" name="user" id="user">
-                            <datalist id="users">
-                                <option value="Alwi">
-                                <option value="Bayu">
-                            </datalist>
-                        </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-primary">Simpan</a>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Periode -->
        <div class="modal fade" id="periodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
        aria-hidden="true">

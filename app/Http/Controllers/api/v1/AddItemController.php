@@ -35,7 +35,7 @@ class AddItemController extends Controller
         //     'message' => 'List Record AddItem',
         //     'data' => $addItems
         // ], 200);
-        return view('pengadaan-barang', ['data_addItems' => $addItems, 'data_users' => $user, 'data_categories' => $category, 'data_items' => $item, 'data_itemUnits' => $itemUnit]);
+        return view('pengadaan-barang', ['addItems' => $addItems, 'users' => $user, 'categories' => $category, 'items' => $item, 'itemUnits' => $itemUnit]);
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
@@ -51,8 +51,20 @@ class AddItemController extends Controller
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
+        $user = User::all();
+        $category = Category::all();
+        $addItem = AddItem::latest()->get();
+        // $addItems = AddItem::all();
+        $item = Item::all();
+        $itemUnit = ItemUnit::all();
 
-        return "AddItem_create";
+        return view('tambah-pengadaan', [
+            'addItems' => $addItem,
+            'users' => $user,
+            'data_categories' => $category,
+            'items' => $item,
+            'itemUnits' => $itemUnit
+        ]);
     }
 
     /**
@@ -72,7 +84,7 @@ class AddItemController extends Controller
             'barcode' => 'required',
         ]);
 
-        AddItem::create([
+        $x = AddItem::create([
             'date' => $request->date,
             'name' => $request->name,
             'brand' => $request->brand,
@@ -80,11 +92,21 @@ class AddItemController extends Controller
             'price' => $request->price,
             'id_category' => $request->id_category,
             'barcode' => $request->barcode,
-            'cause' => $request->add,
-            'created_by' => '1',
+            'cause' => $request->cause,
+            'created_by' => auth()->user()->id,
             'updated_by' => 'NULL',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+        ]);
+
+        $x->item()->create([
+            'quantity' => $request->quantity,
+            'condition' => 'Baik',
+            'created_by' => auth()->user()->id,
+            'updated_by' => 'NULL',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'is_empty' => '0',
         ]);
 
         return redirect('/pengadaan-barang');
@@ -132,10 +154,12 @@ class AddItemController extends Controller
         // if(!Gate::allows(['admin'])){
         //     abort(403);
         // }
-        $category = Category::all();
+        // $category = Category::all();
         // $addItem = AddItem::all();
         // $addItem = AddItem::findOrFail($id);
-        return view('pengadaan-barang', compact('addItem', 'category'));
+        $category = Category::all();
+        // return view('edit-pengadaan', ['addItems' => $addItem, 'categories' => $category]);
+        return view('edit-pengadaan', ['addItems' => $addItem]);
     }
 
     /**
@@ -148,21 +172,30 @@ class AddItemController extends Controller
     public function update(Request $request, AddItem $addItem)
     {
         $validatedData = $request->validate([
-            'date' => 'required',
+            // 'date' => 'required',
             'name' => 'required',
             'brand' => 'required',
-            'quantity' => 'required',
+            // 'quantity' => 'required',
             'price' => 'required',
             'barcode' => 'required',
+            // 'id_category' => 'required',
+            'cause' => 'required'
         ]);
 
-        $validatedData['cause'] = $request->add;
-        $validatedData['created_by'] = $request->created_by;
-        $validatedData['updated_by'] = "1";
-        $validatedData['created_at'] = $request->created_at;
+        // $validatedData['date'] = $request->date;
+        $validatedData['name'] = $request->name;
+        $validatedData['brand'] = $request->brand;
+        // $validatedData['quantity'] = $request->quantity;
+        $validatedData['price'] = $request->price;
+        $validatedData['barcode'] = $request->barcode;
+        // $validatedData['id_category'] = $request->id_category;
+        $validatedData['cause'] = $request->cause;
+        $validatedData['created_by'] = $addItem['created_by'];
+        $validatedData['updated_by'] = auth()->user()->id;
+        $validatedData['created_at'] = Carbon::now();
         $validatedData['updated_at'] = Carbon::now();
 
-        $addItem = AddItem::where('id', $addItem->id)
+        AddItem::where('id', $addItem->id)
             ->update($validatedData);
 
         return redirect('/pengadaan-barang');

@@ -23,7 +23,11 @@ class Item extends Model
         'id_add_item',
         'quantity',
         'condition',
-        'is_empty'
+        'is_empty',
+        'created_by',
+        'updated_by',
+        'created_at',
+        'updated_at'
     ];
 
     public function reduce_items(): HasMany
@@ -58,7 +62,7 @@ class Item extends Model
         ]);
     }
 
-    
+
     public function created_by(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
@@ -77,6 +81,5 @@ class Item extends Model
             ->where('items.is_empty', false)
             ->where('add_items.id_category', $id_category)
             ->get();
-
     }
 }

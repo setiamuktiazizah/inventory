@@ -30,62 +30,95 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Daftar Barang Tersedia</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Pengajuan Peminjaman Barang</h1>
+                    {{-- @dd($previous_request) --}}
+
                 </div>            
 
                 <!-- DataTales Example -->
-                {{-- @dd($available_items[0]) --}}
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
-                                <thead class="text-center">
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Nama</th>
-                                        <th>Merk</th>
-                                        <th>Kondisi</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                    @foreach($available_items as $item)
+                        @if(count($queried_items) > 0)
+                            <h1>Barang yang akan dipinjam:</h1>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="text-center">
                                         <tr>
-                                            <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->brand }}</td>
-                                            <td>{{ $item->condition }}</td>
-                                            <td>
-                                                <form action="/peminjaman-3" method="post" enctype="multipart/form-data">
-                                                    @csrf
-                                                    {{-- <input hidden type="text" id="id_category" name="id_category" value="{{ $previous_request->id_category }}"> --}}
-                                                    <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
-                                                    <input hidden type="text" id="id_item" name="id_item" value="{{ $item->id }}">
-
-                                                    <button name="submit" type="submit" class="btn btn-info">
-                                                        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam
-                                                    </button>
-                                                    
-                                                </form>
-                                                {{-- <a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                                    <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam
-                                                </a> --}}
-                                            </td>
+                                            <th>No.</th>
+                                            <th>Nama</th>
+                                            <th>Merk</th>
+                                            <th>Kondisi</th>
+                                            <th>Aksi</th>
                                         </tr>
-                                    @endforeach
-                                    {{-- <tr>
-                                        <td>1</td>
-                                        <td>Laptop Asus</td>
-                                        <td>Asus</td>
-                                        <td>Baik</td>
-                                        <td><a href="/peminjaman-3" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm">
-                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Pinjam</a></td>
-                                    </tr> --}}
+                                    </thead>
+                                    {{-- @dd($queried_items) --}}
+                                    <tbody class="text-center">
+                                        @foreach($queried_items as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->add_item->name }}</td>
+                                                <td>{{ $item->add_item->brand }}</td>
+                                                <td>{{ $item->condition }}</td>
+                                                <td>
+                                                    <form action="/peminjaman-2-remove" method="post" enctype="multipart/form-data">
+                                                        @csrf
+                                                        {{-- <input hidden type="text" id="id_category" name="id_category" value="{{ $previous_request->id_category }}"> --}}
+                                                        <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
 
-                                </tbody>
-                            </table>
-                        </div>
-                            
+                                                        <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="{{ $previous_request->id_items_string_array }}">
+
+                                                        <input hidden type="text" id="id_item_to_be_removed" name="id_item_to_be_removed" value="{{ $item->id }}">
+                                                            
+                                                        <button name="submit" type="submit" class="btn btn-danger">
+                                                            <i class="fas fa-plus-circle fa-sm text-white-50"></i> Hapus
+                                                        </button>
+                                                        
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+    
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{-- <h1>Queried items:</h1>
+                            @foreach($queried_items as $item)
+                                <p>{{ $item->id }}</p>
+                            @endforeach
+                            <p>{{ $previous_request->id_items_string_array }}</p> --}}
+
+                            <form action="/peminjaman-4" method="post" enctype="multipart/form-data">
+                                @csrf
+
+                                <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
+                                <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="{{ $previous_request->id_items_string_array }}">
+    
+                                <button name="submit" type="submit" class="btn btn-primary mt-4">Pinjam</button>
+                                {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                     Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
+                            </form>
+
+                        @endif
+                        <form action="/peminjaman-3" method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <input hidden type="text" id="id_items_string_array" name="id_items_string_array" value="{{ $previous_request->id_items_string_array }}">
+                            <input hidden type="date" id="loan_date" name="loan_date" value="{{ $previous_request->loan_date }}">
+
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Tambah Barang yang akan Dipinjam</label><br>
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Pilih Kategori</label>
+                            <select class="custom-select" id="id_category" name="id_category">
+                                <option selected value="">Pilih</option>
+                                @foreach($data_categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>   
+                                @endforeach
+                            </select>
+
+                            <button name="submit" type="submit" class="btn btn-primary mt-4 float-right">Selanjutnya</button>
+                            {{-- <a href="/peminjaman-2" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
+                                 Selanjutnya    <i class="fas fa-arrow-right fa-md text-white-50"></i></a> --}}
+                        </form>
                     </div>
                 </div>
                 </div>
@@ -132,6 +165,7 @@
             </div>
         </div>
     </div>
+
     
 @include ('template-dashboard.script')
 </body>

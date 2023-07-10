@@ -4,8 +4,12 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\ReturnItem;
+use App\Models\LoanItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReturnItemController extends Controller
 {
@@ -19,13 +23,11 @@ class ReturnItemController extends Controller
         // if(!Gate::allows(['admin', 'operator'])){
         //     abort(403);
         // }
-
         $returnItems = ReturnItem::latest()->get();
-        return response([
-            'success' => true,
-            'message' => 'List Record ReturnItem',
-            'data' => $returnItems
-        ], 200);
+
+        return view('pengembalian-operator', [
+            'data_returnItems' => $returnItems
+        ]);
     }
 
     /**
@@ -35,12 +37,12 @@ class ReturnItemController extends Controller
      */
     public function create()
     {
-        //
-        // if(!Gate::allows(['admin', 'operator'])){
-        //     abort(403);
-        // }
+        // TODO: belum jalan filternya
+        $unreturnedLoanItems = LoanItem::latest()->get();
 
-        return "ReturnItem_create";
+        return view('tambah-pengembalian', [
+            'data_unreturnedLoanItems' => $unreturnedLoanItems
+        ]);
     }
 
     /**
@@ -54,15 +56,16 @@ class ReturnItemController extends Controller
         $rules = [
             'return_date' => 'required',
             'note' => 'required',
-            'id_loan' => 'required',
+            'id_loan_item' => 'required',
         ];
 
         $validatedRequest = $request->validate($rules);
+        $validatedRequest['created_by'] = Auth::user()->id;
+        $validatedRequest['created_at'] = Carbon::now();
+
         $returnItem = ReturnItem::create($validatedRequest);
 
-        return response()->json([
-            'data' => $returnItem
-        ]);
+        return redirect('pengembalian-operator');
     }
 
     /**
@@ -71,26 +74,26 @@ class ReturnItemController extends Controller
      * @param  \App\Models\ReturnItem  $returnItem
      * @return \Illuminate\Http\Response
      */
-    public function show(ReturnItem $returnItem)
-    {
-        // if(!Gate::allows(['admin', 'operator'])){
-        //     abort(403);
-        // }
+    // public function show(ReturnItem $returnItem)
+    // {
+    //     // if(!Gate::allows(['admin', 'operator'])){
+    //     //     abort(403);
+    //     // }
 
-        if ($returnItem) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Detail ReturnItem!',
-                'data'    => $returnItem
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Data Tidak Ditemukan!',
-                'data'    => ''
-            ], 401);
-        }
-    }
+    //     if ($returnItem) {
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Detail ReturnItem!',
+    //             'data'    => $returnItem
+    //         ], 200);
+    //     } else {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Data Tidak Ditemukan!',
+    //             'data'    => ''
+    //         ], 401);
+    //     }
+    // }
 
     /**
      * Show the form for editing the specified resource.

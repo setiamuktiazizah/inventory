@@ -81,12 +81,13 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
-        // if(!Gate::allows(['admin'])){
-        //     abort(403);
-        // }
+        if(!Gate::allows(['operator']) && !Gate::allows(['admin'])){
+            abort(403);
+        }
 
-        return "Item_edit";
+        return view('edit-barang', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -106,10 +107,11 @@ class ItemController extends Controller
 
         $validatedRequest = $request->validate($rules);
 
+
         $updatedItem = Item::where('id', $item->id)
             ->update($validatedRequest);
 
-        return $updatedItem;
+        return redirect('/data-barang');
     }
 
     /**

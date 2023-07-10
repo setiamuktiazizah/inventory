@@ -30,57 +30,43 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 font-weight-bold text-primary">Tambah Pengurangan Barang</h1>
+                    <h1 class="h3 mb-2 font-weight-bold text-primary">Tambah Pengembalian Barang</h1>
                 </div>            
 
                 <!-- DataTales Example -->
-                <form action="/simpan-pengurangan" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Barang yang akan dikurangi</label>
-                                <select class="custom-select" name="id_item">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" action="/tambah-pengembalian">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Peminjaman yang akan dikembalikan</label>
+                                <select class="custom-select" name="id_loan_item">
                                     <option selected>Pilih</option>
-                                    @foreach($data_items as $item)
-                                        <option value="{{ $item->id }}">{{ $item->add_item->name }}</option>
+                                    @foreach($data_unreturnedLoanItems as $unreturnedLoanItem)
+                                        <option value="{{ $unreturnedLoanItem->id }}">{{ $unreturnedLoanItem->loan_request->note }}</option>
+                                        
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="col">
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary">Jumlah</label>
-                                <input class="form-control" type="number" name='quantity'>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal</label>
-                                    <div class="input-group date" id="datetimepicker1">
-                                        <input type="date" class="form-control form-control-md" name='date'/>
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    </div>
-                            </div>
-                            <div class="col">
-                                <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Alasan</label>
-                                <select class="custom-select" name="cause">
-                                    <option selected>Pilih</option>
-                                    <option value="Penggunaan">Penggunaan</option>
-                                    <option value="Rusak">Rusak</option>
-                                    <option value="Hilang">Hilang</option>
-                                    <option value="Penggantian Pemilik">Penggantian Pemilik</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Tanggal Pengembalian</label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control form-control-md" name="return_date"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                         </div>
-                            <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 float-right">
-                                Tambah Data
-                            </button>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1" class="font-weight-bold text-primary mt-4">Note</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="note" name="note">Dipinjam untuk keperluan himpunan mahasiswa</textarea>
+                        </div>
+                        <button type="submit" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md mt-5 mb-3 float-right">Tambah Data</button>       
+                  {{-- </div> --}}
+                    </form>
                     </div>
-                    </div>
-                </form>
-        </div>
+                </div>
+                </div>
                 <!-- /.container-fluid -->
 
             </div>

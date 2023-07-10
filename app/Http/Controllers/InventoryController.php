@@ -30,6 +30,8 @@ use App\Exports\ReturnItemExport;
 use App\Exports\ReturnItemPeriodeExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+
+
 class InventoryController extends Controller
 {
     public function index()
@@ -110,6 +112,11 @@ class InventoryController extends Controller
         return view('login');
     }
 
+    public function resetPasswordPage()
+    {
+        return view('reset-password');
+    }
+
     public function dashboardOperatorPage()
     {
         return view('dashboard-operator');
@@ -181,9 +188,24 @@ class InventoryController extends Controller
         return view('peminjaman-user');
     }
 
+
     public function dashboardPage()
     {
-        return view('dashboard');
+        $jumlah_addItem = AddItem::latest()->get()->count();
+        $jumlah_reduceItem = ReduceItem::latest()->get()->count();
+        $jumlah_item = Item::latest()->get()->count();
+        $jumlah_ajuan = LoanRequest::latest()->get()->count();
+        $jumlah_dipinjam = LoanItem::latest()->get()->count();
+        $jumlah_kembali = ReturnItem::latest()->get()->count();
+
+        return view('dashboard', [
+            'jumlah_addItem' => $jumlah_addItem,
+            'jumlah_reduceItem' => $jumlah_reduceItem,
+            'jumlah_item' => $jumlah_item,
+            'jumlah_ajuan' => $jumlah_ajuan,
+            'jumlah_dipinjam' => $jumlah_dipinjam,
+            'jumlah_kembali' => $jumlah_kembali
+        ]);
     }
 
     public function pengajuanPeminjamanPage()
