@@ -32,19 +32,22 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 font-weight-bold text-primary">Pengajuan Peminjaman Barang</h1>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <div class="float-right d-none d-md-inline-block mr-4 dropdown">
-                            <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-download fa-md text-secondary-50"></i> Export
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="/pengajuan/pdf"><i class="fas fa-file-pdf fa-fw mr-2 text-gray-400"></i>PDF</a>
-                                <a class="dropdown-item" href="/pengajuan/excel"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
-                            </div>
+                        <a href="/pengajuan-peminjaman-operator" class="d-none d-md-inline-block btn btn-md btn-primary shadow-md">Kembali</a>
+                        &nbsp;
+                        <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-download fa-md text-secondary-50"></i> Export
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-white" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/pengajuan/pdf/{{$tgl_awal}}/{{$tgl_akhir}}" data-tgl_awal={{$tgl_awal}} data-tgl_akhir={{$tgl_akhir}}><i class="fas fa-file-pdf fa-fw mr-2 text-gray-400"></i>PDF</a>
+                            <a class="dropdown-item" href="/pengajuan/excel/{{$tgl_awal}}/{{$tgl_akhir}}"><i class="fas fa-file-excel fa-md fa-fw mr-2 text-gray-400"></i>Excel</a>
                         </div>
-                        <a href="#" class=" float-right d-none d-md-inline-block btn btn-md btn-outline-primary shadow-md mr-4" data-toggle="modal" data-target="#periodeModal">
-                            <i class="fas fa-calendar fa-md text-primary-50"></i> Periode</a>
-                    </div>
+                        </div>
                 </div>  
+
+            
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h3 class="h3 mb-2 font-weight-bold text-primary">Periode ( {{$tgl_awal}} ) - ( {{$tgl_akhir}} )</h3>
+            </div> 
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -55,7 +58,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Barang</th>
-                                        {{-- <th>Merk</th> --}}
+                                        <th>Merk</th>
                                         {{-- <th>Jumlah</th> --}}
                                         <th>Tgl Pinjam</th>
                                         <th>Maks Tgl Kembali</th>
@@ -71,14 +74,9 @@
                                     {{-- @dd($data_loanRequests[0]->item->add) --}}
                                     @foreach($data_loanRequests as $loanRequest)
                                         <tr>
-                                            <td>{{ $loop->index }}</td>
-                                            {{-- <td>{{ $loanRequest->item->add_item->name }}</td> --}}
-                                            {{-- <td>{{ $loanRequest->item->add_item->brand }}</td> --}}
-                                            <td>
-                                                @foreach($loanRequest->loan_objects as $loanObject)
-                                                    <p>{{ $loanObject->item->add_item->name }}</p>
-                                                @endforeach
-                                            </td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loanRequest->item->add_item->name }}</td>
+                                            <td>{{ $loanRequest->item->add_item->brand }}</td>
                                             <td>{{ $loanRequest->loan_date }}</td>
                                             <td>{{ $loanRequest->max_return_date }}</td>
                                             <td>{{ $loanRequest->pathfile }}</td>
@@ -221,13 +219,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="user" method="POST" action="/pengajuan-peminjaman/periode">
-                        @csrf
+                    <form class="user">
                         <div class="form-group row justify-content-between mb-lg-4">
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Tanggal Awal</h6>
                                 <div class="input-group date" id="datetimepicker1">
-                                    <input name="tgl_awal" id="tgl_awal" type="date" class="form-control form-control-sm" />
+                                    <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -236,19 +233,18 @@
                             <div class="col-sm-4">
                                 <h6 class="h6 text-blue-100 mb-1">Tanggal Akhir</h6>
                                 <div class="input-group date" id="datetimepicker1">
-                                    <input name="tgl_akhir" id="tgl_akhir" type="date" class="form-control form-control-sm" />
+                                    <input type="date" class="form-control form-control-sm" />
                                     <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
                     </form>
                 </div>
-               
+                <div class="modal-footer">
+                    <a class="btn btn-primary">Simpan</a>
+                </div>
             </div>
         </div>
     </div>
