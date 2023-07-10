@@ -15,7 +15,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\api\v1\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
+use App\Models\AddItem;
 use Illuminate\Http\Request;
 
 /*
@@ -42,6 +42,46 @@ Auth::routes();
 Route::get('/reset-password', [InventoryController::class, 'resetPasswordPage']);
 
 Route::group(['middleware' => ['auth']], function () {
+
+    //view by periode
+    Route::post('/pengadaan-barang/periode', [InventoryController::class, 'pengadaanBarangPeriode']);
+    Route::post('/pengurangan-barang/periode', [InventoryController::class, 'penguranganBarangPeriode']);
+    Route::post('/pengajuan-peminjaman/periode', [InventoryController::class, 'pengajuanPeminjamanPeriode']);
+    Route::post('/peminjaman/periode', [InventoryController::class, 'peminjamanPeriode']);
+    Route::post('/pengembalian/periode', [InventoryController::class, 'pengembalianPeriode']);
+
+    //export pdf
+    Route::get('/pengadaan/pdf', [InventoryController::class, 'pengadaanPDF']);
+    Route::get('/pengurangan/pdf', [InventoryController::class, 'penguranganPDF']);
+    Route::get('/pengajuan/pdf', [InventoryController::class, 'pengajuanPDF']);
+    Route::get('/peminjaman/pdf', [InventoryController::class, 'peminjamanPDF']);
+    Route::get('/pengembalian/pdf', [InventoryController::class, 'pengembalianPDF']);
+
+    Route::get('/pengadaan/pdf/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengadaanPeriodePDF']);
+    Route::get('/pengurangan/pdf/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'penguranganPeriodePDF']);
+    Route::get('/pengajuan/pdf/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengajuanPeriodePDF']);
+    Route::get('/peminjaman/pdf/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'peminjamanPeriodePDF']);
+    Route::get('/pengembalian/pdf/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengembalianPeriodePDF']);
+
+    //export excel
+    Route::get('/pengadaan/excel', [InventoryController::class, 'pengadaanExcel']);
+    Route::get('/pengurangan/excel', [InventoryController::class, 'penguranganExcel']);
+    Route::get('/pengajuan/excel', [InventoryController::class, 'pengajuanExcel']);
+    Route::get('/peminjaman/excel', [InventoryController::class, 'peminjamanExcel']);
+    Route::get('/pengembalian/excel', [InventoryController::class, 'pengembalianExcel']);
+
+    Route::get('/pengadaan/excel/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengadaanPeriodeExcel']);
+    Route::get('/pengurangan/excel/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'penguranganPeriodeExcel']);
+    Route::get('/pengajuan/excel/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengajuanPeriodeExcel']);
+    Route::get('/peminjaman/excel/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'peminjamanPeriodeExcel']);
+    Route::get('/pengembalian/excel/{tgl_awal}/{tgl_akhir}', [InventoryController::class, 'pengembalianPeriodeExcel']);
+
+
+
+
+
+
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::get('/dashboard-admin', [InventoryController::class, 'dashboardAdminPage']);
@@ -63,16 +103,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/data-barang', [ItemController::class, 'index']);
 
 
-    // Route::get('/login', [LoginController::class, 'showLoginForm']);
-    // Route::post('/login', [LoginController::class, 'validateLogin']);
-
-
-    //     Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
-
-    Route::get('/pengadaan-barang', [AddItemController::class, 'index'])->name('pengadaan-barang');
-    Route::post('/pengadaan-barang', [AddItemController::class, 'store'])->name('pengadaan-barang.store');
-    Route::get('/pengadaan-barang/{addItem}', [AddItemController::class, 'edit'])->name('pengadaan-barang.edit');
-    Route::post('/pengadaan-barang/{addItem}/store', [AddItemController::class, 'update'])->name('pengadaan-barang.update');
     Route::get('/pengurangan-barang', [ReduceItemController::class, 'index']);
 
     Route::get('/profil', [InventoryController::class, 'profilPage']);
@@ -139,11 +169,3 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/edit-barang', [InventoryController::class, 'editBarangPage']);
 });
-
-
-
-
-// Route::get('/login', [LoginController::class, 'loginPage']);
-// Route::post('/login', [LoginController::class, '__invoke']);
-
-//Route::get('/login', [InventoryController::class, 'loginPage']);
